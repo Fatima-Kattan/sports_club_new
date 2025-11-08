@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->date('birth_date');
             $table->enum('gender', ['female','male'])->default('male');
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
         });
 

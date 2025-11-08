@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('activity_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('employee_id')->constrained('employees')->onUpdate('cascade');
+            $table->foreignId('doctor_id')->constrained('employees')->onUpdate('cascade')->default('nullable');
             $table->boolean('paid')->default(false);
             $table->timestamps();
         });
