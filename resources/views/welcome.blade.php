@@ -58,6 +58,21 @@
                 </nav>
             @endif
         </header>
+
+        <section id="home">
+            <div class="shadow-effects">
+                <div class="shadow-1"></div>
+                <div class="shadow-2"></div>
+            </div>
+            <div class="overlay">
+                <div class="home-text">
+                    <h1>Welcome to Power & <br> Fitness Club</h1>
+                    <p>Achieve your best self in a professional environment designed for strength, endurance, and transformation. Join us and take your fitness journey to the next level.</p>
+                    <a href="#services" class="btn">Discover More</a>
+                </div>
+            </div>
+        </section>
+            
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
