@@ -1,3 +1,7 @@
+:root {
+    --color-primary: #05C1F7;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -34,8 +38,8 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 1rem 2rem;
-    background: #0a0a0a;
+    padding: 0.8rem 2rem;
+    background: #1b1b1b;
     border-bottom: 1px solid #3E3E3A;
 }
 
@@ -178,10 +182,10 @@ body {
     }
 }
 
-
+/* Home */
 #home {
     position: relative;
-    height: 100vh;
+    height: 87vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,7 +198,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 87%;
+    height: 100%;
     background: linear-gradient(135deg, rgba(0, 102, 255, 0.491) 0%, rgba(2, 220, 111, 0.248) 100%);
     z-index: 1;
 }
@@ -205,7 +209,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 87%;
+    height: 100%;
     background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
     z-index: 0;
     filter: brightness(0.7);
@@ -215,20 +219,20 @@ body {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 0px;
     max-width: 800px;
 }
 
 .home-text h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-   /*  text-shadow: 0 0 15px rgba(0, 100, 255, 0.7), 0 0 30px rgba(0, 200, 100, 0.5); */
-    background: linear-gradient(to right, #05C1F7, #01f2f2);
+    background-image: linear-gradient(160deg, #05C1F7, #00ff88);
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1.2;
     font-weight: 700;
-    
+
 }
 
 .home-text p {
@@ -261,7 +265,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background:  linear-gradient(135deg, #05C1F7, #00ff88);
+    background: linear-gradient(135deg, #05C1F7, #00ff88);
     z-index: -1;
     transition: transform 0.5s ease;
     transform: scaleX(0);
@@ -278,7 +282,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* تأثيرات الظل الإضافية */
 .shadow-effects {
     position: absolute;
     width: 100%;
@@ -314,26 +317,242 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) scale(1);
     }
+
     50% {
         transform: translateY(-20px) scale(1.05);
     }
 }
 
-/* التجاوب مع الشاشات المختلفة */
 @media (max-width: 768px) {
     .home-text h1 {
         font-size: 2.5rem;
     }
-    
+
     .home-text p {
         font-size: 1rem;
     }
-    
+
     .btn {
         padding: 12px 30px;
         font-size: 1rem;
     }
+}
+
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    padding: 70px 0 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer-section h3 {
+    background-image: linear-gradient(135deg, #05C1F7, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section .after_line::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: 0;
+    width: 1px;
+    height: 280px;
+    background: linear-gradient(135deg, #05C1F7, #00ff88);
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    padding-right: 20px;
+    color: #ccc;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    background-image: linear-gradient(135deg, #05C1F7, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 17px;
+}
+
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    box-shadow: 0px 2px 8px rgba(1, 242, 242, 0.776);
+    transform: translateY(-3px);
+}
+
+.social-links svg:hover {
+    color: black;
+}
+
+.contact-info {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.contact-info i {
+    color: #ff6b00;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.margin_contact {
+    margin-bottom: 0px;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 20px;
+    border-top: 1px solid #444;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.fas p:hover {
+    background-image: linear-gradient(135deg, #05C1F7, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-section h3::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+
+/* Search */
+.search-icon {
+    cursor: pointer;
+    color:white;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search-icon:hover {
+    transform: translateY(-3px) scale(1.2);
+    color: #05C1F7;
+}
+
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.search-container {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    border: 1px solid var(--color-primary) !important;
+    border-radius: 15px !important;
+    outline: none !important;
+    background-color: #1b1b1b !important;
+    color: white;
+}
+
+.search-close {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.search-overlay.active {
+    display: flex;
+}
+
+body.search-active {
+    overflow: hidden;
 }
