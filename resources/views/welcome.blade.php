@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ url('/css/style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -72,6 +75,96 @@
                 </div>
             </div>
         </section>
+
+<!-- About Section -->
+<section class="about-section" id="about">
+    <div class="about-container">
+        <!-- Header -->
+        <div class="about-header">
+            <h2 class="about-title">ABOUT OUR CLUB</h2>
+            <div class="title-underline"></div>
+            <p class="about-subtitle">Where Champions Are Made</p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="about-content">
+            <!-- Text Content -->
+            <div class="about-text">
+                <h3>Your Ultimate Sports Destination</h3>
+                <p>
+                    Welcome to <strong>Fitness Club</strong>, the premier multi-sport facility 
+                    where passion meets performance. With over 10,000 sq ft of state-of-the-art 
+                    training spaces, we offer everything from strength training to aquatic sports.
+                </p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🏋️‍♂️</span>
+                        <div class="feature-text">
+                            <h4>Strength & Conditioning</h4>
+                            <p>World-class equipment for power training</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-icon">🏊‍♂️</span>
+                        <div class="feature-text">
+                            <h4>Aquatic Center</h4>
+                            <p>Olympic-sized pool with professional coaching</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-icon">🥊</span>
+                        <div class="feature-text">
+                            <h4>Combat Sports</h4>
+                            <p>Boxing, MMA, and martial arts disciplines</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-icon">👥</span>
+                        <div class="feature-text">
+                            <h4>Team Sports</h4>
+                            <p>Basketball, volleyball, and soccer facilities</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="about-image">
+                <div class="main-image">
+                    <img 
+                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
+                    alt="Modern Gym Facility with State-of-the-Art Equipment"
+                    loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Sports</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">Coaches</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2000+</span>
+                <span class="stat-label">Members</span>
+            </div>
+        </div>
+        <!-- CTA Button -->
+        <div class="about-cta">
+            <a href="#contact" class="cta-button">Join Our Champions</a>
+        </div>
+    </div>
+</section>
+
             
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
