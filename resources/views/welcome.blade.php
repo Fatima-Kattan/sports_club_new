@@ -178,7 +178,245 @@
     </div>
 </section>
 
-            
+            <!-- Sports Section -->
+<section class="sports-section" id="sports">
+    <div class="sports-container">
+        <!-- Header -->
+        <div class="sports-header">
+            <h2 class="sports-title">OUR SPORTS</h2>
+            <div class="title-underline"></div>
+            <p class="sports-subtitle">Discover Your Passion</p>
+        </div>
+
+        <!-- Sports Categories Navigation -->
+        <div class="sports-categories">
+            <button class="category-btn active" data-category="all">All Sports</button>
+            <button class="category-btn" data-category="strength">Strength</button>
+            <button class="category-btn" data-category="aquatic">Aquatic</button>
+            <button class="category-btn" data-category="combat">Combat</button>
+            <button class="category-btn" data-category="team">Team Sports</button>
+            <button class="category-btn" data-category="cardio">Cardio</button>
+        </div>
+
+        <!-- Sports Grid -->
+        <div class="sports-grid">
+            <!-- Strength Training -->
+            <div class="sport-card" data-category="strength">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Strength Training" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">🏋️‍♂️</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Strength Training</h3>
+                    <p class="sport-description">
+                        Build power and muscle with our world-class equipment and expert coaching
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Free Weights</span>
+                        <span class="feature">Machines</span>
+                        <span class="feature">Personal Training</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">60-90 min</span>
+                        <span class="level">All Levels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Swimming -->
+            <div class="sport-card" data-category="aquatic">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Swimming" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">🏊‍♂️</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Swimming</h3>
+                    <p class="sport-description">
+                        Olympic-sized pool with professional coaching for all skill levels
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Olympic Pool</span>
+                        <span class="feature">Lap Swimming</span>
+                        <span class="feature">Swim Lessons</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">45-120 min</span>
+                        <span class="level">All Levels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boxing -->
+            <div class="sport-card" data-category="combat">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Boxing" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">🥊</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Boxing</h3>
+                    <p class="sport-description">
+                        Learn technique, build endurance, and improve your fitness with boxing
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Heavy Bags</span>
+                        <span class="feature">Sparring</span>
+                        <span class="feature">Cardio Boxing</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">60 min</span>
+                        <span class="level">Intermediate</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basketball -->
+            <div class="sport-card" data-category="team">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Basketball" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">🏀</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Basketball</h3>
+                    <p class="sport-description">
+                        Full-size courts for pickup games, leagues, and skill development
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Full Courts</span>
+                        <span class="feature">Leagues</span>
+                        <span class="feature">Skill Clinics</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">90-120 min</span>
+                        <span class="level">All Levels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MMA -->
+            <div class="sport-card" data-category="combat">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1599058917765-2adc5b8b0f43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="MMA" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">🥋</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Mixed Martial Arts</h3>
+                    <p class="sport-description">
+                        Comprehensive MMA training combining striking and grappling techniques
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Striking</span>
+                        <span class="feature">Grappling</span>
+                        <span class="feature">Self Defense</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">75 min</span>
+                        <span class="level">Advanced</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soccer -->
+            <div class="sport-card" data-category="team">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Soccer" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">⚽</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Soccer</h3>
+                    <p class="sport-description">
+                        Indoor and outdoor facilities for training, matches, and tournaments
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Indoor Field</span>
+                        <span class="feature">Youth Programs</span>
+                        <span class="feature">Adult Leagues</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">90 min</span>
+                        <span class="level">All Levels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cycling -->
+            <div class="sport-card" data-category="cardio">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Cycling" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">🚴‍♂️</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Indoor Cycling</h3>
+                    <p class="sport-description">
+                        High-energy cycling classes with motivating instructors and great music
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Studio Cycling</span>
+                        <span class="feature">HIIT Classes</span>
+                        <span class="feature">Heart Rate Training</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">45-60 min</span>
+                        <span class="level">All Levels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yoga -->
+            <div class="sport-card" data-category="cardio">
+                <div class="sport-image">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Yoga" loading="lazy">
+                    <div class="sport-overlay">
+                        <span class="sport-icon">🧘‍♀️</span>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-name">Yoga & Pilates</h3>
+                    <p class="sport-description">
+                        Improve flexibility, strength, and mental focus with our yoga classes
+                    </p>
+                    <div class="sport-features">
+                        <span class="feature">Hot Yoga</span>
+                        <span class="feature">Pilates</span>
+                        <span class="feature">Meditation</span>
+                    </div>
+                    <div class="sport-meta">
+                        <span class="duration">60-75 min</span>
+                        <span class="level">All Levels</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="sports-cta">
+            <h3>Ready to Start Your Sports Journey?</h3>
+            <p>Join today and get access to all our sports facilities and classes</p>
+            <a href="#membership" class="cta-button">View Membership Plans</a>
+        </div>
+    </div>
+</section>
 
         <footer class="footer">
             <div class="footer-container">
