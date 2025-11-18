@@ -191,6 +191,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    letter-spacing: 0.1rem;
 }
 
 #home::before {
@@ -225,7 +226,7 @@ body {
 }
 
 .home-text h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: 20px;
     background-image: linear-gradient(160deg, #05C1F7, #00ff88);
 
@@ -574,14 +575,14 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
-    display: none; /* مخفي بشكل افتراضي */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
 .search-overlay.active {
-    display: flex; /* يظهر عندما يكون active */
+    display: flex; 
 }
 
 .search-container {
