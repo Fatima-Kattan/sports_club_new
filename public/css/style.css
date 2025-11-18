@@ -567,6 +567,60 @@ body {
 .search-overlay.active {
     display: flex;
 }
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none; /* مخفي بشكل افتراضي */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.search-overlay.active {
+    display: flex; /* يظهر عندما يكون active */
+}
+
+.search-container {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 20px 50px 20px 20px; /* مساحة للأيقونة */
+    font-size: 18px;
+    border: 2px solid #05C1F7 !important;
+    border-radius: 15px !important;
+    outline: none !important;
+    background-color: #1b1b1b !important;
+    color: white;
+}
+
+.search-close {
+    position: absolute;
+    top: 45%;
+    right: 5px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    padding: 5px;
+}
+
+.search-close:hover {
+    color: #05C1F7;
+}
+
+body.search-active {
+    overflow: hidden;
+}
 
 body.search-active {
     overflow: hidden;

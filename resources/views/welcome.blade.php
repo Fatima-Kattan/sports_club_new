@@ -41,10 +41,10 @@
                             <li><a href="#">shop</a></li>
                             <li><a href="#about">about</a></li>
                             <div class="search-icon" id="searchIcon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="currentColor"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="currentColor"/>
                                 </svg>
-                                </div>
+                            </div>
                         </ul>
                     </div>
         
@@ -73,8 +73,8 @@
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="Enter what you want to search for.." class="search-input">
                 <button class="search-close" id="searchClose">✕</button>
-                </div>
             </div>
+        </div>
         <section id="home">
             <div class="shadow-effects">
                 <div class="shadow-1"></div>
@@ -244,7 +244,8 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
-        <script src="/js/index.js"></script>
+        
 
+        <script src="{{ asset('js/index.js') }}"></script>
     </body>
     </html>
