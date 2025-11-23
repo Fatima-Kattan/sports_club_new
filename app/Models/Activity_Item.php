@@ -2,9 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity_Item extends Model
 {
-    //
+    use HasFactory;
+
+    protected $fillable = [
+        'item_id',
+        'activity_id',
+        'quantity'
+    ];
+
+    public function activity()
+    {
+        return $this->belongsTo(Activity::class);
+    }
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

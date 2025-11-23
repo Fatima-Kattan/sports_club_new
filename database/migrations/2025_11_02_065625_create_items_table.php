@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->text('image');
             $table->integer('quantity');
-            $table->enum('status', ['available','out of service','under maintenance'])->default('available');
+            $table->enum('status', ['available','Not available','out of service','under maintenance'])->default('available');
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

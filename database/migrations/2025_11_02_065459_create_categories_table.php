@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['available', 'maintenance', 'out_of_service']);
-            $table->integer('avail_item');
+            $table->string('description');
             $table->timestamps();
         });
     }
