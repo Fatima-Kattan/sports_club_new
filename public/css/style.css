@@ -1296,7 +1296,7 @@ body.search-active {
 }
 
 .coach-card:hover {
-    border-color: #05C1F7;
+    border-color: rgb(5, 193, 247);
     box-shadow: 0 0px 23px rgba(5, 193, 247, 0.3);
     transform: translateY(-5px);
 }
@@ -1306,12 +1306,17 @@ body.search-active {
     width: 175px;
     height: 175px;
     margin: 0 auto 15px;
-    border: 1px solid rgba(5, 195, 247, 0.654);
+    border: 1px solid rgba(5, 193, 247, 0.654);
     border-radius: 50%;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(5, 195, 247, 0.397);
-    padding: 1px;
+    box-shadow: 0 0 20px rgba(5, 195, 247, 0.628);
+    object-fit: cover;
+    display: block;
+}
+.avatar:hover{
+    box-shadow: 0 0 30px rgba(5, 195, 247, 0.628);
+    transform: scale(1.03);
 }
 
 .avatar-inner {
