@@ -66,3 +66,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+/* ==================================================== */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const cards = document.querySelectorAll('.coach-card');
+    const prevBtn = document.querySelector('.nav-btn.prev');
+    const nextBtn = document.querySelector('.nav-btn.next');
+    
+    let currentPosition = 0;
+    
+    function updateCarousel() {
+        track.style.transform = `translateX(${currentPosition}px)`;
+    }
+    
+    nextBtn.addEventListener('click', function() {
+        const cardWidth = cards[0].offsetWidth + 20; // 20 = gap
+        const containerWidth = track.parentElement.offsetWidth;
+        const maxPosition = -(cards.length * cardWidth - containerWidth);
+        
+        if (currentPosition > maxPosition) {
+            currentPosition -= cardWidth;
+            updateCarousel();
+        } else {
+            currentPosition = 0;
+            updateCarousel();
+        }
+    });
+    
+    prevBtn.addEventListener('click', function() {
+        const cardWidth = cards[0].offsetWidth + 20;
+        const containerWidth = track.parentElement.offsetWidth;
+        const maxPosition = -(cards.length * cardWidth - containerWidth);
+        
+        if (currentPosition < 0) {
+            currentPosition += cardWidth;
+            updateCarousel();
+        } else {
+            currentPosition = maxPosition;
+            updateCarousel();
+        }
+    });
+});
