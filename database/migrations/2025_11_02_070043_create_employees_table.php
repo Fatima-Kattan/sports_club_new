@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('years_of_experience')->default(0);
             $table->enum('role', ['coach', 'employee'])->default('employee');
             $table->date('hire_date');
+            $table->text('image');
             $table->softDeletes();
             $table->timestamps();
         });

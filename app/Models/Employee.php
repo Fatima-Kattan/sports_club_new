@@ -22,7 +22,8 @@ class Employee extends Model
         'role',
         'position',
         'years_of_experience',
-        'hire_date'
+        'hire_date',
+        'image',
     ];
 
     protected $casts = [
@@ -30,7 +31,9 @@ class Employee extends Model
         'working_hours_end' => 'datetime',
         'hire_date' => 'date',
         'salary' => 'decimal:2',
-        'years_of_experience' => 'integer'
+        'years_of_experience' => 'integer',
+        'mgr_id' => 'integer'
+
     ];
 
     protected $dates = [
