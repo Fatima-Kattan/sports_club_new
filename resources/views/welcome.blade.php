@@ -38,7 +38,7 @@
                             <li><a href="#home">home</a></li>
                             <li><a href="#sports">sports</a></li>
                             <li><a href="#coach">coachs</a></li>
-                            <li><a href="#">shop</a></li>
+                            <li><a href="#footer">contact</a></li>
                             <li><a href="#about">about</a></li>
                             <div class="search-icon" id="searchIcon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -501,7 +501,7 @@
 {{-- ================================= --}}
 
 
-        <footer class="footer">
+        <footer class="footer" id="footer">
             <div class="footer-container">
                 <div class="footer-section">
                     <h3 class="after_line">About Us</h3>
