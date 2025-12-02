@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -45,10 +46,6 @@ class Employee extends Model
         return $this->hasMany(Booking::class, 'employee_id');
     }
 
-    public function doctorBookings()
-    {
-        return $this->hasMany(Booking::class, 'doctor_id');
-    }
 
     public function manager()
     {
@@ -99,5 +96,10 @@ class Employee extends Model
     public function getEmploymentDurationAttribute()
     {
         return $this->hire_date->diffInYears(now());
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? Storage::url($this->image) : null;
     }
 }
