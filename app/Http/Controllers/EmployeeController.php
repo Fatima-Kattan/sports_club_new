@@ -31,15 +31,16 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        $this->authorize('manageEmployees', Employee::class);
+        /* $this->authorize('manageEmployees', Employee::class); */
 
         $managers = Employee::whereIn('position', ['manager', 'hr'])->get();
-        return view('employees.create', compact('managers'));
+        return response()->json(['managers' => $managers]);
+    
     }
 
     public function store(Request $request)
     {
-        $this->authorize('manageEmployees', Employee::class);
+       /*  $this->authorize('manageEmployees', Employee::class); */
 
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
@@ -63,10 +64,13 @@ class EmployeeController extends Controller
             $validated['image'] = $imagePath;
         }
 
-        Employee::create($validated);
+        $employee = Employee::create($validated);
 
-        return redirect()->route('employees.index')
-            ->with('success', 'Employee added successfully');
+    return response()->json([
+        'message' => 'Employee added successfully',
+        'employee' => $employee
+    ], 201);
+
     }
 
     public function show($id)

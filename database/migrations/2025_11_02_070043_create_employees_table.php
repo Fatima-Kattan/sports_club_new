@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            $table->unsignedBigInteger('mgr_id');
+            $table->unsignedBigInteger('mgr_id')->nullable();
             $table->foreign('mgr_id')->references('id')->on('employees')->onDelete('restrict');
             $table->decimal('salary', 8, 2);
             $table->string('email')->unique();
