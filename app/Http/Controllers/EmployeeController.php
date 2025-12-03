@@ -32,9 +32,13 @@ class EmployeeController extends Controller
     public function create()
     {
         /* $this->authorize('manageEmployees', Employee::class); */
-
+        
         $managers = Employee::whereIn('position', ['manager', 'hr'])->get();
-        return response()->json(['managers' => $managers]);
+          // إذا قاعدة البيانات فاضية
+    if ($managers->isEmpty()) {
+        $managers = collect(); // collection فارغة
+    }
+    return view('employees.create', compact('managers'));  // ✅ صح!
     
     }
 
