@@ -107,7 +107,7 @@
         }
 
         .form-control {
-            width: 100%;
+            width: 90%;
             padding: 12px 15px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(5, 193, 247, 0.3);
@@ -129,6 +129,7 @@
         }
 
         select.form-control {
+            width: 100%;
             cursor: pointer;
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2305C1F7' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
@@ -185,9 +186,7 @@
         .btn-cancel {
             padding: 12px 35px;
             border-radius: 25px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 700;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
@@ -240,7 +239,6 @@
             display: none;
         }
 
-        /* رسائل الخطأ */
         .error-message {
             color: #ff4444;
             font-size: 0.85rem;
@@ -252,7 +250,6 @@
             border-color: #ff4444;
         }
 
-        /* تأثيرات إضافية */
         .form-section {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 15px;
@@ -260,14 +257,18 @@
             margin-bottom: 25px;
         }
 
-        .section-title {
-            color: var(--color-secondary);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-        }
-
+.section-title {
+    background: linear-gradient(160deg, #05C1F7, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block; 
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+}
         /* Responsive */
         @media (max-width: 768px) {
             .form-container {
@@ -309,12 +310,12 @@
 </head>
 
 <body>
-    <!-- Header مبسط -->
+    <!-- Header  -->
     <header style="background: #0a0a0a; color: white; padding: 15px; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 2px solid #05C1F7;">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-            <a href="{{ route('employees.index') }}" style="color: #05C1F7; text-decoration: none; font-size: 1.5rem; font-weight: bold;">
-                <i class="fas fa-dumbbell" style="margin-right: 10px;"></i>
-                Sports Club
+            <a href="{{ route('employees.index') }}" style="color: #05C1F7; text-decoration: none; font-size: 1.5rem; font-weight: bold; display:flex; align-items: center; justify-content:center;">
+                <svg fill="#05C1F7" height="64px" width="64px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-78.44 -78.44 483.73 483.73" xml:space="preserve" stroke="#05C1F7" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M264.693,326.845h-38.079c-4.418,0-8-3.582-8-8v-30.464H108.231v30.464c0,4.418-3.582,8-8,8H62.152c-4.418,0-8-3.582-8-8 v-6.939H24.074c-4.418,0-8-3.582-8-8V224.03c0-4.418,3.582-8,8-8h30.077v-6.938c0-4.418,3.582-8,8-8h38.079c4.418,0,8,3.582,8,8 v30.464h110.384v-30.464c0-4.418,3.582-8,8-8h38.079c4.418,0,8,3.582,8,8v6.938h30.077c4.418,0,8,3.582,8,8v79.875 c0,4.418-3.582,8-8,8h-30.077v6.939C272.693,323.263,269.112,326.845,264.693,326.845z M234.615,310.845h22.079v-93.753h-22.079 V310.845z M70.152,310.845h22.079v-93.753H70.152V310.845z M272.693,295.905h22.077V232.03h-22.077V295.905z M32.074,295.905h22.077 V232.03H32.074V295.905z M108.231,272.381h110.384v-16.825H108.231V272.381z M145.443,223.376c-1.331,0-2.68-0.332-3.922-1.032 c-3.849-2.17-5.209-7.05-3.04-10.898c14.273-25.312,33.543-46.712,56.214-63.181c-9.894-13.703-21.197-26.173-33.681-37.227 c-31.019,33.403-73.355,55.896-120.395,61.599c1.042,4.209,2.303,8.368,3.784,12.468c1.501,4.155-0.65,8.741-4.806,10.242 c-4.158,1.502-8.741-0.651-10.242-4.807c-5.571-15.424-8.396-31.599-8.396-48.077C20.959,63.908,84.868,0,163.423,0 c78.554,0,142.462,63.908,142.462,142.463c0,14.179-2.104,28.201-6.255,41.68c-1.301,4.223-5.78,6.589-10,5.291 c-4.223-1.3-6.591-5.777-5.291-10c3.68-11.951,5.546-24.39,5.546-36.971c0-4.869-0.276-9.673-0.814-14.4 c-25.871,2.997-50.403,11.521-72.172,24.662c4.713,7.504,9.017,15.253,12.873,23.202c1.928,3.975,0.269,8.761-3.706,10.689 c-3.975,1.925-8.762,0.269-10.689-3.707c-3.573-7.366-7.501-14.486-11.761-21.341c-20.629,15.091-38.175,34.642-51.196,57.736 C150.948,221.911,148.236,223.376,145.443,223.376z M66.601,61.193c-18.492,21.994-29.642,50.354-29.642,81.27 c0,4.834,0.274,9.639,0.819,14.399c43.257-5.019,82.233-25.484,110.873-56.012C124.555,82.391,96.76,68.814,66.601,61.193z M171.329,98.998c13.625,12.048,25.936,25.664,36.611,40.442c23.598-14.378,50.218-23.758,78.307-27.155 c-9.987-40.635-39.667-73.615-78.299-88.194C201.125,51.937,188.433,77.333,171.329,98.998z M79.321,48.096 c28.682,8.458,55.914,22.357,79.681,40.709c15.771-20.065,27.435-43.606,33.62-69.402C183.248,17.179,173.468,16,163.423,16 C131.162,16,101.686,28.14,79.321,48.096z"></path> </g></svg>
+                Fitness
             </a>
             <div>
                 <a href="{{ route('employees.index') }}" style="color: white; text-decoration: none; margin-left: 20px;">
@@ -527,11 +528,6 @@
 
                 <div class="form-actions">
                     <button type="submit" class="btn-submit">
-                        <svg style="width:20px;height:20px;margin-right:8px;vertical-align:middle;"
-                            viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M17 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V7L17 3M19 19H5V5H16.17L19 7.83V19M12 12C10.34 12 9 13.34 9 15S10.34 18 12 18 15 16.66 15 15 13.66 12 12 12M6 6H15V10H6V6Z" />
-                        </svg>
                         Create Employee
                     </button>
 
@@ -548,8 +544,8 @@
         </div>
     </div>
 
-    <!-- Footer مبسط -->
-    <footer style="background: #111; color: #A1A09A; text-align: center; padding: 20px; margin-top: 50px;">
+    <!-- Footer -->
+    <footer style="background: #111; color: #A1A09A; text-align: center; padding: 20px;">
         <p>&copy; 2025 Sports Club. All rights reserved.</p>
     </footer>
 
