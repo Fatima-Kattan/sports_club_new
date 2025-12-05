@@ -13,7 +13,6 @@ class Booking extends Model
         'user_id',
         'activity_id',
         'employee_id',
-        'doctor_id',
         'paid'
     ];
 
@@ -34,11 +33,6 @@ class Booking extends Model
     public function employee()
     {
         return $this->belongsTo(Employee::class, 'employee_id');
-    }
-
-    public function doctor()
-    {
-        return $this->belongsTo(Employee::class, 'doctor_id');
     }
 
     public function attendee()

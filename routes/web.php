@@ -21,14 +21,16 @@ Route::middleware('auth')->group(function () {
 
 // ==================== Employee Routes ====================
 
-// ⚠️ **مهم جداً: الـ CREATE قبل الـ {id}**
-Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');  // أولاً
+Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
-Route::get('/employees/{id}', [EmployeeController::class, 'show'])->name('employees.show');  // ثانياً
-Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+Route::get('/employees/{id}', [EmployeeController::class, 'show'])->name('employees.show');
 Route::get('/employees/{id}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
-Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employees.update');
-Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+    Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employees.update');
+    Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+});
 
 Route::get('/employees/role/coaches', [EmployeeController::class, 'coaches'])->name('employees.coaches');
 Route::get('/employees/search/results', [EmployeeController::class, 'search'])->name('employees.search');
@@ -38,15 +40,19 @@ Route::delete('/employees/{id}/force-delete', [EmployeeController::class, 'force
 Route::post('/employees/restore/all', [EmployeeController::class, 'restoreAll'])->name('employees.restore-all');
 Route::delete('/employees/trash/empty', [EmployeeController::class, 'emptyTrash'])->name('employees.empty-trash');
 
+// ==================== Category Routes ====================
 
-Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/{category}', [CategoryController::class, 'show']);
-Route::get('/categories/search/query', [CategoryController::class, 'searchCategories']);
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 
-// Protected routes (تطلب مصادقة)
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/categories', [CategoryController::class, 'store']);
-    Route::put('/categories/{category}', [CategoryController::class, 'update']);
-    Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
-});
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/categories/search/query', [CategoryController::class, 'searchCategories'])->name('categories.search');
+
+
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+
 require __DIR__.'/auth.php';

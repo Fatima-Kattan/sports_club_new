@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Employee;
+use App\Policies\CategoryPolicy;
 use App\Policies\EmployeePolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -16,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Employee::class => EmployeePolicy::class,
-        // يمكنك إضافة سياسات أخرى هنا لاحقاً
+        Category::class => CategoryPolicy::class,
+        
     ];
 
     /**
@@ -25,7 +28,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
-
-        // يمكنك إضافة أي Gates إضافية هنا إذا needed
     }
 }

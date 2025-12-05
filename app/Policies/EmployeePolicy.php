@@ -8,7 +8,7 @@ class EmployeePolicy
 {
     public function  manageEmployees(User $user ,Employee $employee)
     {
-        return $user->is_admin || $employee->position === 'manager' || $user->position === 'hr';
+        return $user->is_admin || $employee->position === 'manager' || $employee->position === 'hr';
     }
 
     
