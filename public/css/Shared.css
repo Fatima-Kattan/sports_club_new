@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Oswald", sans-serif;
+}
+
+:root {
+    --color-primary: #05C1F7;
+    --color-secondary: #00ff88;
+    --color-dark: #0a0a0a;
+    --color-light: #EDEDEC;
+    --color-gray: #A1A09A;
+    --color-error: #ff4444;
+    --color-success: #00ff88;
+    --color-card-bg: rgba(255, 255, 255, 0.05);
+    --color-cta-button-box-shadow:rgba(5, 193, 247, 0.3);
+    --color-cta-button-hover-box-shadow:rgba(5, 193, 247, 0.5);
+}
+
+.search-icon:hover {
+    transform: translateY(-3px) scale(1.2);
+    color:  var(--color-primary);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg,var(--color-primary), var(--color-secondary));
+    color: var(--color-dark);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px var(--color-cta-button);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px var(--color-cta-button-hover-box-shadow);
+    color:var(--color-dark);
+}
+
+.main_logo {
+    display: flex;
+    align-items: center;
+}
+
+.main_logo h1 {
+    color: #05C1F7;
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+.nav_list a {
+    color: #EDEDEC;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.nav_list a {
+    color: #EDEDEC;
+    text-decoration: none;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav_list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #05C1F7;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.nav_list a:hover {
+    color: #05C1F7;
+}
+
+.nav_list a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
