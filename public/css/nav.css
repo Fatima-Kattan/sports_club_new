@@ -1,0 +1,129 @@
+/* NAVBAR */
+.navbar {
+    background: #1F2937;
+    border-bottom: 1px solid #d1d5db;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dash_color{
+    padding-bottom: 5px;
+    border-color:#05C1F7 ;
+    font-size: 18px;
+}
+
+.dash_color:hover{
+    border-bottom: 3px solid #2b9fc0;
+}
+
+/* MAIN CONTAINER */
+.nav-container {
+    max-width: 1300px;
+    margin-left: 15%;
+    margin-right: 0px !important;
+    height: 45px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #1F2937;
+}
+
+/* LEFT SIDE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    padding-left: 19px;
+    margin-bottom: 5%;
+}
+
+.logo-svg {
+    width: 40px;
+    height: auto;
+}
+
+/* NAV LINKS */
+.nav-links {
+    display: flex;
+    gap: 25px;
+
+}
+
+/* RIGHT SIDE */
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* USER BUTTON */
+.user-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #555;
+    transition: 0.2s;
+}
+
+.user-btn:hover {
+    color: #222;
+}
+
+.arrow-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger-icon {
+    width: 28px;
+    height: 28px;
+    color: #555;
+}
+
+/* RESPONSIVE MENU */
+.responsive-menu {
+    display: none;
+    background: #28292a;
+    border-top: 1px solid #171313;
+    padding: 15px;
+}
+
+.responsive-menu.show {
+    display: block;
+}
+
+/* USER INFO */
+.user-info .name {
+    font-weight: bold;
+    color: #333;
+}
+
+.user-info .email {
+    font-size: 14px;
+    color: #666;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links,
+    .nav-right {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
