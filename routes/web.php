@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/start', function () {
+    return view('startDashboard');          
+})->name('startDashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
