@@ -49,22 +49,34 @@
                     </div>
         
                     <div class="auth-buttons">
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="auth-btn">
-                                Dashboard
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}" class="auth-btn login-btn">
-                                Log in
-                            </a>
+    @auth
+        {{-- Admin فقط يرى Dashboard --}}
+        @if(auth()->user()->isAdmin())
+            <a href="{{ url('/dashboard') }}" class="auth-btn">
+                Dashboard
+            </a>
+        @endif
         
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="auth-btn">
-                                    Register
-                                </a>
-                            @endif
-                        @endauth
-                    </div>
+        {{-- زر Logout للجميع --}}
+        <form method="POST" action="{{ route('logout') }}" class="inline-form">
+            @csrf
+            <button type="submit" class="auth-btn logout-btn">
+                Logout
+            </button>
+        </form>
+    @else
+        {{-- لمستخدمين غير مسجلين --}}
+        <a href="{{ route('login') }}" class="auth-btn login-btn">
+            Log in
+        </a>
+
+        @if (Route::has('register'))
+            <a href="{{ route('register') }}" class="auth-btn">
+                Register
+            </a>
+        @endif
+    @endauth
+</div>
                 </nav>
             @endif
         </header>
@@ -521,10 +533,9 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Coachs</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#sports">Sports</a></li>
+                        <li><a href="#coach">Coachs</a></li>
+                        <li><a href="#footer">Contact Us</a></li>
                     </ul>
                 </div>
                 
