@@ -5,14 +5,14 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: "Segoe UI", system-ui, sans-serif;
+            font-family: "Oswald", sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             color: #EDEDEC;
             min-height: 100vh;
-            padding: 20px;
+            padding: 35px;
         }
         
         .container {
@@ -24,7 +24,7 @@
         .table-container {
             /* width: 1300px; */
             position: relative;
-            overflow-x: auto;
+            /* overflow-x: auto; */
             background: rgba(26, 26, 26, 0.8);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             border-radius: 12px;
@@ -35,6 +35,7 @@
         
         /* شريط التحكم العلوي */
         .table-controls {
+            width: 100%;
             padding: 20px;
             display: flex;
             align-items: center;
@@ -90,7 +91,7 @@
             justify-content: center;
             gap: 8px;
             color: #EDEDEC;
-            background: linear-gradient(135deg, #05C1F7, #00b8ff);
+            background: linear-gradient(135deg, #194754, #00b7ff7f);
             box-sizing: border-box;
             border: none;
             font-weight: 600;
@@ -222,35 +223,6 @@
             box-shadow: 0 4px 12px rgba(5, 193, 247, 0.2);
         }
         
-        /* علامة الدور/الحالة */
-        .status-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .status-active {
-            background: rgba(0, 255, 136, 0.1);
-            color: #00ff88;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-        }
-        
-        .status-pending {
-            background: rgba(255, 204, 0, 0.1);
-            color: #ffcc00;
-            border: 1px solid rgba(255, 204, 0, 0.3);
-        }
-        
-        .status-inactive {
-            background: rgba(255, 102, 102, 0.1);
-            color: #ff6666;
-            border: 1px solid rgba(255, 102, 102, 0.3);
-        }
-        
         /* العنوان */
         .page-title {
             text-align: center;
@@ -379,44 +351,62 @@
         /* تأثيرات إضافية */
         .table-container {
             position: relative;
-            overflow: hidden;
-        }
-        
-        .table-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(5, 193, 247, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        /* زر إضافة جديد */
-        .add-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #00ff88, #00cc66);
-            color: #1a1a1a;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .add-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+            /* overflow: hidden; */
         }
 
+        .buttons-container {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .svg-button {
+            /* Layout */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Dimensions */
+            width: 52px;
+            height: 52px;
+            
+            /* Styling */
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid #00b7ff7f;
+            border-radius: 14px;
+            text-decoration: none;
+            background: rgba(5, 195, 247, 0.098);
+            /* Shadow */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            
+            /* Interaction */
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        /* Icon styling */
+        .svg-button svg {
+            width: 24px;
+            height: 24px;
+            fill: #00b7ff7f;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hover effect */
+        .svg-button:hover {
+            border-color: #0099cc;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 153, 204, 0.15);
+        }
+        
+        .svg-button:hover svg {
+            fill: #0099cc;
+        }
+        
+        /* Active state */
+        .svg-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 153, 204, 0.1);
+        }
         /* تنسيق أرقام الصفوف */
 .row-number {
     color: #05C1F7;
@@ -583,7 +573,7 @@
     flex-grow: 1;
 }
 
-.employee-title h1 {
+.employee-title .employee-name {
     font-size: 2.2rem;
     color: #EDEDEC;
     margin-bottom: 8px;
@@ -923,22 +913,9 @@
     font-weight: 600;
 }
 
-/* الحالة */
-.status-section {
-    text-align: center;
-    padding: 20px;
-}
 
-.status-large {
-    font-size: 1.3rem;
-    padding: 10px 25px;
-    border-radius: 25px;
-    display: inline-block;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+
+
 
 /* شارة القسم */
 .department-badge {
@@ -953,24 +930,6 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-
-/* علامات الحالة */
-.status-badge {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.status-active {
-    background: rgba(0, 255, 136, 0.1);
-    color: #00ff88;
-    border: 1px solid rgba(0, 255, 136, 0.3);
-}
-
 .status-pending {
     background: rgba(255, 204, 0, 0.1);
     color: #ffcc00;
@@ -1001,6 +960,7 @@
     display: inline-block;
     border: 1px solid rgba(5, 193, 247, 0.3);
     font-size: 12px;
+    margin-left: 2px;
 }
 
 .edit-link:hover {
@@ -1012,7 +972,7 @@
 
 /* تنسيقات إضافية للاستجابة */
 @media (max-width: 768px) {
-    .employee-title h1 {
+    .employee-title .employee-name {
         font-size: 1.8rem;
     }
     
@@ -1056,7 +1016,7 @@
         height: 100px;
     }
     
-    .employee-title h1 {
+    .employee-title .employee-name {
         font-size: 1.5rem;
     }
     
