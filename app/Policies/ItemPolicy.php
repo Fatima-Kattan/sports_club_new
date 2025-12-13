@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Policies;
-
-use App\Models\Category;
 use App\Models\User;
 use App\Models\Employee;
-use Illuminate\Auth\Access\Response;
+use App\Models\Item;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CategoryPolicy
+class ItemPolicy
 {
-    public function  manageCategories(User $user ,?Employee $employee=null)
+    use HandlesAuthorization;
+
+    public function  manageItem(User $user ,?Employee $employee=null)
     {
         return $user->is_admin 
                 ||($employee && ($employee->position === 'storage_manager' ||  $employee->mgr_id === null));
     }
-    
 }
