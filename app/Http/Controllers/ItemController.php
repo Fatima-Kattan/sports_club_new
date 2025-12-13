@@ -6,104 +6,186 @@ use App\Models\Item;
 use App\Models\Category;
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ItemController extends Controller
 {
     use AuthorizesRequests;
 
-    
 
-    public function index()
+    // ==================== Create ====================
+    public function create(Category $category)
     {
-        $this->authorize('manageItem', Employee::class);
-        $items = Item::with('category')->latest()->get();
-        return view('items.index', compact('items'));
+        $user = Auth::user();
+        $employee = Employee::where('email', $user->email)->first();
+
+        if ($employee) {
+            $this->authorize('manageItem', $employee);
+        } else {
+            $this->authorize('manageItem', Item::class);
+        }
+
+        return view('items.create', compact('category'));
     }
 
-    public function create()
-    {
-        $this->authorize('manageItem', Employee::class);
-        $categories = Category::all();
-        return view('items.create', compact('categories'));
-    }
-
+    // ==================== Store ====================
     public function store(Request $request)
     {
-        $this->authorize('manageItem', Employee::class);
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
-            'quantity' => 'required|integer|min:0',
-            'status' => 'required|in:available,not available,under maintenance,out of service',
-            'image' => 'nullable|image|max:2048',
-        ]);
+        $user = Auth::user();
+        $employee = Employee::where('email', $user->email)->first();
 
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('items', 'public');
+        if ($employee) {
+            $this->authorize('manageItem', $employee);
+        } else {
+            $this->authorize('manageItem', Item::class);
         }
 
-        Item::create($validated);
-
-        return redirect()->route('categories.show', $validated['category_id'])
-            ->with('success', 'Item created successfully.');
-    }
-
-    public function show(Item $item)
-    {
-        $this->authorize('manageItem', Employee::class);
-        return view('items.show', compact('item'));
-    }
-
-    public function edit(Item $item)
-    {
-        $this->authorize('manageItem', Employee::class);
-        $categories = Category::all();
-        return view('items.edit', compact('item', 'categories'));
-    }
-
-    public function update(Request $request, Item $item)
-    {
-        $this->authorize('manageItem', Employee::class);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'quantity' => 'required|integer|min:0',
             'status' => 'required|in:available,not available,under maintenance,out of service',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Handle image update
-        if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($item->image) {
-                Storage::disk('public')->delete($item->image);
+        try {
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $imageName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)
+                    . '-' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('/images/items'), $imageName);
+
+                $validated['image'] = $imageName;
             }
-            $validated['image'] = $request->file('image')->store('items', 'public');
+
+            Item::create($validated);
+
+            return redirect()->route('categories.show', $validated['category_id'])
+                ->with('success', 'Item created successfully!');
+        } catch (QueryException $e) {
+
+            if ($e->errorInfo[1] == 1062) {
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors([
+                        'name' => '⚠️ This item name already exists in this category. Please choose a different name.'
+                    ]);
+            }
+
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['error' => 'An error occurred: ' . $e->getMessage()]);
         }
-
-        $item->update($validated);
-
-        return redirect()->route('categories.show', $item->category_id)
-            ->with('success', 'Item updated successfully.');
     }
 
-    public function destroy(Item $item)
+    
+    // ==================== Edit ====================
+    public function edit(Category $category, Item $item)
     {
-        $this->authorize('manageItem', Employee::class);
-        // Delete image if exists
-        if ($item->image) {
-            Storage::disk('public')->delete($item->image);
+        $user = Auth::user();
+        $employee = Employee::where('email', $user->email)->first();
+
+        if ($employee) {
+            $this->authorize('manageItem', $employee);
+        } else {
+            $this->authorize('manageItem', Item::class);
+        }
+        if ($item->category_id !== $category->id) {
+            abort(404, 'Item does not belong to this category');
+        }
+
+
+        $categories = Category::all();
+
+        return view('items.edit', compact('category', 'item', 'categories'));
+    }
+
+    // ==================== Update ====================
+    public function update(Request $request, Category $category, Item $item)
+    {
+
+        $user = Auth::user();
+        $employee = Employee::where('email', $user->email)->first();
+
+        if ($employee) {
+            $this->authorize('manageItem', $employee);
+        } else {
+            $this->authorize('manageItem', Item::class);
+        }
+
+
+        if ($item->category_id !== $category->id) {
+            abort(404, 'Item does not belong to this category');
+        }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'quantity' => 'required|integer|min:0',
+            'status' => 'required|in:available,not available,under maintenance,out of service',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        try {
+
+            if ($request->hasFile('image')) {
+                if ($item->image && file_exists(public_path('images/items/' . $item->image))) {
+                    unlink(public_path('images/items/' . $item->image));
+                }
+
+                $file = $request->file('image');
+
+                $imageName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)
+                    . '-' . time() . '.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('/images/items'), $imageName);
+
+                $validated['image'] = $imageName;
+            }else {
+            
+            unset($validated['image']);
+        }
+            $item->update($validated);
+
+            return redirect()->route('categories.show', $item->category_id)
+                ->with('success', 'Item updated successfully!');
+        } catch (QueryException $e) {
+
+            if ($e->errorInfo[1] == 1062) {
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors([
+                        'name' => '⚠️ This item name already exists in this category. Please choose a different name.'
+                    ]);
+            }
+
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['error' => 'An error occurred: ' . $e->getMessage()]);
+        }
+    }
+
+    // ==================== Destroy ====================
+    public function destroy(Category $category, Item $item)
+    {
+        $user = Auth::user();
+        $employee = Employee::where('email', $user->email)->first();
+
+        if ($employee) {
+            $this->authorize('manageItem', $employee);
+        } else {
+            $this->authorize('manageItem', Item::class);
+        }
+
+        if ($item->image && file_exists(public_path('images/items/' . $item->image))) {
+            unlink(public_path('images/items/' . $item->image));
         }
 
         $categoryId = $item->category_id;
         $item->delete();
 
         return redirect()->route('categories.show', $categoryId)
-            ->with('success', 'Item deleted successfully.');
+            ->with('success', 'Item deleted successfully!');
     }
 }

@@ -36,16 +36,6 @@ class CategoryController extends Controller
             ->latest()
             ->get();
 
-        /* if ($request->ajax()) {
-            return response()->json([
-                'categories' => $categories,
-                'html' => view(
-                    'categories.partials.category_cards',
-                    compact('categories')
-                )->render()
-            ]);
-        } */
-
         return view('categories.index', compact('categories', 'search'));
     }
 
@@ -88,7 +78,7 @@ class CategoryController extends Controller
     }
 
     // ==================== Show ====================
-    public function show(Category $category)
+    public function show(Category $category, Request $request)
     {
         $user = Auth::user();
         $employee = Employee::where('email', $user->email)->first();
@@ -99,7 +89,18 @@ class CategoryController extends Controller
             $this->authorize('manageCategories', Category::class);
         }
 
-        $items = $category->items()->latest()->get();
+        $search = $request->input('search', '');
+
+        $items = $category->items()
+            ->when($search, function ($query) use ($search) {
+                return $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('status', 'like', "%{$search}%")
+                        ->orWhere('quantity', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->get();
 
         $statusCounts = [
             'available' => $items->where('status', 'available')->count(),
@@ -108,7 +109,7 @@ class CategoryController extends Controller
             'out_of_service' => $items->where('status', 'out of service')->count(),
         ];
 
-        return view('categories.show', compact('category', 'items', 'statusCounts'));
+        return view('categories.show', compact('category', 'items', 'statusCounts', 'search'));
     }
 
     // ==================== Edit ====================
@@ -172,33 +173,5 @@ class CategoryController extends Controller
             ->with('success', 'Category deleted successfully.');
     }
 
-    // ==================== Search ====================
-    /* public function search(Request $request)
-    {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
-
-        $search = $request->input('search');
-
-        $categories = Category::withCount('items')
-            ->where('name', 'like', "%{$search}%")
-            ->orWhere('description', 'like', "%{$search}%")
-            ->latest()
-            ->get();
-
-        if ($request->ajax()) {
-            return response()->json([
-                'categories' => $categories,
-                'html' => view('categories.partials.category_cards', compact('categories'))->render()
-            ]);
-        }
-
-        return view('categories.index', compact('categories', 'search'));
-    } */
+    
 }

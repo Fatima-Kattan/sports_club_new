@@ -800,3 +800,52 @@ const dynamicStyles = `
 const styleSheet = document.createElement("style");
 styleSheet.textContent = dynamicStyles;
 document.head.appendChild(styleSheet);
+// Search functionality for category show page
+function setupCategorySearch() {
+    const searchInput = document.querySelector('.search-input');
+    const clearSearchBtn = document.querySelector('.clear-search-btn');
+    
+    if (searchInput) {
+        // Auto-focus search input if there's search
+        if (searchInput.value) {
+            searchInput.focus();
+            searchInput.select();
+        }
+        
+        // Keyboard shortcuts
+        searchInput.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + F to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                this.focus();
+                this.select();
+            }
+            
+            // Escape to clear search
+            if (e.key === 'Escape' && this.value) {
+                if (clearSearchBtn) {
+                    clearSearchBtn.click();
+                } else {
+                    window.location.href = window.location.pathname;
+                }
+            }
+        });
+        
+        // Auto-submit after typing stops (optional)
+        let typingTimer;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(typingTimer);
+            
+            if (this.value.trim().length >= 2) {
+                typingTimer = setTimeout(() => {
+                    this.form.submit();
+                }, 800);
+            }
+        });
+    }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    setupCategorySearch();
+});
