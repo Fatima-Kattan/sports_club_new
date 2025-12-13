@@ -56,17 +56,17 @@ Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-Route::get('/categories/search/query', [CategoryController::class, 'searchCategories'])->name('categories.search');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-
-    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-    Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
-
-Route::get('/items', [ItemController::class, 'index'])->name('items.index');
-Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
-Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
-Route::get('/attendees', [AttendeeController::class, 'index'])->name('attendees.index');
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
+// ==================== Item Routes ====================
+Route::prefix('categories/{category}')->group(function () {
+    Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+    Route::post('/items', [ItemController::class, 'store'])->name('items.store');
+    Route::get('/items/{item}/edit', [ItemController::class, 'edit'])->name('items.edit');
+    Route::put('/items/{item}', [ItemController::class, 'update'])->name('items.update');
+    Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
+});
 
 require __DIR__.'/auth.php';

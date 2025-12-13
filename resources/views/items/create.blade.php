@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Add New Item - {{ $category->name }} - Fitness Club</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ url('/css/item.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="item-navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <svg fill="#05C1F7" height="64px" width="64px" version="1.1" id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="-78.44 -78.44 483.73 483.73" xml:space="preserve" stroke="#05C1F7" transform="rotate(0)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M264.693,326.845h-38.079c-4.418,0-8-3.582-8-8v-30.464H108.231v30.464c0,4.418-3.582,8-8,8H62.152c-4.418,0-8-3.582-8-8 v-6.939H24.074c-4.418,0-8-3.582-8-8V224.03c0-4.418,3.582-8,8-8h30.077v-6.938c0-4.418,3.582-8,8-8h38.079c4.418,0,8,3.582,8,8 v30.464h110.384v-30.464c0-4.418,3.582-8,8-8h38.079c4.418,0,8,3.582,8,8v6.938h30.077c4.418,0,8,3.582,8,8v79.875 c0,4.418-3.582,8-8,8h-30.077v6.939C272.693,323.263,269.112,326.845,264.693,326.845z M234.615,310.845h22.079v-93.753h-22.079 V310.845z M70.152,310.845h22.079v-93.753H70.152V310.845z M272.693,295.905h22.077V232.03h-22.077V295.905z M32.074,295.905h22.077 V232.03H32.074V295.905z M108.231,272.381h110.384v-16.825H108.231V272.381z M145.443,223.376c-1.331,0-2.68-0.332-3.922-1.032 c-3.849-2.17-5.209-7.05-3.04-10.898c14.273-25.312,33.543-46.712,56.214-63.181c-9.894-13.703-21.197-26.173-33.681-37.227 c-31.019,33.403-73.355,55.896-120.395,61.599c1.042,4.209,2.303,8.368,3.784,12.468c1.501,4.155-0.65,8.741-4.806,10.242 c-4.158,1.502-8.741-0.651-10.242-4.807c-5.571-15.424-8.396-31.599-8.396-48.077C20.959,63.908,84.868,0,163.423,0 c78.554,0,142.462,63.908,142.462,142.463c0,14.179-2.104,28.201-6.255,41.68c-1.301,4.223-5.78,6.589-10,5.291 c-4.223-1.3-6.591-5.777-5.291-10c3.68-11.951,5.546-24.39,5.546-36.971c0-4.869-0.276-9.673-0.814-14.4 c-25.871,2.997-50.403,11.521-72.172,24.662c4.713,7.504,9.017,15.253,12.873,23.202c1.928,3.975,0.269,8.761-3.706,10.689 c-3.975,1.925-8.762,0.269-10.689-3.707c-3.573-7.366-7.501-14.486-11.761-21.341c-20.629,15.091-38.175,34.642-51.196,57.736 C150.948,221.911,148.236,223.376,145.443,223.376z M66.601,61.193c-18.492,21.994-29.642,50.354-29.642,81.27 c0,4.834,0.274,9.639,0.819,14.399c43.257-5.019,82.233-25.484,110.873-56.012C124.555,82.391,96.76,68.814,66.601,61.193z M171.329,98.998c13.625,12.048,25.936,25.664,36.611,40.442c23.598-14.378,50.218-23.758,78.307-27.155 c-9.987-40.635-39.667-73.615-78.299-88.194C201.125,51.937,188.433,77.333,171.329,98.998z M79.321,48.096 c28.682,8.458,55.914,22.357,79.681,40.709c15.771-20.065,27.435-43.606,33.62-69.402C183.248,17.179,173.468,16,163.423,16 C131.162,16,101.686,28.14,79.321,48.096z">
+                        </path>
+                    </g>
+                </svg>
+
+                <span>Fitness Club</span>
+            </a>
+            <div class="nav-links">
+                <a href="{{ route('categories.show', $category) }}">Back to {{ $category->name }}</a>
+                <a href="{{ route('categories.index') }}">All Categories</a>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Add New Item</h1>
+            <p>Add equipment item to <strong>{{ $category->name }}</strong> category</p>
+        </div>
+
+        <!-- Success Message -->
+        @if (session('success'))
+            <div class="success-alert">
+                <div class="alert-content">
+                    {{ session('success') }}
+                </div>
+            </div>
+        @endif
+
+        <!-- Error Messages -->
+        @if ($errors->any())
+            <div class="error-alert">
+                <div class="alert-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="alert-message">
+                        <strong>Please fix the following errors:</strong>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <form action="{{ route('items.store', $category) }}" method="POST" enctype="multipart/form-data"
+                id="itemForm">
+                @csrf
+
+                <!-- Category Info (Hidden) -->
+                <input type="hidden" name="category_id" value="{{ $category->id }}">
+
+                <!-- Current Category Info -->
+                <div class="category-display">
+                    <div class="category-info">
+                        <i class="fas fa-folder"></i>
+                        <span>Current Category: {{ $category->name }}</span>
+                        <p class="category-description">{{ Str::limit($category->description, 100) }}</p>
+                    </div>
+                </div>
+
+                <!-- Item Name -->
+                <div class="form-group">
+                    <label for="name">Item Name <span class="required">*</span></label>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}"
+                        placeholder="Enter item name (e.g., Basketball, Treadmill)" required
+                        class="{{ $errors->has('name') ? 'input-invalid' : '' }}">
+                    @error('name')
+                        <p class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Quantity -->
+                <div class="form-group">
+                    <label for="quantity">Quantity <span class="required">*</span></label>
+                    <input type="number" name="quantity" id="quantity" value="{{ old('quantity', 1) }}"
+                        min="0" placeholder="How many items available?" required
+                        class="{{ $errors->has('quantity') ? 'input-invalid' : '' }}">
+                    @error('quantity')
+                        <p class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Status Field - Updated Design -->
+                <div class="form-group">
+                    <div class="status-select-container">
+                        <label for="status" class="form-label">
+                            Status <span class="required-star">*</span>
+                            <span class="form-help">Current availability state of the item</span>
+                        </label>
+
+                        <div class="status-select-wrapper">
+                            <select name="status" id="status" required
+                                class="status-select {{ $errors->has('status') ? 'invalid' : '' }}">
+                                <option value="">Select item status</option>
+                                <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>
+                                    Available
+                                </option>
+                                <option value="not available"
+                                    {{ old('status') == 'not available' ? 'selected' : '' }}>
+                                    Not Available
+                                </option>
+                                <option value="under maintenance"
+                                    {{ old('status') == 'under maintenance' ? 'selected' : '' }}>
+                                    Under Maintenance
+                                </option>
+                                <option value="out of service"
+                                    {{ old('status') == 'out of service' ? 'selected' : '' }}>
+                                    Out of Service
+                                </option>
+                            </select>
+                        </div>
+
+                        @error('status')
+                            <span class="error-message">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Image Upload -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="form-label">
+                            Item Photo <span class="required-star">*</span>
+                            <span class="form-help">(JPEG, PNG, JPG, GIF - Max 2MB)</span>
+                        </label>
+
+                        <div class="file-upload">
+                            <button type="button" class="file-upload-btn">
+                                <span id="fileName">Click to upload image</span>
+                            </button>
+                            <input type="file" id="image" name="image"
+                                accept="image/jpeg,image/png,image/jpg,image/gif">
+                        </div>
+
+                        <div class="image-preview">
+                            <img id="imagePreview" alt="Image Preview"
+                                style="display: none; max-width: 300px; max-height: 300px; 
+                        border-radius: 12px; border: 3px solid #05C1F7;
+                        margin: 15px auto; object-fit: contain;">
+                        </div>
+
+                        @error('image')
+                            <span class="error-message">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                        <span>Create Item</span>
+                    </button>
+
+                    <a href="{{ route('categories.index') }}" class="btn-cancel">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>All Rights Reserved &copy; 2025 Fitness Club</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script src="{{ asset('js/item.js') }}"></script>
+    @if (session('success'))
+        <script>
+            window.categorySuccessMessage = "{{ session('success') }}";
+        </script>
+    @endif
+</body>
+
+</html>

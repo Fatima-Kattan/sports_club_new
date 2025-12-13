@@ -115,7 +115,7 @@
                     </a>
                 </li>
                 {{-- items --}}
-                <li>
+{{--                 <li>
                     <a href="{{ route('items.index') }}" class="nav-link" target="content-frame" data-page="items">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -127,10 +127,10 @@
                         </svg>
                         <span class="nav-text">Items</span>
                     </a>
-                </li>
+                </li> --}}
                 {{-- activities --}}
                 <li>
-                    <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
+{{--                     <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
                         data-page="activities">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -144,9 +144,9 @@
                         </svg>
                         <span class="nav-text">Activities</span>
                     </a>
-                </li>
+                </li> --}}
                 {{-- bookings --}}
-                <li>
+{{--                 <li>
                     <a href="{{ route('bookings.index') }}" class="nav-link" target="content-frame"
                         data-page="bookings">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -159,9 +159,9 @@
                         </svg>
                         <span class="nav-text">Bookings</span>
                     </a>
-                </li>
+                </li> --}}
                 {{-- attendees --}}
-                <li>
+{{--                 <li>
                     <a href="{{ route('attendees.index') }}" class="nav-link" target="content-frame"
                         data-page="attendees">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -172,7 +172,7 @@
 
                         <span class="nav-text">Attendees</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- User Profile at Bottom -->
