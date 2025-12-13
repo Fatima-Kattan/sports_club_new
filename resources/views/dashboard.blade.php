@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 {{-- users --}}
-                <li>
+{{--                 <li>
                     <a href="{{ route('users.index') }}" class="nav-link" target="content-frame" data-page="users">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -88,7 +88,7 @@
                         </svg>
                         <span class="nav-text">Users</span>
                     </a>
-                </li>
+                </li> --}}
                 {{-- employees --}}
                 <li>
                     <a href="{{ route('employees.index') }}" class="nav-link" target="content-frame"
