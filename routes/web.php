@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AttendeeController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -58,5 +63,10 @@ Route::get('/categories/search/query', [CategoryController::class, 'searchCatego
     Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
+Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+Route::get('/attendees', [AttendeeController::class, 'index'])->name('attendees.index');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 require __DIR__.'/auth.php';
