@@ -121,6 +121,11 @@
                             </div>
 
                             <div class="category-actions">
+                                    <a href="{{ route('items.create', ['category' => $category->id]) }}" 
+                                        class="action-btn add-item-btn" 
+                                            title="Add Item to this Category">
+                                        <i class="fas fa-plus-circle"></i>
+                                    </a>
                                 <a href="{{ route('categories.show', $category) }}" class="action-btn view-btn"
                                     title="View Items">
                                     <i class="fas fa-eye"></i>
@@ -162,14 +167,14 @@
                             <i class="fas fa-arrow-left"></i> Show All Categories
                         </a>
                         <a href="{{ route('categories.create') }}" class="add-category-btn">
-                            <i class="fas fa-plus"></i> Create New Category
+                                Create New Category
                         </a>
                     </div>
                 @else
                     <h3>No Categories Yet</h3>
                     <p>Start by creating your first category to organize sports equipment</p>
                     <a href="{{ route('categories.create') }}" class="add-category-btn">
-                        <i class="fas fa-plus"></i> Create First Category
+                            Create First Category
                     </a>
                 @endif
             </div>

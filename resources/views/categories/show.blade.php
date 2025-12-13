@@ -48,8 +48,6 @@
 
     <!-- Main Content -->
     <div class="container">
-
-
         <!-- Success Message -->
         @if (session('success'))
             <div class="success-message">
@@ -63,11 +61,42 @@
             <div class="category-header-content">
                 <div class="category-title-section">
                     <h1 class="category-title">{{ $category->name }}</h1>
+                    <p class="category-description">{{ $category->description }}</p>
                 </div>
-
-
             </div>
         </div>
+        <!-- Search Section -->
+        <form action="{{ route('categories.show', $category) }}" method="GET" class="category-search-container">
+            <div class="search-input-group">
+                <input type="text" name="search" value="{{ request('search') }}"
+                    placeholder="Search items (e.g., Basketball, Available, 5...)" class="category-search-input"
+                    autocomplete="off" id="categorySearch" autofocus >
+
+                @if (!empty($search))
+                    <a href="{{ route('categories.show', $category) }}" class="clear-search-btn" title="Clear search">
+                        <i class="fas fa-times"></i>
+                    </a>
+                @endif
+
+                <button type="submit" class="search-submit-btn">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+            </div>
+
+            @if (!empty($search))
+                <div class="search-results-info">
+                    <p>
+                        <i class="fas fa-info-circle"></i>
+                        Found {{ $items->count() }} item(s) matching "{{ $search }}"
+                        <a href="{{ route('categories.show', $category) }}" class="clear-search-link">
+                            <i class="fas fa-eye"></i> Show all items
+                        </a>
+                    </p>
+                </div>
+            @endif
+        </form>
+
 
         <!-- Items Section -->
         <div class="items-section">
@@ -76,25 +105,29 @@
 
                 @if ($items->count() > 0)
                     <div class="items-summary">
-                        <div class="summary-item">
+                        <div class="summary-item" data-status="available">
                             <span
                                 class="summary-count available">{{ $items->where('status', 'available')->count() }}</span>
                             <span class="summary-label">Available</span>
                         </div>
-                        <div class="summary-item">
+                        <div class="summary-item" data-status="Not-available">
                             <span
-                                class="summary-count not-available">{{ $items->where('status', 'Not available')->count() }}</span>
+                                class="summary-count Not-available">{{ $items->where('status', 'Not available')->count() }}</span>
                             <span class="summary-label">Not Available</span>
                         </div>
-                        <div class="summary-item">
+                        <div class="summary-item" data-status="under-maintenance">
                             <span
                                 class="summary-count maintenance">{{ $items->where('status', 'under maintenance')->count() }}</span>
                             <span class="summary-label">Under Maintenance</span>
                         </div>
-                        <div class="summary-item">
+                        <div class="summary-item" data-status="out-of-service">
                             <span
                                 class="summary-count out-of-service">{{ $items->where('status', 'out of service')->count() }}</span>
                             <span class="summary-label">Out of Service</span>
+                        </div>
+                        <div class="summary-item" data-status="all">
+                            <span class="summary-count all">{{ $items->count() }}</span>
+                            <span class="summary-label">All Items</span>
                         </div>
                     </div>
                 @endif
@@ -103,11 +136,25 @@
             @if ($items->count() > 0)
                 <div class="items-grid">
                     @foreach ($items as $item)
-                        <div class="item-card">
+                        <div class="item-card" data-status="{{ str_replace(' ', '-', $item->status) }}">
+                            <!-- Item Image -->
+                            <div class="item-image-container">
+                                @if ($item->image)
+                                    <img src="{{ asset('/images/items/' . $item->image) }}"
+                                        alt="{{ $item->name }}" class="item-image"
+                                        onerror="this.onerror=null; this.src='{{ asset('images/default-item.jpg') }}'">
+                                @else
+                                    <div class="no-image-placeholder">
+                                        <i class="fas fa-image"></i>
+                                        <span>No Image</span>
+                                    </div>
+                                @endif
+                            </div>
+
                             <div class="item-card-header">
                                 <div class="item-name-section">
                                     <h3 class="item-name">{{ $item->name }}</h3>
-                                    <div class="item-status {{ $item->status }}">
+                                    <div class="item-status {{ str_replace(' ', '-', $item->status) }}">
                                         {{ ucfirst($item->status) }}
                                     </div>
                                 </div>
@@ -119,18 +166,7 @@
                             </div>
 
                             <div class="item-card-body">
-                                @if ($item->image)
-                                    <div class="item-image-container">
-                                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}"
-                                            class="item-image" onerror="this.style.display='none'">
-                                    </div>
-                                @endif
-
                                 <div class="item-details">
-                                    <div class="detail-row">
-                                        <span class="detail-label">Status:</span>
-                                        <span class="detail-value {{ $item->status }}">{{ $item->status }}</span>
-                                    </div>
                                     <div class="detail-row">
                                         <span class="detail-label">Category:</span>
                                         <span class="detail-value">{{ $category->name }}</span>
@@ -140,7 +176,7 @@
                                         <span class="detail-value">{{ $item->created_at->format('M d, Y') }}</span>
                                     </div>
                                     <div class="detail-row">
-                                        <span class="detail-label">Last Updated:</span>
+                                        <span class="detail-label">Updated:</span>
                                         <span class="detail-value">{{ $item->updated_at->diffForHumans() }}</span>
                                     </div>
                                 </div>
@@ -148,30 +184,46 @@
 
                             <div class="item-card-footer">
                                 <div class="item-actions">
-                                    <a href="#" class="item-action-btn view-details" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="#" class="item-action-btn edit-item" title="Edit Item">
+                                    <a href="{{ route('items.edit', [$category, $item]) }}"
+                                        class="item-action-btn edit-item" title="Edit Item">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <button class="item-action-btn delete-item" title="Delete Item">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                    <form action="{{ route('items.destroy', [$category, $item]) }}" method="POST"
+                                        class="delete-item-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="item-action-btn delete-item"
+                                            title="Delete Item">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             @else
-                <div class="empty-state">
-                    <div class="empty-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>No Equipment Items</h3>
-                    <p>This category doesn't have any equipment items yet.</p>
-                    <a href="#" class="add-item-btn">
-                        <span>Add First Item</span>
-                    </a>
+                <div class="no-items-found">
+                    @if (!empty($search))
+                        <i class="fas fa-search"></i>
+                        <h4>No Items Found</h4>
+                        <p>No items in "{{ $category->name }}" match your search:
+                            <strong>"{{ $search }}"</strong>
+                        </p>
+                        {{-- <a href="{{ route('categories.show', $category) }}" class="clear-search-link">
+                            <i class="fas fa-times"></i> Clear Search & Show All Items
+                        </a> --}}
+                    @else
+                        <div class="empty-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>No Equipment Items</h3>
+                        <p>This category doesn't have any equipment items yet.</p>
+                        <a href="{{ route('items.create', $category) }}" class="add-item-btn-large">
+                            <i class="fas fa-plus"></i>
+                            <span>Add First Item</span>
+                        </a>
+                    @endif
                 </div>
             @endif
         </div>
