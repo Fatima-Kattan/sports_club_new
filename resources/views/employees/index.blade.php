@@ -132,7 +132,7 @@
                 </table>
 
                 <div class="table-summary">
-                    <p>Showing {{ $employees->count() }} employees</p>
+                    <p>Total employees: {{ $employees->count() }}</p>
                 </div>
             @endif
         </div>
