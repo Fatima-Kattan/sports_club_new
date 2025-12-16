@@ -14,13 +14,12 @@
 
 <body>
     <div class="container">
-        <!-- العنوان الرئيسي -->
+        <!-- Main Title -->
         <header class="main-header">
             <h1><i class="fas fa-building"></i>Facilities Management</h1>
             <p class="subtitle"> Efficient management of fitness club facilities</p>
         </header>
 
-        <!-- شريط الأدوات -->
         <div class="toolbar">
             <div class="search-box">
                 <i class="fas fa-search"></i>
@@ -34,17 +33,15 @@
         </div>
 
         <div id="facilitiesTable">
-            <!-- الجدول هنا -->
         </div>
 
-        <!-- رسائل النجاح/الخطأ -->
         @if (session('success'))
             <div class="alert alert-success">
                 <i class="fas fa-check-circle"></i> {{ session('success') }}
             </div>
         @endif
 
-        <!-- جدول المرافق -->
+        <!--table facility -->
         <div class="table-container">
             <table class="facilities-table">
                 <thead>
@@ -68,7 +65,7 @@
                             </td>
                             <td>
                                 <span class="floor-badge">
-                                    <i class="fas fa-stairs"></i> Floor{{ $facility->floor }}
+                                    <i class="fas fa-stairs"></i> {{ $facility->floor }}
                                 </span>
                             </td>
                             <td>
@@ -113,14 +110,13 @@
             </table>
         </div>
 
-        <!-- الترقيم -->
         <div class="pagination-container">
             {{ $facilities->links() }}
         </div>
 
-        <!-- عرض العدد -->
+        <!-- counter search -->
         <div class="footer-info">
-            <p>show {{ $facilities->count() }} From the origin {{ $facilities->total() }} facility</p>
+            <p>Total number of facilities {{ $facilities->count() }}</p>
         </div>
     </div>
 
@@ -136,7 +132,7 @@
             });
         });
 
-        // تأكيد الحذف
+        // Confirm deletion
         document.querySelectorAll('.delete-form').forEach(form => {
             form.addEventListener('submit', function(e) {
                 if (!confirm('Are you sure you want to delete this facility?')) {
@@ -144,8 +140,6 @@
                 }
             });
         });
-
-        
     </script>
 </body>
 

@@ -12,7 +12,7 @@ class FacilityController extends Controller
     {
         $query = Facility::query();
 
-        // البحث
+        // search
         if ($request->has('search') && $request->search != '') {
             $search = $request->search;
             $query->where('room_name', 'like', "%{$search}%")
@@ -22,7 +22,7 @@ class FacilityController extends Controller
 
         $facilities = $query->paginate(10);
 
-        $totalFacilities = Facility::count(); // احسب العدد الكلي
+        $totalFacilities = Facility::count();
 
         return view('facilities.index', compact('facilities', 'totalFacilities'));
     }
@@ -61,7 +61,7 @@ class FacilityController extends Controller
         Facility::create($request->all());
 
         return redirect()->route('facilities.index')
-            ->with('success', 'تم إنشاء المرفق بنجاح.');
+            ->with('success', 'The facility has been successfully established.');
     }
 
 
@@ -89,7 +89,7 @@ class FacilityController extends Controller
         $facility->update($request->all());
 
         return redirect()->route('facilities.index')
-            ->with('success', 'تم تحديث المرفق بنجاح.');
+            ->with('success', 'The facility has been successfully updated.');
     }
 
 
@@ -98,6 +98,6 @@ class FacilityController extends Controller
         $facility->delete();
 
         return redirect()->route('facilities.index')
-            ->with('success', 'تم حذف المرفق بنجاح.');
+            ->with('success', 'The attachment has been successfully deleted.');
     }
 }

@@ -15,7 +15,7 @@
 <body>
     <div class="container" style="max-width: 800px;">
         <header class="main-header">
-            <h1><i class="fas fa-plus-circle"></i>create new facility</h1>
+            <h1><i class="fas fa-plus-circle"></i>Create New Facility</h1>
             <p class="subtitle">Enter the new facility information</p>
         </header>
 
@@ -58,102 +58,5 @@
             </form>
         </div>
     </div>
-
-    <style>
-/*         .form-container {
-            padding: 20px 0;
-        } */
-
-        .facility-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #ffffff;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .form-group label i {
-            color: #4dabff;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #05c1f7;
-            background-color: #1f2937fe;
-            border-radius: 12px;
-            font-size: 15px;
-            font-family: 'Cairo', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            box-shadow: 0 0 5px 1px #05c1f7;
-            background-color: #182537a7;
-            color: white
-            
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            padding-top: 20px;
-            border-top: 1px solid;
-            border-image: linear-gradient(135deg, #05C1F7, #00ff88) 1;
-        }
-
-        .btn-submit {
-            background:linear-gradient(135deg, #05C1F7, #00ff88);;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(77, 171, 255, 0.4);
-        }
-
-        .btn-cancel {
-            background: #f5f5f5;
-            color: #666;
-            padding: 15px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-cancel:hover {
-            background: #e0e0e0;
-            transform: translateY(-2px);
-        }
-    </style>
 </body>
-
 </html>
