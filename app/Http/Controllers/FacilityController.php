@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Facility;
+/*   */
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Gate;
 
 class FacilityController extends Controller
 {
+    use AuthorizesRequests;
 
     public function index(Request $request)
     {
+        $this->authorize('manegeFacility', Facility::class);
         $query = Facility::query();
 
         // search

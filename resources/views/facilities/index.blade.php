@@ -48,8 +48,7 @@
                     <tr>
                         <th>Room Name</th>
                         <th>Floor</th>
-                        <th>Capacity</th>
-                        <th>Status</th>
+                        <th>Capacity</th> 
                         <th>Date Added</th>
                         <th>Actions</th>
                     </tr>
@@ -74,18 +73,9 @@
                                     <span>{{ $facility->room_capacity }} person</span>
                                 </div>
                             </td>
-                            <td>
-                                <span class="status-badge active">
-                                    <i class="fas fa-circle"></i> active
-                                </span>
-                            </td>
                             <td>{{ $facility->created_at->format('Y-m-d') }}</td>
                             <td>
                                 <div class="action-buttons">
-                                    <a href="{{ route('facilities.show', $facility) }}" class="btn-view"
-                                        title="display">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
                                     <a href="{{ route('facilities.edit', $facility) }}" class="btn-edit" title="edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
