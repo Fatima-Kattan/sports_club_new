@@ -180,7 +180,7 @@
                             ← Back to  Employees
                         </a>
                         @endif
-                        @if (Auth::user()->is_admin)
+                        @if (Auth::check() &&Auth::user()->is_admin)
 
                             <form action="{{ route('employees.force-delete', $employee->id) }}" method="POST"
                                 style="display: inline;"
