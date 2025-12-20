@@ -171,10 +171,15 @@
                     <span class="position">{{ $employee->position }}</span>
 
                     <div class="header-actions">
+                        @if ($employee->trashed())
                         <a href="{{ route('employees.trashed') }}" class="btn btn-secondary">
                             ← Back to Deleted Employees
                         </a>
-
+                        @else
+                        <a href="{{ route('employees.trashed') }}" class="btn btn-secondary">
+                            ← Back to  Employees
+                        </a>
+                        @endif
                         @if (Auth::user()->is_admin)
 
                             <form action="{{ route('employees.force-delete', $employee->id) }}" method="POST"

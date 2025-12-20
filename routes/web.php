@@ -5,6 +5,7 @@ use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -60,13 +61,27 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-// ==================== Item Routes ====================
+// ==================== Item Routes ==================== //
+
 Route::prefix('categories/{category}')->group(function () {
     Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
     Route::post('/items', [ItemController::class, 'store'])->name('items.store');
     Route::get('/items/{item}/edit', [ItemController::class, 'edit'])->name('items.edit');
     Route::put('/items/{item}', [ItemController::class, 'update'])->name('items.update');
     Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
+});
+
+//==================== Facility Routes =================== //
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/facilities', [FacilityController::class, 'index'])->name('facilities.index');
+    Route::get('facilities/search', [FacilityController::class, 'search'])->name('facilities.search');
+    Route::get('/facilities/create', [FacilityController::class, 'create'])->name('facilities.create');
+    Route::post('/facilities', [FacilityController::class, 'store'])->name('facilities.store');
+    Route::get('/facilities/{facility}', [FacilityController::class, 'show'])->name('facilities.show');
+    Route::get('/facilities/{facility}/edit', [FacilityController::class, 'edit'])->name('facilities.edit');
+    Route::put('/facilities/{facility}', [FacilityController::class, 'update'])->name('facilities.update');
+    Route::delete('/facilities/{facility}', [FacilityController::class, 'destroy'])->name('facilities.destroy');
 });
 
 require __DIR__.'/auth.php';

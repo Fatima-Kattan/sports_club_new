@@ -6,9 +6,11 @@ use App\Models\Category;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Employee;
+use App\Models\Facility;
 use App\Models\Item;
 use App\Policies\CategoryPolicy;
 use App\Policies\EmployeePolicy;
+use App\Policies\FacilityPolicy;
 use App\Policies\ItemPolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -22,7 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         Employee::class => EmployeePolicy::class,
         Category::class => CategoryPolicy::class,
         Item::class => ItemPolicy::class,
-        
+        Facility::class => FacilityPolicy::class,
     ];
 
     /**
