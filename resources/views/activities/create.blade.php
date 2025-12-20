@@ -272,5 +272,6 @@
         </div>
     </div>
     <script src="{{ asset('js/activity.js') }}"></script>
+  
 </body>
 </html>

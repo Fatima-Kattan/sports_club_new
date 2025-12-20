@@ -112,50 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
             charCount.textContent = descriptionTextarea.value.length;
         }
         
-        // تحميل النموذج
-        const loadingSpinner = document.getElementById('loadingSpinner');
-        if (loadingSpinner) {
-            activityForm.addEventListener('submit', function() {
-                loadingSpinner.classList.add('active');
-            });
-        }
-        
-        // استعادة النموذج من التخزين المحلي
-        const formInputs = activityForm.querySelectorAll('input, textarea, select');
-        
-        formInputs.forEach(input => {
-            // حفظ عند التغيير
-            input.addEventListener('input', function() {
-                const formData = {};
-                formInputs.forEach(inp => {
-                    if (inp.type === 'radio' || inp.type === 'checkbox') {
-                        if (inp.checked) {
-                            formData[inp.name] = inp.value;
-                        }
-                    } else {
-                        formData[inp.name] = inp.value;
-                    }
-                });
-                localStorage.setItem('activityFormDraft', JSON.stringify(formData));
-            });
-            
-            // استعادة عند التحميل
-            const savedData = localStorage.getItem('activityFormDraft');
-            if (savedData) {
-                try {
-                    const formData = JSON.parse(savedData);
-                    if (input.type === 'radio') {
-                        input.checked = (formData[input.name] === input.value);
-                    } else if (input.type === 'checkbox') {
-                        input.checked = formData[input.name] === 'true';
-                    } else {
-                        input.value = formData[input.name] || '';
-                    }
-                } catch (e) {
-                    console.error('Error parsing saved form data:', e);
-                }
-            }
-        });
         
         // زر المسح
         const resetBtn = activityForm.querySelector('button[type="reset"]');
