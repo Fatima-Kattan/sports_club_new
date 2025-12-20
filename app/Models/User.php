@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail 
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'email_verified_at', 
         'remember_token',
         'is_admin',
+        'image',
     ];
 
     protected $hidden = [
@@ -50,6 +52,6 @@ class User extends Authenticatable
 
     public function bookings()
     {
-        return $this->hasMany(Booking::class, 'members_id');
+        return $this->hasMany(Booking::class, 'user_id');
     }
 }

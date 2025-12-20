@@ -37,6 +37,7 @@ class RegisteredUserController extends Controller
             'birth_date' => ['required', 'date'],
             'gender' => ['required', 'in:male,female'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
         $user = User::create([
@@ -48,6 +49,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'email_verified_at' => now(),
             'remember_token' => Str::random(60),
+            'image' => $this->handleImageUpload($request), 
         ]);
 
         event(new Registered($user));
@@ -57,5 +59,19 @@ class RegisteredUserController extends Controller
         } else {
             return redirect('/'); 
         }
+    }
+    private function handleImageUpload(Request $request): string
+    {
+        
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            
+            $image->move(public_path('images/users'), $imageName);
+        
+            return 'images/users/' . $imageName;
+        }
+
+        return 'images/users/default.jpg';
     }
 }

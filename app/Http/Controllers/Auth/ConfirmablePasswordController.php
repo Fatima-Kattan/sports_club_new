@@ -16,6 +16,8 @@ class ConfirmablePasswordController extends Controller
      */
     public function show(): View
     {
+        session()->put('url_before_confirm', url()->previous());
+        
         return view('auth.confirm-password');
     }
 
@@ -35,6 +37,9 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $redirectUrl = session()->get('url_before_confirm', route('startDashboard'));
+        session()->forget('url_before_confirm');
+        
+        return redirect()->to($redirectUrl);
     }
 }

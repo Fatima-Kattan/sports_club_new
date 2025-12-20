@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('gender', ['female','male'])->default('male');
             $table->boolean('is_admin')->default(false);
             $table->string('password');
+            $table->text('image')->nullable()->default("user.jpg");;
             $table->rememberToken();
             $table->timestamps();
         });

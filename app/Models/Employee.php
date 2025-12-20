@@ -98,8 +98,4 @@ class Employee extends Model
         return $this->hire_date->diffInYears(now());
     }
 
-    public function getImageUrlAttribute()
-    {
-        return $this->image ? Storage::url($this->image) : null;
-    }
 }

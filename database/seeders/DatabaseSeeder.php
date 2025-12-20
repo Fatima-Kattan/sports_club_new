@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         'birth_date' => '2004-11-08',
         'gender' => 'female',
         'is_admin' => true,
+        'image' => 'user.jpg',
         'password' => Hash::make('123456789'),]);
         
     }
