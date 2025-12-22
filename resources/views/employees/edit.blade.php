@@ -37,32 +37,19 @@
         .edit-employee-container {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             color: #EDEDEC;
-            padding: 100px 20px 50px;
             position: relative;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        .edit-employee-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><polygon fill="%2300ff88" points="0,500 1000,0 1000,1000 0,1000"/></svg>');
-            background-size: cover;
-            z-index: 1;
-        }
-
         .form-container {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
+            margin: 35px auto;
             z-index: 2;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
-            padding: 40px;
+            padding: 15px 40px;
             border: 1px solid rgba(5, 193, 247, 0.3);
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
@@ -171,20 +158,22 @@
             background-size: 12px;
         }
 
-  
 
-/* تنسيق الـ options */
-.form-control option {
-    background-color: #2d3748; /* خلفية داكنة */
-    color: #e2e8f0; /* نص فاتح */
-    padding: 12px;
-    font-size: 15px;
-}
 
-/* hover على option */
-.form-control option:hover {
-    background-color: #4a5568 !important;
-}
+        /* تنسيق الـ options */
+        .form-control option {
+            background-color: #2d3748;
+            /* خلفية داكنة */
+            color: #e2e8f0;
+            /* نص فاتح */
+            padding: 12px;
+            font-size: 15px;
+        }
+
+        /* hover على option */
+        .form-control option:hover {
+            background-color: #4a5568 !important;
+        }
 
         .file-upload {
             position: relative;
@@ -335,6 +324,273 @@
             border-bottom: 1px solid rgba(0, 255, 136, 0.3);
         }
 
+        /* تنسيقات Toggle المتميزة */
+        .toggle-container {
+            margin: 10px 0;
+        }
+
+        .toggle-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(5, 193, 247, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-card:hover {
+            border-color: rgba(5, 193, 247, 0.4);
+            box-shadow: 0 5px 15px rgba(5, 193, 247, 0.1);
+        }
+
+        .toggle-wrapper {
+            padding: 20px;
+        }
+
+        .toggle-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .admin-toggle {
+            display: none;
+        }
+
+        .toggle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .toggle-title {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            flex: 1;
+        }
+
+        .toggle-title h4 {
+            color: #EDEDEC;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .toggle-title p {
+            color: #A1A09A;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .toggle-icon {
+            color: #05C1F7;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
+
+        .toggle-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .toggle-slider {
+            width: 50px;
+            height: 26px;
+            background: rgba(161, 160, 154, 0.2);
+            border-radius: 13px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #A1A09A;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .admin-toggle:checked+.toggle-content .toggle-slider {
+            background: linear-gradient(135deg, #05C1F7, rgba(0, 255, 136, 0.8));
+        }
+
+        .admin-toggle:checked+.toggle-content .toggle-slider::before {
+            transform: translateX(24px);
+            background: #EDEDEC;
+        }
+
+        .toggle-status {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 30px;
+        }
+
+        .status-off {
+            color: #ff4444;
+        }
+
+        .status-on {
+            color: #00ff88;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .status-off {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .admin-toggle:checked+.toggle-content .status-on {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .admin-toggle:checked+.toggle-content .status-off {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .toggle-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .permission-level {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .level-badge {
+            background: rgba(138, 43, 226, 0.1);
+            color: #8a2be2;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            width: fit-content;
+        }
+
+        .level-indicator {
+            display: flex;
+            gap: 6px;
+        }
+
+        .level-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .level-dot.active {
+            background: #05C1F7;
+        }
+
+        .admin-toggle:checked+.toggle-content .level-dot.active {
+            background: #00ff88;
+        }
+
+        .permission-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #A1A09A;
+            font-size: 0.9rem;
+        }
+
+        .permission-item i {
+            color: #05C1F7;
+            font-size: 0.8rem;
+        }
+
+        .admin-toggle:checked+.toggle-content .permission-item i {
+            color: #00ff88;
+        }
+
+        .toggle-error {
+            background: rgba(255, 68, 68, 0.1);
+            border-top: 1px solid rgba(255, 68, 68, 0.2);
+            padding: 12px 20px;
+            color: #ff4444;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-error i {
+            font-size: 1rem;
+        }
+
+        /* تأثيرات تفاعلية */
+        .admin-toggle:checked+.toggle-content .toggle-card {
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.1);
+        }
+
+        .admin-toggle:checked+.toggle-content .toggle-icon {
+            color: #00ff88;
+        }
+
+        .admin-toggle:checked+.toggle-content .level-badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toggle-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .toggle-switch {
+                align-self: flex-start;
+            }
+
+            .toggle-details {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .permission-level,
+            .permission-summary {
+                width: 100%;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .form-container {
@@ -383,36 +639,8 @@
 </head>
 
 <body>
-    <!-- Header  -->
-    <header
-        style="background: #0a0a0a; color: white; padding: 15px; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 2px solid #05C1F7;">
-        <div
-            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-            <a href="{{ route('employees.index') }}"
-                style="color: #05C1F7; text-decoration: none; font-size: 1.5rem; font-weight: bold; display:flex; align-items: center; justify-content:center;">
-                <svg fill="#05C1F7" height="64px" width="64px" version="1.1" id="Capa_1"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="-78.44 -78.44 483.73 483.73" xml:space="preserve" stroke="#05C1F7" transform="rotate(0)">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path
-                            d="M264.693,326.845h-38.079c-4.418,0-8-3.582-8-8v-30.464H108.231v30.464c0,4.418-3.582,8-8,8H62.152c-4.418,0-8-3.582-8-8 v-6.939H24.074c-4.418,0-8-3.582-8-8V224.03c0-4.418,3.582-8,8-8h30.077v-6.938c0-4.418,3.582-8,8-8h38.079c4.418,0,8,3.582,8,8 v30.464h110.384v-30.464c0-4.418,3.582-8,8-8h38.079c4.418,0,8,3.582,8,8v6.938h30.077c4.418,0,8,3.582,8,8v79.875 c0,4.418-3.582,8-8,8h-30.077v6.939C272.693,323.263,269.112,326.845,264.693,326.845z M234.615,310.845h22.079v-93.753h-22.079 V310.845z M70.152,310.845h22.079v-93.753H70.152V310.845z M272.693,295.905h22.077V232.03h-22.077V295.905z M32.074,295.905h22.077 V232.03H32.074V295.905z M108.231,272.381h110.384v-16.825H108.231V272.381z M145.443,223.376c-1.331,0-2.68-0.332-3.922-1.032 c-3.849-2.17-5.209-7.05-3.04-10.898c14.273-25.312,33.543-46.712,56.214-63.181c-9.894-13.703-21.197-26.173-33.681-37.227 c-31.019,33.403-73.355,55.896-120.395,61.599c1.042,4.209,2.303,8.368,3.784,12.468c1.501,4.155-0.65,8.741-4.806,10.242 c-4.158,1.502-8.741-0.651-10.242-4.807c-5.571-15.424-8.396-31.599-8.396-48.077C20.959,63.908,84.868,0,163.423,0 c78.554,0,142.462,63.908,142.462,142.463c0,14.179-2.104,28.201-6.255,41.68c-1.301,4.223-5.78,6.589-10,5.291 c-4.223-1.3-6.591-5.777-5.291-10c3.68-11.951,5.546-24.39,5.546-36.971c0-4.869-0.276-9.673-0.814-14.4 c-25.871,2.997-50.403,11.521-72.172,24.662c4.713,7.504,9.017,15.253,12.873,23.202c1.928,3.975,0.269,8.761-3.706,10.689 c-3.975,1.925-8.762,0.269-10.689-3.707c-3.573-7.366-7.501-14.486-11.761-21.341c-20.629,15.091-38.175,34.642-51.196,57.736 C150.948,221.911,148.236,223.376,145.443,223.376z M66.601,61.193c-18.492,21.994-29.642,50.354-29.642,81.27 c0,4.834,0.274,9.639,0.819,14.399c43.257-5.019,82.233-25.484,110.873-56.012C124.555,82.391,96.76,68.814,66.601,61.193z M171.329,98.998c13.625,12.048,25.936,25.664,36.611,40.442c23.598-14.378,50.218-23.758,78.307-27.155 c-9.987-40.635-39.667-73.615-78.299-88.194C201.125,51.937,188.433,77.333,171.329,98.998z M79.321,48.096 c28.682,8.458,55.914,22.357,79.681,40.709c15.771-20.065,27.435-43.606,33.62-69.402C183.248,17.179,173.468,16,163.423,16 C131.162,16,101.686,28.14,79.321,48.096z">
-                        </path>
-                    </g>
-                </svg>
-                Fitness
-            </a>
-            <div>
-                <a href="{{ route('employees.index') }}"
-                    style="color: white; text-decoration: none; margin-left: 20px;">
-                    <i class="fas fa-arrow-left"></i> Back to Employees
-                </a>
-            </div>
-        </div>
-    </header>
 
-    <div class="edit-employee-container" style="margin-top: 70px;">
+    <div class="edit-employee-container">
         <div class="form-container">
             <div class="form-header">
                 <h1 class="form-title">Edit Employee</h1>
@@ -497,13 +725,13 @@
                                 Manager <span class="required-star">*</span>
                             </label>
                             <select id="mgr_id" name="mgr_id" class="form-control">
-                                <option  value="">Select Manager</option>
+                                <option value="">Select Manager</option>
                                 @foreach ($managers as $manager)
-                                 <option  value="{{ $manager->id }}"
+                                    <option value="{{ $manager->id }}"
                                         {{ old('mgr_id', $employee->mgr_id) == $manager->id ? 'selected' : '' }}>
-                                         {{ $manager->full_name }} ({{ $manager->position }})
+                                        {{ $manager->full_name }} ({{ $manager->position }})
                                     </option>
-                                 @endforeach
+                                @endforeach
                             </select>
                             @error('mgr_id')
                                 <span class="error-message">{{ $message }}</span>
@@ -529,7 +757,8 @@
                                 Hire Date <span class="required-star">*</span>
                             </label>
                             <input type="date" id="hire_date" name="hire_date" class="form-control"
-                                value="{{ old('hire_date', $employee->hire_date) }}" required>
+                                value="{{ old('hire_date', \Carbon\Carbon::parse($employee->hire_date)->format('Y-m-d')) }}"
+                                required>
                             @error('hire_date')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -588,7 +817,8 @@
                             </label>
                             <input type="time" id="working_hours_start" name="working_hours_start"
                                 class="form-control"
-                                value="{{ old('working_hours_start', $employee->working_hours_start) }}" required>
+                                value="{{ old('working_hours_start', \Carbon\Carbon::parse($employee->working_hours_start)->format('H:i')) }}"
+                                required>
                             @error('working_hours_start')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -600,10 +830,132 @@
                             </label>
                             <input type="time" id="working_hours_end" name="working_hours_end"
                                 class="form-control"
-                                value="{{ old('working_hours_end', $employee->working_hours_end) }}" required>
+                                value="{{ old('working_hours_end', \Carbon\Carbon::parse($employee->working_hours_end)->format('H:i')) }}"
+                                required>
                             @error('working_hours_end')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">User Account Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="password" class="form-label">
+                                Password
+                            </label>
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="Enter password" autocomplete="new-password">
+                            @error('password')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password_confirmation" class="form-label">
+                                Confirm Password
+                            </label>
+                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                class="form-control" placeholder="Confirm password"
+                                autocomplete="new-password">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="birth_date" class="form-label">
+                                Birth Date
+                            </label>
+                            <input type="date" id="birth_date" name="birth_date" class="form-control"
+                                value="{{ old('birth_date', \Carbon\Carbon::parse($employee->birth_date)->format('Y-m-d')) }}"
+                                required>
+                            @error('birth_date')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender" class="form-label">
+                                Gender
+                            </label>
+                            <select id="gender" name="gender" class="form-control">
+                                <option value="">Select Gender</option>
+                                <option value="male"
+                                    {{ old('gender', optional($user)->gender) === 'male' ? 'selected' : '' }}>Male
+                                </option>
+                                <option value="female"
+                                    {{ old('gender', optional($user)->gender) === 'female' ? 'selected' : '' }}>Female
+                                </option>
+                            </select>
+                            @error('gender')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    {{--  --}}
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <div class="toggle-container">
+                                <div class="toggle-card">
+                                    <div class="toggle-wrapper">
+                                        <input type="checkbox" id="is_admin" name="is_admin" value="1"
+                                            {{ old('is_admin', optional($user)->is_admin) ? 'checked' : '' }}
+                                            class="admin-toggle">
+
+                                        <div class="toggle-content">
+                                            <div class="toggle-header">
+                                                <div class="toggle-title">
+                                                    <i class="fas fa-user-shield toggle-icon"></i>
+                                                    <div>
+                                                        <h4>Administrator Privileges</h4>
+                                                        <p>Grant full system access and control</p>
+                                                    </div>
+                                                </div>
+
+                                                <label for="is_admin" class="toggle-switch">
+                                                    <span class="toggle-slider"></span>
+                                                    <span class="toggle-status">
+                                                        <span class="status-off">OFF</span>
+                                                        <span class="status-on">ON</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+
+                                            <div class="toggle-details">
+                                                <div class="permission-level">
+                                                    <span class="level-badge">Admin Level</span>
+                                                    <div class="level-indicator">
+                                                        <span class="level-dot active"></span>
+                                                        <span class="level-dot"></span>
+                                                        <span class="level-dot"></span>
+                                                        <span class="level-dot"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="permission-summary">
+                                                    <div class="permission-item">
+                                                        <i class="fas fa-check-circle"></i>
+                                                        <span>Full system access</span>
+                                                    </div>
+                                                    <div class="permission-item">
+                                                        <i class="fas fa-check-circle"></i>
+                                                        <span>Manage all users</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @error('is_admin')
+                                        <div class="toggle-error">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                            <span>{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -660,11 +1012,6 @@
         </div>
     </div>
     </div>
-
-    <!-- Footer -->
-    <footer style="background: #111; color: #A1A09A; text-align: center; padding: 20px;">
-        <p>&copy; 2025 Sports Club. All rights reserved.</p>
-    </footer>
 
     <!-- JavaScript إضافي -->
     <script>

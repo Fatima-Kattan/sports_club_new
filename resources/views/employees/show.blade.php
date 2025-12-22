@@ -176,7 +176,7 @@
                             ← Back to Deleted Employees
                         </a>
                         @else
-                        <a href="{{ route('employees.trashed') }}" class="btn btn-secondary">
+                        <a href="{{ route('employees.index') }}" class="btn btn-secondary">
                             ← Back to  Employees
                         </a>
                         @endif
