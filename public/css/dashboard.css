@@ -2,46 +2,9 @@
     --tw-ring-color: #05C1F7 !important;
 }
 
-/* Responsive Design */
-/*  @media (max-width: 768px) {
-            x-app-layout {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                padding: 1.5rem;
-                flex-direction: row;
-                align-items: center;
-                gap: 1.5rem;
-            }
-            
-            .sidebar-title {
-                margin-bottom: 0;
-                border-bottom: none;
-                padding-bottom: 0;
-            }
-            
-            .sidebar-menu {
-                display: flex;
-        
-                flex: none;
-            }
-            
-            .sidebar-menu a {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.875rem;
-            }
-            
-            .content {
-                padding: 1.5rem;
-            }
-            
-            .card-body {
-                padding: 2rem;
-            }
-        } */
-
+body{
+    background-color: #1f2937;
+}
 
 @keyframes fadeIn {
     from {
@@ -748,7 +711,7 @@
 
 
 .box_iframe-new {
-    width: 90vw !important;
+    width: 95vw !important;
 }
 
 .farm_style {
@@ -763,7 +726,7 @@
 }
 
 /* أو بدلاً من ذلك إذا كنت تريد تطبيقه بشكل عام */
-.box_iframe-new .farm_style {
+/* .box_iframe-new .farm_style {
     width: 100vw !important;
     transition: width 0.3s ease;
-}
+} */
