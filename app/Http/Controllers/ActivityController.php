@@ -16,7 +16,7 @@ class ActivityController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-
+        
         $activities = Activity::with('facility')
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {

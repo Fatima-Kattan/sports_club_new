@@ -55,7 +55,8 @@
                     </div>
                 </div>
 
-                <div class="stat-card">
+                <div class="stat-card" id="activities-card"
+                    data-activities-count="{{ \DB::table('activities')->where('is_active', true)->count() }}">
                     <div class="stat-icon">
                         <i class="fas fa-tasks"></i>
                     </div>
@@ -219,7 +220,7 @@
             });
         });
 
-                /////// count Active employees ////////
+        /////// count Active employees ////////
         document.addEventListener('DOMContentLoaded', function() {
             const statCard = document.querySelector('.stat-card');
             const employeeCount = statCard.getAttribute('data-employee-count');
@@ -230,6 +231,24 @@
             }
         });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            // استخدم ID محدد بدل querySelector العام
+            const activitiesCard = document.getElementById('activities-card');
+
+            if (activitiesCard) {
+                const activitiesCount = activitiesCard.getAttribute('data-activities-count');
+
+                if (activitiesCount) {
+                    const formattedNumber = new Intl.NumberFormat('en-US').format(activitiesCount);
+
+                    // استخدم ID محدد للعنصر الداخلي أيضاً
+                    const activeTasksElement = document.getElementById('active-tasks');
+                    if (activeTasksElement) {
+                        activeTasksElement.textContent = formattedNumber;
+                    }
+                }
+            }
+        });
     </script>
 </body>
 

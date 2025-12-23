@@ -34,9 +34,9 @@ class Activity extends Model
         return $this->hasMany(Activity_Item::class);
     }
 
-    
+
     public function facility()
     {
-        return $this->belongsTo(Facility::class, 'facility_id');
+        return $this->belongsTo(Facility::class, 'facility_id'); 
     }
 }

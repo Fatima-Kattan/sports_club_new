@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDVDMUY3IiBoZWlnaHQ9IjY0cHgiIHdpZHRoPSI2NHB4IiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAzMjYuODUgMzI2Ljg1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48ZyBpZD0iU1ZHUmVwb19iZ0NhcnJpZXIiIHN0cm9rZS13aWR0aD0iMCI+PC9nPjxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9nPjxnIGlkPSJTVkdSZXBvX2ljb25DYXJyaWVyIj4gPHBhdGggZD0iTTI2NC42OTMsMzI2Ljg0NWgtMzguMDc5Yy00LjQxOCwwLTgtMy41ODItOC04di0zMC40NjRIMTA4LjIzMXYzMC40NjRjMCw0LjQxOC0zLjU4Miw4LTgsOEg2Mi4xNTJjLTQuNDE4LDAtOC0zLjU4Mi04LTh2LTYuOTM5SDI0LjA3NGMtNC40MTgsMC04LTMuNTgyLTgtOHYtNzkuODc1YzAtNC40MTgsMy41ODItOCw4LThoMzAuMDc3di02LjkzOGMwLTQuNDE4LDMuNTgyLTgsOC04aDM4LjA3OWM0LjQxOCwwLDgsMy41ODIsOCw4djMwLjQ2NGgxMTAuMzg0di0zMC40NjRjMC00LjQxOCwzLjU4Mi04LDgtOGgzOC4wNzljNC40MTgsMCw4LDMuNTgyLDgsOHY2LjkzOGgzMC4wNzdjNC40MTgsMCw4LDMuNTgyLDgsOHY3OS44NzVjMCw0LjQxOC0zLjU4Miw4LTgsOGgtMzAuMDc3djYuOTM5QzI3Mi42OTMsMzIzLjI2MywyNjkuMTEyLDMyNi44NDUsMjY0LjY5MywzMjYuODQ1eiBNMjM0LjYxNSwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzaC0yMi4wNzlWMzEwLjg0NXogTTcwLjE1MiwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzSDcwLjE1MlYzMTAuODQ1eiBNMjcyLjY5MywyOTUuOTA1aDIyLjA3N1YyMzIuMDNoLTIyLjA3N1YyOTUuOTA1eiBNMzIuMDc0LDI5NS45MDVoMjIuMDc3VjIzMi4wM0gzMi4wNzRWMjk1LjkwNXogTTEwOC4yMzEsMjcyLjM4MWgxMTAuMzg0di0xNi44MjVIMTA4LjIzMVYyNzIuMzgxeiBNMTQ1LjQ0MywyMjMuMzc2Yy0xLjMzMSwwLTIuNjgtMC4zMzItMy45MjItMS4wMzJjLTMuODQ5LTIuMTctNS4yMDktNy4wNS0zLjA0LTEwLjg5OGMxNC4yNzMtMjUuMzEyLDMzLjU0My00Ni43MTIsNTYuMjE0LTYzLjE4MWMtOS44OTQtMTMuNzAzLTIxLjE5Ny0yNi4xNzMtMzMuNjgxLTM3LjIyN2MtMzEuMDE5LDMzLjQwMy03My4zNTUsNTUuODk2LTEyMC4zOTUsNjEuNTk5YzEuMDQyLDQuMjA5LDIuMzAzLDguMzY4LDMuNzg0LDEyLjQ2OGMxLjUwMSw0LjE1NS0wLjY1LDguNzQxLTQuODA2LDEwLjI0MmMtNC4xNTgsMS41MDItOC43NDEtMC42NTEtMTAuMjQyLTQuODA3Yy01LjU3MS0xNS40MjQtOC4zOTYtMzEuNTk5LTguMzk2LTQ4LjA3N0MyMC45NTksNjMuOTA4LDg0Ljg2OCwwLDE2My40MjMsMGM3OC41NTQsMCwxNDIuNDYyLDYzLjkwOCwxNDIuNDYyLDE0Mi40NjNjMCwxNC4xNzktMi4xMDQsMjguMjAxLTYuMjU1LDQxLjY4Yy0xLjMwMSw0LjIyMy01Ljc4LDYuNTg5LTEwLDUuMjkxYy00LjIyMy0xLjMwMS02LjU5MS01Ljc3Ny01LjI5MS0xMEMxNTYuODM0LDE0MC44OTMsMTU4LjcsMTI4LjQ2MSwxNTguNywxMTUuODkyYzAtNC44NjstMC4yNzYtOS42NzMtMC44MTQtMTQuNGMtMjUuODcxLDIuOTk3LTUwLjQwMywxMS41MjEtNzIuMTcyLDI0LjY2MmM0LjcxMyw3LjUwNCw5LjAxNywxNS4yNTMsMTIuODczLDIzLjIwMmMxLjkzOCwzLjk3NSwwLjI3LDguNzYxLTMuNzA2LDEwLjY4OWMtMy45NzUsMS45MjUtOC43NjIsMC4yNjktMTAuNjg5LTMuNzA3Yy0zLjU3My03LjM2Ni03LjUwMS0xNC40ODYtMTEuNzYxLTIxLjM0MWMtMjAuNjI5LDE1LjA5MS0zOC4xNzUsMzQuNjQyLTUxLjE5Niw1Ny43MzZDMTUwLjk0OCwyMjEuOTExLDE0OC4yMzYsMjIzLjM3NiwxNDUuNDQzLDIyMy4zNzZ6IE02Ni42MDEsNjEuMTkzYy0xOC40OTIsMjEuOTk0LTI5LjY0Miw1MC4zNTQtMjkuNjQyLDgxLjI3YzAsNC44MzQsMC4yNzQsOS42MzksMC44MTksMTQuMzk5YzQzLjI1Ny01LjAxOSw4Mi4yMzMtMjUuNDg0LDExMC44NzMtNTYuMDEyQzEyNC41NTUsODIuMzkxLDk2Ljc2LDY4LjgxNCw2Ni42MDEsNjEuMTkzeiBNMTcxLjMyOSw5OC45OThjMTMuNjI1LDEyLjA0OCwyNS45MzYsMjUuNjY0LDM2LjYxMSw0MC40NDJjMjMuNTk4LTE0LjM3OCw1MC4yMTgtMjMuNzU4LDc4LjMwNy0yNy4xNTVjLTkuOTg3LTQwLjYzNS0zOS42NjctNzMuNjE1LTc4LjI5OS04OC4xOTRDMjAxLjEyNSw1MS45MzcsMTg4LjQzMyw3Ny4zMzMsMTcxLjMyOSw5OC45OTh6IE03OS4zMjEsNDguMDk2YzI4LjY4Miw4LjQ1OCw1NS45MTQsMjIuMzU3LDc5LjY4MSw0MC43MDljMTUuNzcxLTIwLjA2NSwyNy40MzUtNDMuNjA2LDMzLjYyNi02OS40MDJDMTgzLjI0OCwxNy4xNzksMTczLjQ2OCwxNiwxNjMuNDIzLDE2QzEzMS4xNjIsMTYsMTAxLjY4NiwyOC4xNCw3OS4zMjEsNDguMDk2eiI+PC9wYXRoPiA8L2c+PC9zdmc+">
+        href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDVDMUY3IiBoZWlnaHQ9IjY0cHgiIHdpZHRoPSI2NHB4IiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAzMjYuODUgMzI2Ljg1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48ZyBpZD0iU1ZHUmVwb19iZ0NhcnJpZXIiIHN0cm9rZS13aWR0aD0iMCI+PC9nPjxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9nPjxnIGlkPSJTVkdSZXBvX2ljb25DYXJyaWVyIj4gPHBhdGggZD0iTTI2NC42OTMsMzI2Ljg0NWgtMzguMDc5Yy00LjQxOCwwLTgtMy41ODItOC04di0zMC40NjRIMTA4LjIzMXYzMC40NjRjMCw0LjQxOC0zLjU4Miw4LTgsOEg2Mi4xNTJjLTQuNDE4LDAtOC0zLjU4Mi04LTh2LTYuOTM5SDI0LjA3NGMtNC40MTgsMC04LTMuNTgyLTgtOHYtNzkuODc1YzAtNC40MTgsMy41ODItOCw4LThoMzAuMDc3di02LjkzOGMwLTQuNDE4LDMuNTgyLTgsOC04aDM4LjA3OWM0LjQxOCwwLDgsMy41ODIsOCw4djMwLjQ2NGgxMTAuMzg0di0zMC40NjRjMC00LjQxOCwzLjU4Mi04LDgtOGgzOC4wNzljNC40MTgsMCw4LDMuNTgyLDgsOHY2LjkzOGgzMC4wNzdjNC40MTgsMCw4LDMuNTgyLDgsOHY3OS44NzVjMCw0LjQxOC0zLjU4Miw4LTgsOGgtMzAuMDc3djYuOTM5QzI3Mi42OTMsMzIzLjI2MywyNjkuMTEyLDMyNi44NDUsMjY0LjY5MywzMjYuODQ1eiBNMjM0LjYxNSwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzaC0yMi4wNzlWMzEwLjg0NXogTTcwLjE1MiwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzSDcwLjE1MlYzMTAuODQ1eiBNMjcyLjY5MywyOTUuOTA1aDIyLjA3N1YyMzIuMDNoLTIyLjA3N1YyOTUuOTA1eiBNMzIuMDc0LDI5NS45MDVoMjIuMDc3VjIzMi4wM0gzMi4wNzRWMjk1LjkwNXogTTEwOC4yMzEsMjcyLjM4MWgxMTAuMzg0di0xNi44MjVIMTA4LjIzMVYyNzIuMzgxeiBNMTQ1LjQ0MywyMjMuMzc2Yy0xLjMzMSwwLTIuNjgtMC4zMzItMy45MjItMS4wMzJjLTMuODQ5LTIuMTctNS4yMDktNy4wNS0zLjA0LTEwLjg5OGMxNC4yNzMtMjUuMzEyLDMzLjU0My00Ni43MTIsNTYuMjE0LTYzLjE4MWMtOS44OTQtMTMuNzAzLTIxLjE5Ny0yNi4xNzMtMzMuNjgxLTM3LjIyN2MtMzEuMDE5LDMzLjQwMy03My4zNTUsNTUuODk2LTEyMC4zOTUsNjEuNTk5YzEuMDQyLDQuMjA5LDIuMzAzLDguMzY4LDMuNzg0LDEyLjQ2OGMxLjUwMSw0LjE1NS0wLjY1LDguNzQxLTQuODA2LDEwLjI0MmMtNC4xNTgsMS41MDItOC43NDEtMC42NTEtMTAuMjQyLTQuODA3Yy01LjU3MS0xNS40MjQtOC4zOTYtMzEuNTk5LTguMzk2LTQ4LjA3N0MyMC45NTksNjMuOTA4LDg0Ljg2OCwwLDE2My40MjMsMGM3OC41NTQsMCwxNDIuNDYyLDYzLjkwOCwxNDIuNDYyLDE0Mi40NjNjMCwxNC4xNzktMi4xMDQsMjguMjAxLTYuMjU1LDQxLjY4Yy0xLjMwMSw0LjIyMy01Ljc4LDYuNTg5LTEwLDUuMjkxYy00LjIyMy0xLjMwMS02LjU5MS01Ljc3Ny01LjI5MS0xMEMxNTYuODM0LDE0MC44OTMsMTU4LjcsMTI4LjQ2MSwxNTguNywxMTUuODkyYzAtNC44NjstMC4yNzYtOS42NzMtMC44MTQtMTQuNGMtMjUuODcxLDIuOTk3LTUwLjQwMywxMS41MjEtNzIuMTcyLDI0LjY2MmM0LjcxMyw3LjUwNCw5LjAxNywxNS4yNTMsMTIuODczLDIzLjIwMmMxLjkzOCwzLjk3NSwwLjI3LDguNzYxLTMuNzA2LDEwLjY4OWMtMy45NzUsMS45MjUtOC43NjIsMC4yNjktMTAuNjg5LTMuNzA3Yy0zLjU3My03LjM2Ni03LjUwMS0xNC40ODYtMTEuNzYxLTIxLjM0MWMtMjAuNjI5LDE1LjA5MS0zOC4xNzUsMzQuNjQyLTUxLjE5Niw1Ny43MzZDMTUwLjk0OCwyMjEuOTExLDE0OC4yMzYsMjIzLjM3NixxNDUuNDQzLDIyMy4zNzZ6IE02Ni42MDEsNjEuMTkzYy0xOC40OTIsMjEuOTk0LTI5LjY0Miw1MC4zNTQtMjkuNjQyLDgxLjI3YzAsNC44MzQsMC4yNzQsOS42MzksMC44MTksMTQuMzk5YzQzLjI1Ny01LjAxOSw4Mi4yMzMtMjUuNDg0LDExMC44NzMtNTYuMDEyQzEyNC41NTUsODIuMzkxLDk2Ljc2LDY4LjgxNCw2Ni42MDEsNjEuMTkzeiBNMTcxLjMyOSw5OC45OThjMTMuNjI1LDEyLjA0OCwyNS45MzYsMjUuNjY0LDM2LjYxMSw0MC40NDJjMjMuNTk4LTE0LjM3OCw1MC4yMTgtMjMuNzU4LDc4LjMwNy0yNy4xNTVjLTkuOTg3LTQwLjYzNS0zOS42NjctNzMuNjE1LTc4LjI5OS04OC4xOTRDMjAxLjEyNSw1MS45MzcsMTg4LjQzMyw3Ny4zMzMsMTcxLjMyOSw5OC45OTh6IE03OS4zMjEsNDguMDk2YzI4LjY4Miw4LjQ1OCw1NS45MTQsMjIuMzU3LDc5LjY4MSw0MC43MDljMTUuNzcxLTIwLjA2NSwyNy40MzUtNDMuNjA2LDMzLjYyNi02OS40MDJDMTgzLjI0OCwxNy4xNzksMTczLjQ2OCwxNiwxNjMuNDIzLDE2QzEzMS4xNjIsMTYsMTAxLjY4NiwyOC4xNCw3OS4zMjEsNDguMDk2eiI+PC9wYXRoPiA8L2c+PC9zdmc+">
 
 </head>
 
@@ -103,7 +103,7 @@
                             data-name="{{ strtolower($activity->name) }}"
                             data-description="{{ strtolower($activity->description ?? '') }}"
                             data-level="{{ strtolower($activity->level ?? '') }}"
-                            data-facility="{{ strtolower($activity->facility->name ?? '') }}"
+                            data-facility="{{ $activity->facility ? strtolower($activity->facility->name) : 'not assigned' }}"
                             style="animation-delay: {{ $index * 0.1 }}s;">
                             <div class="card-image-container">
                                 @if ($activity->image)
@@ -144,7 +144,19 @@
                                     <div class="detail-item">
                                         <span class="detail-label">Facility</span>
                                         <span class="detail-value facility-name">
-                                            {{ $activity->facility->name ?? 'Not Assigned' }}
+                                            @php
+                                                // حل مباشر لجلب اسم الـ Facility
+                                                if ($activity->facility_id) {
+                                                    $facility = \App\Models\Facility::select('room_name')->find($activity->facility_id);
+                                                    if ($facility && !empty($facility->room_name)) {
+                                                        echo $facility->room_name;
+                                                    } else {
+                                                        echo '<span class="text-danger">Deleted Facility #' . $activity->facility_id . '</span>';
+                                                    }
+                                                } else {
+                                                    echo '<span class="text-muted">Not Assigned</span>';
+                                                }
+                                            @endphp
                                         </span>
                                     </div>
 
@@ -307,9 +319,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/activity.js') }}">
-
-    </script>
+    <script src="{{ asset('js/activity.js') }}"></script>
 </body>
 
 </html>

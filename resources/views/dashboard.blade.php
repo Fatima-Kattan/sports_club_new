@@ -14,7 +14,6 @@
             background: #2a2d3e !important;
             border: 1px solid #05C1F7 !important;
             outline: none !important;
-            /* border: none !important; */
         }
     </style>
 </head>
@@ -149,20 +148,20 @@
                 </li> --}}
                 {{-- activities --}}
                 {{-- <li> --}}
-                                    <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
-                        data-page="activities">
-                        <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                            <circle cx="12" cy="15" r="1"></circle>
-                            <circle cx="16" cy="15" r="1"></circle>
-                            <circle cx="8" cy="15" r="1"></circle>
-                        </svg>
-                        <span class="nav-text">Activities</span>
-                    </a>
+                <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
+                    data-page="activities">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                        <circle cx="12" cy="15" r="1"></circle>
+                        <circle cx="16" cy="15" r="1"></circle>
+                        <circle cx="8" cy="15" r="1"></circle>
+                    </svg>
+                    <span class="nav-text">Activities</span>
+                </a>
                 </li>
                 {{-- bookings --}}
                 {{--                 <li>
