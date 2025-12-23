@@ -30,7 +30,7 @@
                     </svg>
                     <input type="text" class="search-input" placeholder="Search employees...">
                 </div>
-                @if (Auth::user()->is_admin)
+                @if (Auth::check() &&Auth::user()->is_admin)
                     <div class="buttons-container">
                         <a href="{{ route('employees.create') }}" class="svg-button" title="Add Employee">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="##ededecd5">
@@ -112,7 +112,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('employees.show', $employee->id) }}" class="edit-link">View</a>
-                                    @if (Auth::user()->is_admin)
+                                    @if (Auth::check() &&Auth::user()->is_admin)
                                         <a href="{{ route('employees.edit', $employee->id) }}"
                                             class="edit-link ml-2">Edit</a>
                                         <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"

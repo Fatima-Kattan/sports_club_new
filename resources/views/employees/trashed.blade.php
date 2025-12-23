@@ -219,7 +219,7 @@
                     </svg>
                     <input type="text" class="search-input" placeholder="Search employees...">
                 </div>
-                @if (Auth::user()->is_admin)
+                @if (Auth::check() &&Auth::user()->is_admin)
                     <div class="buttons-container">
                         <a href="{{ route('employees.index') }}" class="svg-button" title="back to employee page">
                             <svg xmlns="http://www.w3.org/2000/svg" height="27px" viewBox="0 -960 960 960"
@@ -299,7 +299,7 @@
                                                 Restore
                                             </button>
                                         </form>
-                                    @if (Auth::user()->is_admin)
+                                    @if (Auth::check() &&Auth::user()->is_admin)
                                         <form action="{{ route('employees.force-delete', $employee->id) }}"
                                             method="POST" style="display: inline;"
                                             onsubmit="return confirm('Are you sure you want to delete this employee?')">
