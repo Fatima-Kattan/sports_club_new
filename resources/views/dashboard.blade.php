@@ -25,9 +25,28 @@
             <div class="merge_search">
                 <!-- Header with Menu Icon -->
                 <div class="sidebar-header">
-                    <button class="menu-toggle">
+                    {{--  <button class="menu-toggle">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button> --}}
+                    <button class="menu-toggle">
+                        <svg class="menu-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        {{-- <svg class="collapsed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <!-- سهم لليمين -->
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg> --}}
+                        <svg class="collapsed-icon"width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12"></line>
                             <line x1="3" y1="6" x2="21" y2="6"></line>
                             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -189,7 +208,7 @@
             </ul>
 
             <!-- User Profile at Bottom -->
-            <div class="user-profile">
+            <a href="{{ route('profile.edit') }}" class="user-profile">
                 @auth
                     <img src="{{ Auth::user()->profile_photo_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=000000&color=05C1F7' }}"
                         alt="{{ Auth::user()->name }}" class="user-avatar">
@@ -211,12 +230,11 @@
                 @else
                     <div class="user-name">Guest</div>
                 @endauth
-            </div>
+            </a>
         </nav>
 
         <div class="main-content">
-            <iframe name="content-frame" class="box_iframe"
-                style="border:none; width:100%; height:calc(100vh - 60px);" src="{{ route('startDashboard') }}">
+            <iframe name="content-frame" class="box_iframe farm_style" src="{{ route('startDashboard') }}">
             </iframe>
         </div>
     </x-app-layout>

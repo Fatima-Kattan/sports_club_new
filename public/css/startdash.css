@@ -57,8 +57,15 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .user-details .greeting {
@@ -117,8 +124,9 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 1px 6px #05C1F7;
     color: white;
-/*     border: 1px solid #05C1F7;
- */}
+    /*     border: 1px solid #05C1F7;
+ */
+}
 
 .stat-card:hover {
     transform: translateY(-5px);
@@ -198,7 +206,7 @@ body {
     margin-bottom: 30px;
 }
 
-.actions-grid a{
+.actions-grid a {
     text-decoration: none;
 }
 
@@ -260,12 +268,12 @@ body {
     gap: 30px;
     align-items: center;
     box-shadow: 0 1px 6px #05C1F7;
-   /*  border: 1px solid rgba(255, 255, 255, 0.3); */
+    /*  border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 .welcome-content {
     flex: 1;
-    min-width: 300px;
+    min-width: 100px;
 }
 
 .welcome-content h2 {
@@ -333,8 +341,15 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* Footer */
@@ -372,44 +387,90 @@ body {
     .dashboard-container {
         padding: 15px;
     }
-    
+
     .header-content {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .header-stats {
         width: 100%;
         justify-content: space-between;
     }
-    
+
     .stats-grid,
     .actions-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .illustration {
         font-size: 3rem;
+        gap:10px
     }
 }
 
 @media (max-width: 480px) {
+
     .stats-grid,
     .actions-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .user-info {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .stat-card,
     .action-card {
         padding: 20px;
     }
-    
+
     .welcome-section {
         padding: 20px;
+    }
+
+    .illustration {
+        font-size: 2rem;
+        gap:10px
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 70px;
+        width: 100vw;
+        font-size: smaller;
+        box-sizing: border-box;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .welcome-section {
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: unset;
+    }
+
+    .welcome-content h2 {
+        font-size: 100%;
+    }
+
+    .welcome-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: auto;
+    }
+
+    .tip{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: auto;
     }
 }
