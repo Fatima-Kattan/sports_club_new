@@ -324,3 +324,231 @@ if (searchInput) {
         }
     });
 }
+
+///////
+        // بحث فوري مع عرض رسالة "No results found"
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 بدء البحث الفوري...');
+
+            const searchInput = document.getElementById('searchInput');
+            const activitiesContainer = document.getElementById('activitiesContainer');
+            const liveSearchMessage = document.getElementById('liveSearchMessage');
+
+            if (searchInput && activitiesContainer) {
+                console.log('✅ تم العثور على جميع العناصر');
+
+                // البحث عن جميع بطاقات الأنشطة
+                const activityCards = activitiesContainer.querySelectorAll('.activity-card');
+                console.log(`📊 عدد الأنشطة: ${activityCards.length}`);
+
+                // إضافة مؤقت للبحث الفوري (Debounce)
+                let searchTimer;
+
+                // حدث البحث عند الكتابة
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(searchTimer);
+
+                    searchTimer = setTimeout(() => {
+                        const searchTerm = this.value.trim().toLowerCase();
+                        console.log(`🔍 جاري البحث عن: "${searchTerm}"`);
+
+                        // إذا كان البحث فارغاً، عرض كل الأنشطة وإخفاء الرسالة
+                        if (searchTerm.length === 0) {
+                            showAllActivities();
+                            hideNoResultsMessage();
+                            return;
+                        }
+
+                        // إجراء البحث
+                        performSearch(searchTerm);
+
+                    }, 300); // تأخير 300ms لتحسين الأداء
+                });
+
+                // دالة البحث
+                function performSearch(searchTerm) {
+                    let foundCount = 0;
+
+                    // البحث في كل بطاقة نشاط
+                    activityCards.forEach(card => {
+                        // البحث في البيانات المخزنة في data attributes
+                        const cardName = card.dataset.name || '';
+                        const cardDesc = card.dataset.description || '';
+                        const cardLevel = card.dataset.level || '';
+                        const cardFacility = card.dataset.facility || '';
+
+                        // البحث في النص الظاهر أيضاً
+                        const visibleName = card.querySelector('.activity-name')?.textContent
+                        .toLowerCase() || '';
+                        const visibleDesc = card.querySelector('.activity-description')?.textContent
+                            .toLowerCase() || '';
+
+                        // التحقق من التطابق
+                        const isMatch = cardName.includes(searchTerm) ||
+                            cardDesc.includes(searchTerm) ||
+                            cardLevel.includes(searchTerm) ||
+                            cardFacility.includes(searchTerm) ||
+                            visibleName.includes(searchTerm) ||
+                            visibleDesc.includes(searchTerm);
+
+                        if (isMatch) {
+                            card.style.display = 'block';
+                            foundCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // تحديث عرض النتائج
+                    updateSearchResults(foundCount, searchTerm);
+                }
+
+                // عرض جميع الأنشطة
+                function showAllActivities() {
+                    activityCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    console.log('🔄 عرض جميع الأنشطة');
+                }
+
+                // تحديث نتائج البحث
+                function updateSearchResults(foundCount, searchTerm) {
+                    console.log(`📊 النتائج: ${foundCount} نشاط`);
+
+                    if (foundCount === 0) {
+                        // إخفاء كل الأنشطة
+                        activityCards.forEach(card => {
+                            card.style.display = 'none';
+                        });
+
+                        // عرض رسالة "No results found"
+                        showNoResultsMessage(searchTerm);
+                    } else {
+                        // إخفاء رسالة "No results found"
+                        hideNoResultsMessage();
+                    }
+                }
+
+                // عرض رسالة "No results found"
+                function showNoResultsMessage(searchTerm) {
+                    // إخفاء التصفح (pagination) أثناء البحث
+                    const paginationContainer = document.getElementById('paginationContainer');
+                    if (paginationContainer) {
+                        paginationContainer.style.display = 'none';
+                    }
+
+                    // إنشاء وتحديث رسالة "No results found"
+                    liveSearchMessage.style.display = 'block';
+                    liveSearchMessage.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h2 class="empty-title">No Results Found</h2>
+                            <p class="empty-description">
+                                We couldn't find any activities matching "<strong>${searchTerm}</strong>". 
+                                Try a different search term.
+                            </p>
+                            <div class="buttons-container" style="justify-content: center; margin-top: 20px;">
+                                <button class="btn btn-primary" id="clearLiveSearchBtn">
+                                    <i class="fas fa-times"></i>
+                                    Clear Search
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+                    // إضافة حدث لزر "Clear Search"
+                    document.getElementById('clearLiveSearchBtn').addEventListener('click', function() {
+                        searchInput.value = '';
+                        showAllActivities();
+                        hideNoResultsMessage();
+                        searchInput.focus();
+
+                        // إعادة إظهار التصفح
+                        if (paginationContainer) {
+                            paginationContainer.style.display = 'flex';
+                        }
+                    });
+
+                    console.log(`❌ لم يتم العثور على نتائج لـ "${searchTerm}"`);
+                }
+
+                // إخفاء رسالة "No results found"
+                function hideNoResultsMessage() {
+                    liveSearchMessage.style.display = 'none';
+                    liveSearchMessage.innerHTML = '';
+
+                    // إعادة إظهار التصفح
+                    const paginationContainer = document.getElementById('paginationContainer');
+                    if (paginationContainer) {
+                        paginationContainer.style.display = 'flex';
+                    }
+                }
+
+                // إذا كان هناك بحث مسبق من Laravel، قم بتنفيذه
+                const initialSearchValue = searchInput.value.trim();
+                if (initialSearchValue) {
+                    console.log(`📝 يوجد بحث مسبق: "${initialSearchValue}"`);
+                    performSearch(initialSearchValue.toLowerCase());
+                }
+
+            } else {
+                console.error('❌ لم يتم العثور على العناصر المطلوبة');
+                if (!searchInput) console.error('❌ حقل البحث غير موجود');
+                if (!activitiesContainer) console.error('❌ حاوية الأنشطة غير موجودة');
+            }
+
+            // إضافة منطق حذف النشاط
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            const deleteModal = document.getElementById('deleteModal');
+            const deleteMessage = document.getElementById('deleteMessage');
+            const deleteForm = document.getElementById('deleteForm');
+            const confirmDelete = document.getElementById('confirmDelete');
+            const cancelDelete = document.getElementById('cancelDelete');
+
+            if (deleteButtons.length > 0) {
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const activityId = this.getAttribute('data-id');
+                        const activityName = this.getAttribute('data-name');
+
+                        deleteMessage.textContent =
+                            `Are you sure you want to delete "${activityName}"? This action cannot be undone.`;
+                        deleteForm.action = `/activities/${activityId}`;
+
+                        deleteModal.style.display = 'flex';
+                    });
+                });
+            }
+
+            if (confirmDelete && cancelDelete) {
+                confirmDelete.addEventListener('click', function() {
+                    deleteForm.submit();
+                });
+
+                cancelDelete.addEventListener('click', function() {
+                    deleteModal.style.display = 'none';
+                });
+
+                deleteModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                    }
+                });
+            }
+
+            // إضافة أنماط CSS للرسالة
+            const style = document.createElement('style');
+            style.textContent = `
+                #liveSearchMessage .empty-state {
+                    animation: fadeIn 0.3s ease-in-out;
+                }
+                
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
