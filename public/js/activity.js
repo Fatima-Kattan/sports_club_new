@@ -79,10 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // تركيز البحث
-        const searchInput = document.querySelector('.search-input');
+        /* const searchInput = document.querySelector('.search-input');
         if (searchInput && searchInput.value) {
             searchInput.select();
-        }
+        } */
+        
     }
     
     // ========== وظائف صفحة create/edit (النموذج) ==========
@@ -307,3 +308,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('All activity functions initialized successfully');
 });
+
+const searchInput = document.querySelector('.search-input');
+
+if (searchInput) {
+    // استدعاء البحث مباشرة عند الكتابة
+    searchInput.addEventListener('input', function () {
+        const query = searchInput.value.trim();
+        if (query) {
+            // هون بتحط منطق البحث أو استدعاء API
+            console.log("جاري البحث عن:", query);
+
+            // مثال: إذا عندك فورم Laravel ممكن تعمل submit تلقائي
+            // searchInput.form.submit();
+        }
+    });
+}

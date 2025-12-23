@@ -2992,8 +2992,6 @@ margin-bottom: 30px;
         opacity: 0;
         transform: translateY(-20px);
         /* ما في أي تغييرات على الحجم */
-    }
-} */
 /* شريط التقدم */
 .alert::after {
     content: '';
