@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// ==================== Employee Routes ====================
+// ==================== Employee Routes ==================== //
 
 Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
@@ -50,7 +50,7 @@ Route::delete('/employees/{id}/force-delete', [EmployeeController::class, 'force
 Route::post('/employees/restore/all', [EmployeeController::class, 'restoreAll'])->name('employees.restore-all');
 Route::delete('/employees/trash/empty', [EmployeeController::class, 'emptyTrash'])->name('employees.empty-trash');
 
-// ==================== Category Routes ====================
+// ==================== Category Routes ==================== //
 
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
@@ -93,5 +93,16 @@ Route::get('/activities/{activity}', [ActivityController::class, 'show'])->name(
 Route::get('/activities/{activity}/edit', [ActivityController::class, 'edit'])->name('activities.edit');
 Route::put('/activities/{activity}', [ActivityController::class, 'update'])->name('activities.update');
 Route::delete('/activities/{activity}', [ActivityController::class, 'destroy'])->name('activities.destroy');
+
+//==================== Bookings Routes =================== //
+
+Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+Route::get('/bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
+Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
+Route::put('/bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
+Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+
 
 require __DIR__ . '/auth.php';
