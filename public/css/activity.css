@@ -1,4 +1,3 @@
-/* activity.css - تنسيق صفحة الأنشطة بنمط Fitness Club */
 :root {
     --color-primary: #05C1F7;
     --color-secondary: #00ff88;
@@ -20,6 +19,7 @@ body {
 .container {
     max-width: 1400px;
     margin: 0 auto;
+    padding-top: 40px;
 }
 
 /* ========== ترويسة الصفحة ========== */
@@ -30,7 +30,7 @@ body {
 }
 
 .page-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     color: #05C1F7;
     font-weight: 700;
     text-transform: uppercase;
