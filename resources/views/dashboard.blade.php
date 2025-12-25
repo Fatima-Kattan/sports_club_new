@@ -14,7 +14,6 @@
             background: #2a2d3e !important;
             border: 1px solid #05C1F7 !important;
             outline: none !important;
-            /* border: none !important; */
         }
     </style>
 </head>
@@ -25,9 +24,28 @@
             <div class="merge_search">
                 <!-- Header with Menu Icon -->
                 <div class="sidebar-header">
-                    <button class="menu-toggle">
+                    {{--  <button class="menu-toggle">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button> --}}
+                    <button class="menu-toggle">
+                        <svg class="menu-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        {{-- <svg class="collapsed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <!-- سهم لليمين -->
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg> --}}
+                        <svg class="collapsed-icon"width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12"></line>
                             <line x1="3" y1="6" x2="21" y2="6"></line>
                             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -130,21 +148,21 @@
                 </li> --}}
                 {{-- activities --}}
                 {{-- <li> --}}
-                {{--                     <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
-                        data-page="activities">
-                        <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                            <circle cx="12" cy="15" r="1"></circle>
-                            <circle cx="16" cy="15" r="1"></circle>
-                            <circle cx="8" cy="15" r="1"></circle>
-                        </svg>
-                        <span class="nav-text">Activities</span>
-                    </a>
-                </li> --}}
+                <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
+                    data-page="activities">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                        <circle cx="12" cy="15" r="1"></circle>
+                        <circle cx="16" cy="15" r="1"></circle>
+                        <circle cx="8" cy="15" r="1"></circle>
+                    </svg>
+                    <span class="nav-text">Activities</span>
+                </a>
+                </li>
                 {{-- bookings --}}
                 {{--                 <li>
                     <a href="{{ route('bookings.index') }}" class="nav-link" target="content-frame"
@@ -189,7 +207,7 @@
             </ul>
 
             <!-- User Profile at Bottom -->
-            <div class="user-profile">
+            <a href="{{ route('profile.edit') }}" class="user-profile">
                 @auth
                     <img src="{{ Auth::user()->profile_photo_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=000000&color=05C1F7' }}"
                         alt="{{ Auth::user()->name }}" class="user-avatar">
@@ -211,12 +229,11 @@
                 @else
                     <div class="user-name">Guest</div>
                 @endauth
-            </div>
+            </a>
         </nav>
 
         <div class="main-content">
-            <iframe name="content-frame" class="box_iframe"
-                style="border:none; width:100%; height:calc(100vh - 60px);" src="{{ route('startDashboard') }}">
+            <iframe name="content-frame" class="box_iframe farm_style" src="{{ route('startDashboard') }}">
             </iframe>
         </div>
     </x-app-layout>
@@ -227,6 +244,41 @@
             document.getElementById('main-frame').src = url;
             return false;
         }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const farmStyle = document.querySelector('.farm_style');
+
+            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+
+            if (!isCollapsed) {
+                sidebar.classList.add('collapsed');
+                if (mainContent) mainContent.style.marginLeft = '70px';
+                if (farmStyle) farmStyle.classList.add('expanded');
+            }
+
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                const isNowCollapsed = sidebar.classList.contains('collapsed');
+
+                localStorage.setItem('sidebarCollapsed', isNowCollapsed);
+
+                if (mainContent) {
+                    mainContent.style.marginLeft = isNowCollapsed ? '70px' : '230px';
+                }
+
+                if (farmStyle) {
+                    if (isNowCollapsed) {
+                        farmStyle.classList.add('expanded');
+                    } else {
+                        farmStyle.classList.remove('expanded');
+                    }
+                }
+            });
+        });
     </script>
 </body>
 

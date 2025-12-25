@@ -1,45 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-    const searchInput = document.querySelector('.search-input');
     const tableRows = document.querySelectorAll('.data-table tbody tr');
     const filterButton = document.querySelector('.filter-button');
-
-    // ✅ تهيئة القيم الافتراضية لكل صف
-    tableRows.forEach(row => {
-        row.dataset.searchMatch = "1";
-        row.dataset.roleMatch = "1";
-    });
-
-    // ✅ دالة توحيد منطق الظهور
-    function updateRowVisibility(row) {
-        const searchMatch = row.dataset.searchMatch === "1";
-        const roleMatch = row.dataset.roleMatch === "1";
-
-        row.style.display = (searchMatch && roleMatch) ? "" : "none";
-    }
-
-    // ✅ البحث
-    function applySearchFilter() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-
-        tableRows.forEach(row => {
-            const cells = row.querySelectorAll('td');
-            let match = false;
-
-            cells.forEach(cell => {
-                if (cell.innerText.toLowerCase().includes(searchTerm)) {
-                    match = true;
-                }
-            });
-
-            row.dataset.searchMatch = match ? "1" : "0";
-            updateRowVisibility(row);
-        });
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener('input', applySearchFilter);
-    }
 
     // ✅ إنشاء قائمة الفلترة
     if (filterButton && !document.querySelector('.filter-dropdown')) {
@@ -149,19 +111,19 @@ document.addEventListener('DOMContentLoaded', function() {
             if (chevron) chevron.style.transform = 'rotate(0deg)';
         }
 
-        filterButton.addEventListener('click', function(e) {
+        filterButton.addEventListener('click', function (e) {
             e.stopPropagation();
             const isVisible = filterDropdown.style.display === 'block';
             isVisible ? hideFilterDropdown() : showFilterDropdown();
         });
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!filterButton.contains(e.target) && !filterDropdown.contains(e.target)) {
                 hideFilterDropdown();
             }
         });
 
-        filterDropdown.addEventListener('click', function(e) {
+        filterDropdown.addEventListener('click', function (e) {
             e.stopPropagation();
         });
 
@@ -224,4 +186,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
         applyRoleFilter('all');
     }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('.search-input');
+    const tableRows = document.querySelectorAll('.data-table tbody tr');
+
+    searchInput.addEventListener('input', function () {
+        const searchTerm = this.value.trim().toLowerCase();
+        const words = searchTerm.split(/\s+/).filter(w => w.length > 0);
+
+        tableRows.forEach(row => {
+            const rowText = row.textContent.toLowerCase();
+            let showRow = true;
+
+            words.forEach(word => {
+                if (!rowText.includes(word)) {
+                    showRow = false;
+                }
+            });
+
+            row.style.display = (searchTerm === '' || showRow) ? '' : 'none';
+        });
+    });
 });

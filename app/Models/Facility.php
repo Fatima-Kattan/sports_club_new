@@ -22,6 +22,6 @@ class Facility extends Model
     //Relationship with activities
     public function activities()
     {
-        return $this->hasOne(Activity::class, 'facility_id');
+        return $this->hasMany(Activity::class, 'facility_id');
     }
 }

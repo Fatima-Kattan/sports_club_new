@@ -2,46 +2,9 @@
     --tw-ring-color: #05C1F7 !important;
 }
 
-/* Responsive Design */
-/*  @media (max-width: 768px) {
-            x-app-layout {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                padding: 1.5rem;
-                flex-direction: row;
-                align-items: center;
-                gap: 1.5rem;
-            }
-            
-            .sidebar-title {
-                margin-bottom: 0;
-                border-bottom: none;
-                padding-bottom: 0;
-            }
-            
-            .sidebar-menu {
-                display: flex;
-        
-                flex: none;
-            }
-            
-            .sidebar-menu a {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.875rem;
-            }
-            
-            .content {
-                padding: 1.5rem;
-            }
-            
-            .card-body {
-                padding: 2rem;
-            }
-        } */
-
+body{
+    background-color: #1f2937;
+}
 
 @keyframes fadeIn {
     from {
@@ -105,7 +68,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .sidebar {
         width: 100%;
         height: auto;
@@ -132,7 +95,7 @@
         width: 100%;
         padding: 1.5rem;
     }
-}
+} */
 
 /* iframe */
 .main-content {
@@ -182,7 +145,7 @@
     left: 0;
     top: 0;
     width: 230px;
-    height: 100vh;
+    height: 100%;
     background-color: #1f2937;
     padding: 1% 1%;
     color: white;
@@ -275,10 +238,11 @@
 /* Sidebar Menu */
 .sidebar-menu {
     list-style: none;
-    padding: 0 12px;
+    /*  padding: 0 12px; */
     margin: 0;
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar-menu::-webkit-scrollbar {
@@ -316,11 +280,22 @@
     color: #fff;
 }
 
+.nav-link:focus {
+    color: #05C1F7;
+    border: 1px solid #05C1F7;
+    background-color: #2a3441;
+}
+
 .nav-link.active {
     background: #1f2937;
     border: 1px solid #05C1F7;
     color: #fff;
     box-shadow: 0 4px 12px rgba(5, 193, 247, 0.3);
+}
+
+.nav-link:focus .nav-icon {
+    color: #05C1F7;
+    /* transform: scale(1.1); */
 }
 
 .nav-link.active .nav-icon {
@@ -359,6 +334,12 @@
     background: rgba(255, 255, 255, 0.03);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.user-profile:hover {
+    background: rgba(255, 255, 255, 0.109);
+    border: 1px solid #05C1F7;
+    box-shadow: 0 3px 14px rgba(5, 193, 247, 0.3);
 }
 
 .user-avatar {
@@ -435,3 +416,317 @@
 * {
     transition: color 0.3s ease, background 0.3s ease;
 }
+
+@media (min-width: 1100px) and (max-width: 1260px) {
+    /* .box_iframe {
+        height: 200vh !important;
+    } */
+}
+
+@media (max-width: 1100px) {
+    .main-content {
+        margin-left: 216px;
+    }
+
+    /* .box_iframe {
+        height: 200vh !important;
+    } */
+}
+
+/* kkkk */
+/* الوضع المصغر للسايدبار */
+.sidebar.collapsed {
+    width: 70px !important;
+    /*     height: auto; */
+    padding: 1% 5px !important;
+}
+
+/* البحث نخفيه */
+.sidebar.collapsed .merge_search .search-container {
+    display: none !important;
+}
+
+/* بس نخفي النصوص والأشياء التانية */
+.sidebar.collapsed .nav-label {
+    display: none !important;
+}
+
+.sidebar.collapsed .nav-text {
+    display: none !important;
+}
+
+.sidebar.collapsed .nav-link {
+    justify-content: center !important;
+    padding: 12px !important;
+}
+
+.sidebar.collapsed .nav-link::after {
+    content: attr(data-text) !important;
+    position: absolute !important;
+    left: 100% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: #1f2937 !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    z-index: 1000 !important;
+    border: 1px solid #05C1F7 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    pointer-events: none !important;
+}
+
+.sidebar.collapsed .nav-link:hover::after {
+    opacity: 1 !important;
+    visibility: visible !important;
+    left: calc(100% + 10px) !important;
+}
+
+/* تعديل الـmenu-toggle لما السايدبار يتقلص */
+.sidebar.collapsed .menu-toggle {
+    transform: rotate(180deg);
+    /* أو أي اتجاه بدك */
+    margin: 0 auto;
+    /* لتوسيطه */
+}
+
+/* إضافة animation للـmenu-toggle */
+.menu-toggle {
+    transition: transform 0.3s ease;
+}
+
+/* تعديل الـuser profile */
+.sidebar.collapsed .user-profile {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 10px 5px !important;
+    margin: 8px 5px !important;
+}
+
+.sidebar.collapsed .user-info,
+.sidebar.collapsed .user-menu-btn {
+    display: none !important;
+}
+
+.sidebar.collapsed .user-name {
+    font-size: 10px !important;
+    text-align: center !important;
+    display: block !important;
+}
+
+/* تعديل المحتوى الرئيسي */
+.sidebar:not(.collapsed)~.main-content {
+    margin-left: 230px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed~.main-content {
+    margin-left: 70px;
+    transition: margin-left 0.3s ease;
+}
+
+/* animation للسايدبار */
+.sidebar {
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar.collapsed .menu-toggle svg {
+    transform: rotate(180deg);
+}
+
+.menu-toggle svg {
+    transition: transform 0.3s ease;
+}
+
+/* إخفاء وإظهار الأيقونات حسب الحالة */
+.sidebar:not(.collapsed) .collapsed-icon {
+    display: none !important;
+}
+
+.sidebar:not(.collapsed) .menu-icon {
+    display: block !important;
+}
+
+.sidebar.collapsed .menu-icon {
+    display: none !important;
+}
+
+.sidebar.collapsed .collapsed-icon {
+    display: block !important;
+}
+
+@media (max-width: 1050px) {
+    .box_iframe {
+        height: 200vh !important;
+    }
+}
+
+@media (max-width: 860px) {
+    .box_iframe {
+        height: 200vh !important;
+    }
+
+    /*     .main-content {
+        margin-left: 70px;
+    } */
+
+    .welcome-section {
+        max-width: 100%;
+        box-sizing: border-box;
+
+        overflow-x: hidden;
+    }
+
+    /*  .user-menu-btn {
+        opacity: 0px;
+    } */
+
+    .sidebar {
+        /* width: 70px !important; */
+        padding: 1% 5px !important;
+    }
+
+    /*     .nav-text {
+        display: none !important;
+    } */
+
+    .merge_search {
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+
+    .search-container {
+        /* order: 2 !important;
+        width: 100% !important; */
+        display: none;
+    }
+
+    .sidebar-header {
+        order: 1 !important;
+        justify-content: center !important;
+    }
+
+    .sidebar-menu {
+        overflow: hidden;
+        padding: 0px 0px;
+    }
+
+    .menu-toggle {
+        margin: 0 auto !important;
+    }
+
+    .nav-label {
+        display: none !important;
+    }
+
+    .nav-link {
+        justify-content: center !important;
+        padding: 12px !important;
+        position: relative !important;
+    }
+
+    .nav-link::after {
+        content: attr(data-text) !important;
+        position: absolute !important;
+        left: 100% !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: #1f2937 !important;
+        color: white !important;
+        padding: 8px 12px !important;
+        border-radius: 6px !important;
+        font-size: 14px !important;
+        white-space: nowrap !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: all 0.3s ease !important;
+        z-index: 1000 !important;
+        border: 1px solid #05C1F7 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        pointer-events: none !important;
+    }
+
+    .nav-link:hover::after {
+        opacity: 1 !important;
+        visibility: visible !important;
+        left: calc(100% + 10px) !important;
+    }
+
+    .user-profile {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 7px !important;
+        margin: 8px 5px !important;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .status-dot {
+        display: none;
+    }
+
+    .user-status {
+        display: none;
+    }
+
+    .user-menu-btn {
+        display: none;
+    }
+
+    .user-info,
+    .user-menu-btn {
+        display: none !important;
+    }
+
+    .user-avatar {
+        width: 35px !important;
+        height: 35px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .user-name {
+        font-size: 10px !important;
+        text-align: center !important;
+        display: block !important;
+    }
+}
+
+/* For very small screens */
+/* @media (max-width: 480px) {
+    .sidebar {
+        width: 60px !important;
+    }
+
+    .nav-link {
+        padding: 10px !important;
+    }
+} */
+
+
+.box_iframe-new {
+    width: 95vw !important;
+}
+
+.farm_style {
+    border: none;
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+.farm_style.expanded {
+    width: 95vw !important;
+    transition: width 0.3s ease;
+}
+
+/* أو بدلاً من ذلك إذا كنت تريد تطبيقه بشكل عام */
+/* .box_iframe-new .farm_style {
+    width: 100vw !important;
+    transition: width 0.3s ease;
+} */
