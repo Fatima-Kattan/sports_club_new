@@ -220,7 +220,7 @@
                         <h3>No Equipment Items</h3>
                         <p>This category doesn't have any equipment items yet.</p>
                         <a href="{{ route('items.create', $category) }}" class="add-item-btn-large">
-                            <i class="fas fa-plus"></i>
+                            
                             <span>Add First Item</span>
                         </a>
                     @endif

@@ -110,3 +110,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// User Dropdown Functionality
+const userDropdownBtn = document.getElementById('userDropdownBtn');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const userDropdown = document.querySelector('.user-dropdown');
+
+if (userDropdownBtn) {
+    // Toggle dropdown on button click
+    userDropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        userDropdown.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!userDropdown.contains(e.target)) {
+            userDropdown.classList.remove('active');
+        }
+    });
+
+    // Close dropdown when pressing Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            userDropdown.classList.remove('active');
+        }
+    });
+
+    // Close dropdown when clicking on a dropdown item
+    const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item, .logout-btn');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function() {
+            userDropdown.classList.remove('active');
+        });
+    });
+}

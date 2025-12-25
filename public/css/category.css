@@ -294,6 +294,8 @@ body {
 
 .view-btn:hover {
     background: rgba(5, 193, 247, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(5, 193, 247, 0.2);
 }
 
 .edit-btn {
