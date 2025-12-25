@@ -137,7 +137,6 @@
                         <option value="Beginner" {{ old('level') == 'Beginner' ? 'selected' : '' }}>Beginner</option>
                         <option value="Intermediate" {{ old('level') == 'Intermediate' ? 'selected' : '' }}>Intermediate</option>
                         <option value="Advanced" {{ old('level') == 'Advanced' ? 'selected' : '' }}>Advanced</option>
-                        <option value="All Levels" {{ old('level') == 'All Levels' ? 'selected' : '' }}>All Levels</option>
                     </select>
                     @error('level')
                         <div class="form-error">
