@@ -115,6 +115,9 @@ Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('boo
 Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
 Route::put('/bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
 Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
-
-
+Route::middleware(['web'])->group(function () {
+    Route::resource('bookings', BookingController::class);
+    Route::get('/bookings/get-coaches', [BookingController::class, 'getCoachesByActivity'])
+        ->name('bookings.getCoaches');
+});
 require __DIR__ . '/auth.php';
