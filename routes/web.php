@@ -12,10 +12,6 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-    
-//     return view('welcome');
-// })->name('welcome');
 
 Route::get('/', function () {
     $coaches = DB::table('employees')
@@ -23,7 +19,7 @@ Route::get('/', function () {
         ->whereNull('deleted_at') 
         ->get();
 
-    return view('welcome', compact('coaches')); // هنا تمرير البيانات
+    return view('welcome', compact('coaches'));
 })->name('welcome');
 
 
