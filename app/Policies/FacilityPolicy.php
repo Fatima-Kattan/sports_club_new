@@ -12,10 +12,10 @@ class FacilityPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function manegeFacility(User $user, ?Employee $employee = null)
+    public function manegeFacility(User $user)
 {
-    $isEmployeeManager = $employee && ($employee->position === 'Facility Manager' || $employee->position === 'Operations Manager');
+   /*  $isEmployeeManager = $employee && ($employee->position === 'Facility Manager' || $employee->position === 'Operations Manager'); */
     
-    return $user->is_admin || $isEmployeeManager;
+    return $user->is_admin /* || $isEmployeeManager */;
 }
 }

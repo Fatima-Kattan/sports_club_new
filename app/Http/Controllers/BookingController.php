@@ -7,14 +7,21 @@ use App\Models\Employee;
 use App\Models\User;
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
 
 class BookingController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
+        /*  $query = Booking::query(); */
         $bookings = Booking::with(['user', 'activity', 'employee'])->paginate(10);
         $totalBookings = Booking::count();
 
@@ -26,6 +33,7 @@ class BookingController extends Controller
      */
     public function create()
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
         $users = User::all();
         $activities = Activity::all();
         $employees = Employee::all();
@@ -37,6 +45,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'activity_id' => 'required|exists:activities,id',
@@ -60,6 +69,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
         $booking->load(['user', 'activity', 'employee', 'attendee']);
         return view('bookings.show', compact('booking'));
     }
@@ -69,6 +79,7 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
         $users = User::all();
         $activities = Activity::all();
         $employees = Employee::all();
@@ -80,6 +91,7 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'activity_id' => 'required|exists:activities,id',
@@ -103,6 +115,7 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
         $booking->delete();
         return redirect()->route('bookings.index')
             ->with('success', 'تم حذف الحجز بنجاح');
@@ -113,6 +126,7 @@ class BookingController extends Controller
      */
     public function getCoachesByActivity(Request $request)
     {
+        $this->authorize('manageBooking', \App\Models\Booking::class);
         $request->validate([
             'activity_id' => 'required|exists:activities,id'
         ]);
