@@ -150,9 +150,8 @@
         <!-- الهيدر مع صورة الموظف -->
         <div class="employee-header">
             <div class="header-content">
-                {{-- تعديل لازم --}}
                 @if ($employee->image)
-                    <img src="{{ asset('images/employees/' . $employee->image) }}" alt="{{ $employee->full_name }}"
+                    <img src="{{ asset($employee->image) }}" alt="{{ $employee->full_name }}"
                         class="employee-avatar pulse-animation">
                 @else
                     <div class="employee-avatar pulse-animation"

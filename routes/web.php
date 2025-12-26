@@ -9,11 +9,23 @@ use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/', function () {
+    
+//     return view('welcome');
+// })->name('welcome');
+
 Route::get('/', function () {
-    return view('welcome');
+    $coaches = DB::table('employees')
+        ->where('role', 'coach')
+        ->whereNull('deleted_at') 
+        ->get();
+
+    return view('welcome', compact('coaches')); // هنا تمرير البيانات
 })->name('welcome');
+
 
 Route::get('/start', function () {
     return view('startDashboard');
