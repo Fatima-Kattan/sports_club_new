@@ -8,14 +8,17 @@ use App\Models\Activity;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AttendeeController extends Controller
 {
+        use AuthorizesRequests;
     /**
      * عرض إحصائيات الحضور حسب النشاطات
      */
     public function index()
     {
+        $this->authorize('manageAttendee', \App\Models\Attendee::class);
         // جلب إحصائيات الحضور حسب النشاط
         $activities = Activity::withCount([
             'bookings',
@@ -49,198 +52,9 @@ class AttendeeController extends Controller
         ));
     }
 
-    // ... باقي الدوال الأخرى (create, store, show, edit, update, destroy) ...
-
-    /**
-     * جلب الإحصائيات عبر AJAX
-     */
-    /*  public function statistics()
-    {
-        $totalPresent = Attendee::where('status', true)->count();
-        $totalAbsent = Attendee::where('status', false)->count();
-        $totalAttendees = $totalPresent + $totalAbsent;
-        $totalBookings = Booking::count();
-
-        return response()->json([
-            'totalPresent' => $totalPresent,
-            'totalAbsent' => $totalAbsent,
-            'totalAttendees' => $totalAttendees,
-            'totalBookings' => $totalBookings
-        ]);
-    } */
-    /**
-     * عرض نموذج إنشاء حضور جديد
-     */
-    //     public function create()
-    //     {
-    //         $activities = Activity::where('is_active', true)->get();
-    //         $today = Carbon::today()->format('Y-m-d');
-
-    //         return view('attendees.create', compact('activities', 'today'));
-    //     }
-
-    //     /**
-    //      * البحث عن المستخدمين لنشاط معين
-    //      */
-    //     public function searchUsers(Request $request)
-    //     {
-    //         // التحقق من صحة البيانات
-    //         $validated = $request->validate([
-    //             'activity_id' => 'required|integer|exists:activities,id',
-    //             'search' => 'required|string|min:2'
-    //         ]);
-
-    //         $activityId = $validated['activity_id'];
-    //         $searchTerm = $validated['search'];
-
-    //         // البحث عن المستخدمين الذين يمكنهم التسجيل في هذا النشاط
-    //         $users = User::where(function ($query) use ($searchTerm) {
-    //             $query->where('name', 'LIKE', '%' . $searchTerm . '%')
-    //                 ->orWhere('email', 'LIKE', '%' . $searchTerm . '%')
-    //                 ->orWhere('phone', 'LIKE', '%' . $searchTerm . '%');
-    //         })
-    //             // استبعاد المستخدمين الذين سجلوا حضورهم مسبقاً في هذا النشاط
-    //             ->whereDoesntHave('attendees', function ($query) use ($activityId) {
-    //                 $query->where('activity_id', $activityId);
-    //             })
-    //             ->select('id', 'name', 'email', 'phone')
-    //             ->orderBy('name')
-    //             ->limit(15)
-    //             ->get();
-
-    //         return response()->json($users);
-    //     }
-
-    //     // في routes/web.php
-
-    //     public function getActivityUsers($activityId)
-    // {
-    //     try {
-    //         $activity = \App\Models\Activity::find($activityId);
-
-    //         if (!$activity) {
-    //             return response()->json([
-    //                 'success' => false,
-    //                 'message' => 'النشاط غير موجود',
-    //                 'users' => []
-    //             ]);
-    //         }
-
-    //         // 🔧 الطريقة 1: إذا كان لديك جدول registrations
-    //         $users = \App\Models\User::whereHas('registrations', function($query) use ($activityId) {
-    //             $query->where('activity_id', $activityId)
-    //                   ->where('status', 'active'); // إذا كان لديك حقل حالة
-    //         })->get();
-
-    //         // 🔧 أو الطريقة 2: إذا كان لديك علاقة many-to-many مباشرة
-    //         // $users = $activity->users()->wherePivot('status', 'active')->get();
-
-    //         // 🔧 الطريقة 3: إذا كان لديك جدول attendances (الحضور)
-    //         // $users = \App\Models\User::whereHas('attendances', function($query) use ($activityId) {
-    //         //     $query->where('activity_id', $activityId);
-    //         // })->get();
-
-    //         // 🔧 الطريقة 4: للاختبار - عرض 5 مستخدمين فقط
-    //         // $users = \App\Models\User::limit(5)->get();
-
-    //         $formattedUsers = $users->map(function($user) {
-    //             return [
-    //                 'id' => $user->id,
-    //                 'name' => $user->name ?? 'بدون اسم',
-    //                 'email' => $user->email ?? 'بدون بريد',
-    //                 'phone' => $user->phone ?? 'بدون هاتف'
-    //             ];
-    //         });
-
-    //         return response()->json([
-    //             'success' => true,
-    //             'activity' => [
-    //                 'id' => $activity->id,
-    //                 'name' => $activity->name
-    //             ],
-    //             'users' => $formattedUsers,
-    //             'count' => $formattedUsers->count(),
-    //             'message' => 'تم العثور على ' . $formattedUsers->count() . ' شخص مسجل في النشاط'
-    //         ]);
-
-    //     } catch (\Exception $e) {
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'حدث خطأ: ' . $e->getMessage(),
-    //             'users' => []
-    //         ]);
-    //     }
-    // }
-    //     /**
-    //      * إصدار بديل باستخدام POST
-    //      */
-    //     public function getActivityUsersPost(Request $request)
-    //     {
-    //         try {
-    //             $request->validate([
-    //                 'activity_id' => 'required|exists:activities,id'
-    //             ]);
-
-    //             // جلب المستخدمين حسب العلاقة
-    //             $users = User::whereHas('activities', function($query) use ($request) {
-    //                 $query->where('activities.id', $request->activity_id);
-    //             })->get(['id', 'name', 'email', 'phone']);
-
-    //             return response()->json([
-    //                 'success' => true,
-    //                 'users' => $users
-    //             ]);
-
-    //         } catch (\Exception $e) {
-    //             return response()->json([
-    //                 'success' => false,
-    //                 'message' => 'حدث خطأ: ' . $e->getMessage()
-    //             ], 500);
-    //         }
-    //     }
-
-
-    //     /**
-    //      * Store a newly created resource in storage.
-    //      */
-    //     public function store(Request $request)
-    //     {
-    //         $request->validate([
-    //             'user_id' => 'required|exists:bookings,id',
-    //             'activity_id' => 'required|exists:activities,id',
-    //             'status' => 'boolean'
-    //         ]);
-
-    //         // البحث عن الحجز
-    //         $booking = Booking::find($request->user_id);
-
-    //         if (!$booking) {
-    //             return back()->with('error', 'الحجز غير موجود');
-    //         }
-
-    //         // التحقق من أن النشاط صحيح
-    //         if ($booking->activity_id != $request->activity_id) {
-    //             return back()->with('error', 'العميل ليس لديه حجز في هذا النشاط');
-    //         }
-
-    //         // التحقق من عدم وجود حضور سابق
-    //         $existingAttendee = Attendee::where('booking_id', $booking->id)->first();
-    //         if ($existingAttendee) {
-    //             return back()->with('error', 'هذا العميل لديه حضور مسجل مسبقاً');
-    //         }
-
-    //         Attendee::create([
-    //             'booking_id' => $booking->id,
-    //             'status' => $request->status ?? false,
-    //             'attendance_count' => $request->status ? 1 : 0
-    //         ]);
-
-    //         return redirect()->route('attendees.index')
-    //             ->with('success', 'تم تسجيل الحضور بنجاح');
-    //     }
-
     public function create()
     {
+        $this->authorize('manageAttendee', \App\Models\Attendee::class);
         // جلب جميع الأنشطة لعرضها في dropdown
         $activities = Activity::with(['bookings.user'])->get();
 
@@ -252,6 +66,7 @@ class AttendeeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('manageAttendee', \App\Models\Attendee::class);
         $validated = $request->validate([
             'booking_id' => 'required|exists:bookings,id',
             'status' => 'required|boolean',
@@ -290,6 +105,7 @@ class AttendeeController extends Controller
     // في AttendeeController (أو أي اسم للكونترولر الخاص بك)
     public function getActivityUsers($activityId)
     {
+        
         try {
             // 1. تحقق من وجود النشاط
             $activity = Activity::findOrFail($activityId);
@@ -393,6 +209,7 @@ class AttendeeController extends Controller
 
     public function show($activityId)
     {
+        $this->authorize('manageAttendee', \App\Models\Attendee::class);
         $activity = Activity::with(['bookings.user'])->findOrFail($activityId);
 
         // الحصول على سجلات الحضور لليوم فقط
@@ -430,60 +247,6 @@ class AttendeeController extends Controller
             'absentCount',
             'notRegisteredCount'
         ));
-    }
-    /**
-     * عرض نموذج تعديل حضور
-     */
-    public function edit(Attendee $attendee)
-    {
-        $attendee->load(['booking.user', 'booking.activity']);
-        return view('attendees.edit', compact('attendee'));
-    }
-
-    /**
-     * تحديث بيانات حضور
-     */
-    public function update(Request $request, Attendee $attendee)
-    {
-        $validated = $request->validate([
-            'status' => 'required|boolean'
-        ]);
-
-        $attendee->update($validated);
-
-        return redirect()->route('attendees.show', $attendee->booking->activity_id)
-            ->with('success', 'تم تحديث الحضور بنجاح.');
-    }
-
-
-    /**
-     * تحديث حالة الحضور عبر AJAX
-     */
-    // public function updateStatus(Request $request, Attendee $attendee)
-    // {
-    //     $request->validate([
-    //         'status' => 'required|boolean'
-    //     ]);
-
-    //     $attendee->update(['status' => $request->status]);
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'message' => 'تم تحديث الحالة بنجاح',
-    //         'status_text' => $attendee->status ? 'حاضر' : 'غائب'
-    //     ]);
-    // }
-
-    /**
-     * حذف حضور
-     */
-    public function destroy(Attendee $attendee)
-    {
-        $activityId = $attendee->booking->activity_id;
-        $attendee->delete();
-
-        return redirect()->route('attendees.show', $activityId)
-            ->with('success', 'تم حذف الحضور بنجاح.');
     }
 
     /**
