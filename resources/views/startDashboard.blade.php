@@ -46,7 +46,7 @@
                 <div class="stat-card"
                     data-employee-count="{{ \DB::table('employees')->whereNull('deleted_at')->count() }}">
                     <div class="stat-icon">
-                        <i class="fas fa-employees"></i>
+                        <i class="fas fa-users"></i>
                     </div>
                     <div class="stat-info">
                         <h3>Active Employees</h3>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <div class="stat-card">
+                <div class="stat-card" id="attendancePercentage">
                     <div class="stat-icon">
                         <i class="fas fa-calendar-check"></i>
                     </div>
@@ -78,16 +78,17 @@
                     </div>
                 </div>
 
-                <div class="stat-card">
+                <div class="stat-card" id="todayBookings">
                     <div class="stat-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="stat-info">
-                        <h3>Performance</h3>
-                        <p class="stat-number" id="performance">0%</p>
+                        <h3>bookings</h3>
+                        <p class="stat-number" id="performance">0</p>
                         <p class="stat-change"><i class="fas fa-trend-up"></i> This week</p>
                     </div>
                 </div>
+
             </div>
 
             <!-- Quick Actions -->
@@ -107,30 +108,37 @@
                     </div>
                 </a>
 
-                <div class="action-card">
-                    <div class="action-icon">
-                        <i class="fas fa-file-invoice"></i>
+                <a href="{{ route('bookings.create') }}">
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <h3>Add booking</h3>
+                        <p>reserve your place</p>
                     </div>
-                    <h3>Reports</h3>
-                    <p>Generate monthly reports</p>
-                </div>
+                </a>
 
-                <div class="action-card">
-                    <div class="action-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                <a href="{{ route('activities.create') }}">
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Create Activity</h3>
+                        <p>Create your activity now</p>
                     </div>
-                    <h3>Schedule</h3>
-                    <p>Manage shifts & schedules</p>
-                </div>
+                </a>
 
-                <div class="action-card">
-                    <div class="action-icon">
-                        <i class="fas fa-envelope"></i>
+                <a href="{{ route('facilities.create') }}">
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Add Facilities</h3>
+                        <p>Your new place</p>
                     </div>
-                    <h3>Announcements</h3>
-                    <p>Send team updates</p>
-                </div>
+                </a>
             </div>
+
 
             <!-- Welcome Message -->
             <div class="welcome-section">
@@ -249,6 +257,8 @@
                 }
             }
         });
+
+        /////
     </script>
 </body>
 

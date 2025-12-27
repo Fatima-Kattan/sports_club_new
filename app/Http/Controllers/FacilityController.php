@@ -52,12 +52,14 @@ class FacilityController extends Controller
 
     public function create()
     {
+        $this->authorize('manegeFacility', Facility::class);
         return view('facilities.create');
     }
 
 
     public function store(Request $request)
     {
+        $this->authorize('manegeFacility', Facility::class);
         $request->validate([
             'room_name' => 'required|string|max:255',
             'floor' => 'required|string|max:50',
@@ -73,6 +75,7 @@ class FacilityController extends Controller
 
     public function show(Facility $facility)
     {
+        $this->authorize('manegeFacility', Facility::class);
         $facility->load('activities');
         return view('facilities.show', compact('facility'));
     }
@@ -80,12 +83,14 @@ class FacilityController extends Controller
 
     public function edit(Facility $facility)
     {
+        $this->authorize('manegeFacility', Facility::class);
         return view('facilities.edit', compact('facility'));
     }
 
 
     public function update(Request $request, Facility $facility)
     {
+        $this->authorize('manegeFacility', Facility::class);
         $request->validate([
             'room_name' => 'required|string|max:255',
             'floor' => 'required|string|max:50',
@@ -101,6 +106,7 @@ class FacilityController extends Controller
 
     public function destroy(Facility $facility)
     {
+        $this->authorize('manegeFacility', Facility::class);
         $facility->delete();
 
         return redirect()->route('facilities.index')

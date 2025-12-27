@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container" style="max-width: 800px;">
+    <div class="container" style="max-width: 800px; background:#1e293b; border-radius:12px;">
         <header class="main-header">
             <h1><i class="fas fa-plus-circle"></i>Create New Facility</h1>
             <p class="subtitle">Enter the new facility information</p>

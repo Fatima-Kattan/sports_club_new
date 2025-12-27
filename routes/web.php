@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $coaches = DB::table('employees')
         ->where('role', 'coach')
-        ->whereNull('deleted_at') 
+        ->whereNull('deleted_at')
         ->get();
 
     $activities = \App\Models\Activity::where('is_active', true)
@@ -74,8 +74,17 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-// ==================== Item Routes ==================== //
+// ==================== Item_Activity Routes ==================== //
+Route::get('/activities/{activity}/items', [ItemController::class, 'index'])
+    ->name('items.index');
+Route::post('/activities/{activity}/items', [ActivityController::class, 'attachItems'])
+    ->name('activities.attachItems');
+Route::delete('/activities/{activity}/items/{item}', [ActivityController::class, 'detachItem'])
+    ->name('activities.items.detach');
 
+Route::post('/activities/{activity}/items/{item}/update', [ActivityController::class, 'updateItemQuantity'])
+    ->name('activities.items.update');
+// ==================== Item Routes ==================== //
 Route::prefix('categories/{category}')->group(function () {
     Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
     Route::post('/items', [ItemController::class, 'store'])->name('items.store');
@@ -123,4 +132,36 @@ Route::middleware(['web'])->group(function () {
     Route::get('/bookings/get-coaches', [BookingController::class, 'getCoachesByActivity'])
         ->name('bookings.getCoaches');
 });
+
+//==================== Attendees Routes =================== //
+Route::get('/attendees', [AttendeeController::class, 'index'])->name('attendees.index');
+Route::get('/attendees/create', [AttendeeController::class, 'create'])->name('attendees.create');
+Route::post('/attendees', [AttendeeController::class, 'store'])->name('attendees.store');
+Route::get('/attendees/{attendee}', [AttendeeController::class, 'show'])->name('attendees.show');
+Route::get('/attendees/{attendee}/edit', [AttendeeController::class, 'edit'])->name('attendees.edit');
+Route::put('/attendees/{attendee}', [AttendeeController::class, 'update'])->name('attendees.update');
+Route::delete('/attendees/{attendee}', [AttendeeController::class, 'destroy'])->name('attendees.destroy');
+
+Route::resource('attendees', AttendeeController::class)->except(['show', 'edit', 'update', 'destroy']);
+// أو يمكنك تحديد الروابط بشكل منفصل:
+Route::get('/attendees/create', [AttendeeController::class, 'create'])->name('attendees.create');
+Route::post('/attendees', [AttendeeController::class, 'store'])->name('attendees.store');
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])->name('attendees.get-bookings');
+// في routes/web.php
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])->name('attendees.get-bookings');
+
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])
+    ->name('attendees.get-bookings')
+    ->where('activity', '[0-9]+'); // لتأكد أن activity هو رقم
+// أضف هذا الراوت
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])
+    ->name('attendees.get-bookings');
+Route::post('/attendees/{attendee}/update-status', [AttendeeController::class, 'updateStatus'])->name('attendees.update-status');
+// Route لإنشاء الحضور
+Route::get('/attendees/create', [AttendeeController::class, 'create'])->name('attendees.create');
+Route::post('/attendees', [AttendeeController::class, 'store'])->name('attendees.store');
+Route::get('/attendees/get-activity-users/{activity}', [App\Http\Controllers\AttendeeController::class, 'getActivityUsers']);
+
+Route::post('/attendees/register-attendance', [AttendeeController::class, 'registerAttendance'])->name('attendees.register');
+
 require __DIR__ . '/auth.php';

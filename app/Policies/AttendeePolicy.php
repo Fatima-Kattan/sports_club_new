@@ -2,24 +2,21 @@
 
 namespace App\Policies;
 
+use App\Models\Attendee;
 use App\Models\Employee;
-use App\Models\Facility;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class FacilityPolicy
+class AttendeePolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
-    public function manegeFacility(User $user)
+    public function manageAttendee(User $user)
     {
         if ($user->is_admin) {
             return true;
         }
 
         $hasAllowedPosition = Employee::where('email', $user->email)
-            ->whereIn('position', ['Operations Manager','Facility Manager' ])
+            ->whereIn('position', ['assistant', 'Manager','Supervisor','coach'])
             ->exists();
 
         return $hasAllowedPosition;

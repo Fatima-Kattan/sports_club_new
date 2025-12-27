@@ -1,0 +1,404 @@
+
+        :root {
+            --primary-dark: #11182a;
+            --primary-dark-light: #1a2442;
+            --primary-dark-lighter: #243055;
+            --accent-gradient: linear-gradient(135deg, #05C1F7, #00ff88);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b7d0;
+            --card-bg: rgba(23, 30, 50, 0.9);
+            --border-color: rgba(5, 193, 247, 0.2);
+            --success-color: #00ff88;
+            --warning-color: #ffc107;
+            --danger-color: #ff4757;
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 1000px;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: var(--accent-gradient);
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .form-select, 
+        .form-control {
+            background: rgba(5, 193, 247, 0.1);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            padding: 12px 20px;
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .form-select:focus, 
+        .form-control:focus {
+            background: rgba(5, 193, 247, 0.15);
+            border-color: #05C1F7;
+            box-shadow: 0 0 0 3px rgba(5, 193, 247, 0.2);
+            color: var(--text-primary);
+        }
+
+        .form-select option {
+            background: var(--primary-dark-light);
+            color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 40px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-speed) ease;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(5, 193, 247, 0.3);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            transform: none;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.25em;
+        }
+
+        /* Bookings List */
+        .bookings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .booking-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-card:hover {
+            background: rgba(5, 193, 247, 0.1);
+            border-color: var(--border-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .booking-card.selected {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: var(--success-color);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .booking-card.selected::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .user-info h5 {
+            margin: 0 0 5px 0;
+            font-weight: 600;
+        }
+
+        .user-info p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--success-color);
+            opacity: 0;
+            transform: scale(0);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .booking-card.selected .checkmark {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Status Selection */
+        .status-selection {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .status-option {
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            min-width: 150px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+        }
+
+        .status-option:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .status-option.active {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: var(--success-color);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .status-option.inactive {
+            background: rgba(255, 71, 87, 0.1);
+            border-color: var(--danger-color);
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.2);
+        }
+
+        .status-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+
+        .status-option.active .status-icon {
+            opacity: 1;
+            color: var(--success-color);
+        }
+
+        .status-option.inactive .status-icon {
+            opacity: 1;
+            color: var(--danger-color);
+        }
+
+        .status-text h5 {
+            margin: 0 0 5px 0;
+            font-weight: 600;
+        }
+
+        .status-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .progress-indicator::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .progress-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: 600;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .progress-step.active .step-circle {
+            background: var(--accent-gradient);
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(5, 193, 247, 0.5);
+        }
+
+        .step-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Alerts */
+        .alert {
+            border-radius: 12px;
+            border: none;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+
+        .alert-warning {
+            background: rgba(255, 193, 7, 0.1);
+            color: var(--warning-color);
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .alert-danger {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger-color);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        /* Section Animations */
+        .form-section {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .bookings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-selection {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .status-option {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .card-body {
+                padding: 20px;
+            }
+            
+            .progress-indicator::before {
+                left: 30px;
+                right: 30px;
+            }
+        }
+
+
+        /* show attendee */
+        

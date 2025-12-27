@@ -15,6 +15,359 @@
             border: 1px solid #05C1F7 !important;
             outline: none !important;
         }
+
+        /* الخيار 1 */
+        .club-name-display {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .club-name {
+            font-size: 32px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .fitness {
+            color: #007bff;
+            font-weight: 700;
+        }
+
+        .melb {
+            color: #dc3545;
+            font-weight: 700;
+        }
+
+        .club-slogan {
+            color: #6c757d;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        /* الخيار 2 */
+        .club-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            background: #1f2937;
+            border-radius: 10px;
+            color: #05C1F7;
+            /*             border: 1px solid #05C1F7; */
+            /*             border-radius: 10px; */
+        }
+
+        .club-name-main {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #05C1F7, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .club-status {
+            margin: 5px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .club-status i {
+            color: #28a745;
+        }
+
+        /* الخيار 3 */
+        .club-info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .club-brand {
+            color: #007bff;
+            font-size: 28px;
+            margin: 0 0 5px;
+            font-weight: 700;
+        }
+
+        .club-tagline {
+            color: #6c757d;
+            margin: 0 0 15px;
+            font-size: 14px;
+        }
+
+        .club-stats {
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid #e9ecef;
+            padding-top: 15px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #495057;
+        }
+
+        .stat i {
+            color: #dc3545;
+        }
+
+        /* الخيار 4 */
+        .club-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .club-identity {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .club-badge {
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            backdrop-filter: blur(10px);
+        }
+
+        .club-name-ar {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .club-name-en {
+            margin: 2px 0;
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .club-type {
+            margin: 5px 0 0;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .club-meta {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 15px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* gg */
+          .user-menu-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 15px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #333;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        z-index: 2;
+    }
+
+    .user-profile:hover {
+        background: #e9ecef;
+        border-color: #dee2e6;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #05C1F7;
+    }
+
+    .user-info {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .user-name {
+        font-weight: 600;
+        font-size: 14px;
+        color: #212529;
+    }
+
+    .user-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #6c757d;
+        margin-top: 2px;
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        background: #28a745;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+    }
+
+    .user-menu-btn {
+        background: none;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #6c757d;
+        transition: all 0.3s ease;
+    }
+
+    .user-menu-btn:hover {
+        background: #dee2e6;
+        color: #495057;
+    }
+
+    /* القائمة المنسدلة - تظهر فوق العنصر */
+    .user-dropdown-menu {
+        position: absolute;
+        bottom: calc(100% + 5px); /* تغيير من top إلى bottom */
+        right: 0;
+        min-width: 200px;
+        background: #262f46;
+        border-radius: 10px;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15); /* تغيير اتجاه الظل */
+        border: 1px solid #05C1F7;
+ /*        opacity: 0; */
+        visibility: hidden;
+        transform: translateY(10px); /* تغيير اتجاه التحريك */
+        transition: all 0.3s ease;
+        z-index: 1000;
+        overflow: hidden;
+        color:white;
+    }
+
+    /* فتح القائمة عند التمرير */
+    .user-menu-container:hover .user-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .dropdown-item:hover {
+        background: #2839508d;
+        color: white;
+        border-left-color: #05C1F7;
+    }
+
+    .dropdown-item i {
+        width: 20px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .dropdown-divider {
+        height: 1px;
+        background: #05C1F7;
+        margin: 5px 0;
+    }
+
+    .dropdown-item:last-child {
+        color: #dc3545;
+    }
+
+    .dropdown-item:last-child:hover {
+        background: #f8d7da;
+        color: #c82333;
+    }
+
+    /* تأثير النبض للنقطة الخضراء */
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 5px rgba(40, 167, 69, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+        }
+    }
+
+    /* سهم صغير للقائمة */
+    .user-dropdown-menu::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        right: 20px;
+        width: 12px;
+        height: 12px;
+        background: #1f293744;
+        transform: rotate(45deg);
+        border-right: 1px solid #e9ecef;
+        border-bottom: 1px solid #e9ecef;
+        z-index: -1;
+    }
+
+    /* تحسينات للعرض على الشاشات الصغيرة */
+    @media (max-width: 768px) {
+        .user-dropdown-menu {
+            position: fixed;
+            bottom: auto;
+            top: 70px;
+            right: 20px;
+            min-width: 180px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .user-dropdown-menu::after {
+            display: none;
+        }
+    }
     </style>
 </head>
 
@@ -24,14 +377,6 @@
             <div class="merge_search">
                 <!-- Header with Menu Icon -->
                 <div class="sidebar-header">
-                    {{--  <button class="menu-toggle">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button> --}}
                     <button class="menu-toggle">
                         <svg class="menu-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -39,11 +384,6 @@
                             <line x1="3" y1="6" x2="21" y2="6"></line>
                             <line x1="3" y1="18" x2="21" y2="18"></line>
                         </svg>
-                        {{-- <svg class="collapsed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" style="display: none;">
-                            <!-- سهم لليمين -->
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg> --}}
                         <svg class="collapsed-icon"width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -53,18 +393,14 @@
                     </button>
                 </div>
 
-                <!-- Search Box -->
                 <div class="search-container">
-                    {{-- <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg> --}}
-                    <input type="text" placeholder="Search..." class="search-input">
+                    <div class="club-header">
+                        <div class="club-title">
+                            <h2 class="club-name-main">Fitness Club</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Navigation Label -->
-            <div class="nav-label">NAVIGATION</div>
 
             <!-- Navigation Menu -->
             <ul class="sidebar-menu">
@@ -147,7 +483,6 @@
                     </a>
                 </li> --}}
                 {{-- activities --}}
-                {{-- <li> --}}
                 <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
                     data-page="activities">
                     <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -164,7 +499,7 @@
                 </a>
                 </li>
                 {{-- bookings --}}
-                                <li>
+                <li>
                     <a href="{{ route('bookings.index') }}" class="nav-link" target="content-frame"
                         data-page="bookings">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -179,7 +514,7 @@
                     </a>
                 </li>
                 {{-- attendees --}}
-                {{--                 <li>
+                <li>
                     <a href="{{ route('attendees.index') }}" class="nav-link" target="content-frame"
                         data-page="attendees">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -190,7 +525,7 @@
 
                         <span class="nav-text">Attendees</span>
                     </a>
-                </li> --}}
+                </li>
                 {{-- Facilities --}}
                 <li>
                     <a href="{{ route('facilities.index') }}" class="nav-link" target="content-frame"
@@ -207,29 +542,55 @@
             </ul>
 
             <!-- User Profile at Bottom -->
-            <a href="{{ route('profile.edit') }}" class="user-profile">
-                @auth
-                    <img src="{{ Auth::user()->profile_photo_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=000000&color=05C1F7' }}"
-                        alt="{{ Auth::user()->name }}" class="user-avatar">
-                    <div class="user-info">
-                        <div class="user-name">{{ Auth::user()->name }}</div>
-                        <div class="user-status">
-                            <span class="status-dot"></span>
-                            Online
-                        </div>
-                    </div>
-                    <button class="user-menu-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="12" cy="5" r="1"></circle>
-                            <circle cx="12" cy="19" r="1"></circle>
-                        </svg>
-                    </button>
-                @else
-                    <div class="user-name">Guest</div>
-                @endauth
-            </a>
+            <div class="user-menu-container">
+    <a href="{{ route('profile.edit') }}" class="user-profile">
+        @auth
+            <img src="{{ Auth::user()->profile_photo_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=000000&color=05C1F7' }}"
+                alt="{{ Auth::user()->name }}" class="user-avatar">
+            <div class="user-info">
+                <div class="user-name">{{ Auth::user()->name }}</div>
+                <div class="user-status">
+                    <span class="status-dot"></span>
+                    Online
+                </div>
+            </div>
+            <button class="user-menu-btn" id="userMenuBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="12" cy="5" r="1"></circle>
+                    <circle cx="12" cy="19" r="1"></circle>
+                </svg>
+            </button>
+        @else
+            <div class="user-name">Guest</div>
+        @endauth
+    </a>
+    
+    <!-- القائمة المنسدلة -->
+    <div class="user-dropdown-menu" id="userDropdownMenu">
+        <a href="{{ route('profile.edit') }}" class="dropdown-item">
+            <i class="fas fa-user-circle"></i>
+            <span>Profile</span>
+        </a>
+        {{-- <a href="{{ route('settings') }}" class="dropdown-item">
+            <i class="fas fa-cog"></i>
+            <span>الإعدادات</span>
+        </a> --}}
+        <div class="dropdown-divider"></div>
+        <a href="{{ route('logout') }}" 
+           class="dropdown-item"
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>LogOut </span>
+        </a>
+        <!-- نموذج تسجيل الخروج المخفي -->
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
+</div>
+
         </nav>
 
         <div class="main-content">
@@ -279,6 +640,41 @@
                 }
             });
         });
+
+          document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('userMenuBtn');
+        const dropdownMenu = document.getElementById('userDropdownMenu');
+        
+        if (menuBtn && dropdownMenu) {
+            // فتح/إغلاق القائمة
+            menuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', function(e) {
+                if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+            
+            // إغلاق القائمة عند النقر على عنصر داخلي
+            dropdownMenu.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+            
+            // إغلاق القائمة بمفتاح ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        }
+    });
     </script>
 </body>
 

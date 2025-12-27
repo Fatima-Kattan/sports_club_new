@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\Employee;
@@ -14,6 +15,14 @@ class ItemController extends Controller
 {
     use AuthorizesRequests;
 
+
+    public function index(Activity $activity)
+    {
+        $items = Item::with('category')->get();
+        $categories = Category::all();
+
+        return view('items.index', compact('items', 'categories','activity'));
+    }
 
     // ==================== Create ====================
     public function create(Category $category)
@@ -65,7 +74,7 @@ class ItemController extends Controller
         }
     }
 
-    
+
     // ==================== Edit ====================
     public function edit(Category $category, Item $item)
     {
@@ -112,10 +121,10 @@ class ItemController extends Controller
                 $file->move(public_path('/images/items'), $imageName);
 
                 $validated['image'] = $imageName;
-            }else {
-            
-            unset($validated['image']);
-        }
+            } else {
+
+                unset($validated['image']);
+            }
             $item->update($validated);
 
             return redirect()->route('categories.show', $item->category_id)
