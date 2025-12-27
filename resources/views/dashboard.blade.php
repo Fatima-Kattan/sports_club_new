@@ -15,172 +15,8 @@
             border: 1px solid #05C1F7 !important;
             outline: none !important;
         }
-
-        /* الخيار 1 */
-        .club-name-display {
-            text-align: center;
-            padding: 15px;
-        }
-
-        .club-name {
-            font-size: 32px;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .fitness {
-            color: #007bff;
-            font-weight: 700;
-        }
-
-        .melb {
-            color: #dc3545;
-            font-weight: 700;
-        }
-
-        .club-slogan {
-            color: #6c757d;
-            margin-top: 5px;
-            font-size: 14px;
-        }
-
-        /* الخيار 2 */
-        .club-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
-            background: #1f2937;
-            border-radius: 10px;
-            color: #05C1F7;
-            /*             border: 1px solid #05C1F7; */
-            /*             border-radius: 10px; */
-        }
-
-        .club-name-main {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #05C1F7, #00ff88);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        .club-status {
-            margin: 5px 0 0;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .club-status i {
-            color: #28a745;
-        }
-
-        /* الخيار 3 */
-        .club-info-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .club-brand {
-            color: #007bff;
-            font-size: 28px;
-            margin: 0 0 5px;
-            font-weight: 700;
-        }
-
-        .club-tagline {
-            color: #6c757d;
-            margin: 0 0 15px;
-            font-size: 14px;
-        }
-
-        .club-stats {
-            display: flex;
-            gap: 20px;
-            border-top: 1px solid #e9ecef;
-            padding-top: 15px;
-        }
-
-        .stat {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #495057;
-        }
-
-        .stat i {
-            color: #dc3545;
-        }
-
-        /* الخيار 4 */
-        .club-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-        }
-
-        .club-identity {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .club-badge {
-            background: rgba(255, 255, 255, 0.2);
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            backdrop-filter: blur(10px);
-        }
-
-        .club-name-ar {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .club-name-en {
-            margin: 2px 0;
-            font-size: 16px;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-
-        .club-type {
-            margin: 5px 0 0;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .club-meta {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 15px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
         /* gg */
-          .user-menu-container {
+        .user-menu-container {
         position: relative;
         display: inline-block;
     }
@@ -259,27 +95,23 @@
         background: #dee2e6;
         color: #495057;
     }
-
-    /* القائمة المنسدلة - تظهر فوق العنصر */
     .user-dropdown-menu {
         position: absolute;
-        bottom: calc(100% + 5px); /* تغيير من top إلى bottom */
+        bottom: calc(100% + 5px);
         right: 0;
         min-width: 200px;
         background: #262f46;
         border-radius: 10px;
-        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15); /* تغيير اتجاه الظل */
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
         border: 1px solid #05C1F7;
  /*        opacity: 0; */
         visibility: hidden;
-        transform: translateY(10px); /* تغيير اتجاه التحريك */
+        transform: translateY(10px);
         transition: all 0.3s ease;
         z-index: 1000;
         overflow: hidden;
         color:white;
     }
-
-    /* فتح القائمة عند التمرير */
     .user-menu-container:hover .user-dropdown-menu {
         opacity: 1;
         visibility: visible;
@@ -324,21 +156,6 @@
         background: #f8d7da;
         color: #c82333;
     }
-
-    /* تأثير النبض للنقطة الخضراء */
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
-        }
-        70% {
-            box-shadow: 0 0 0 5px rgba(40, 167, 69, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-        }
-    }
-
-    /* سهم صغير للقائمة */
     .user-dropdown-menu::after {
         content: '';
         position: absolute;
@@ -353,7 +170,6 @@
         z-index: -1;
     }
 
-    /* تحسينات للعرض على الشاشات الصغيرة */
     @media (max-width: 768px) {
         .user-dropdown-menu {
             position: fixed;
@@ -468,20 +284,6 @@
                         <span class="nav-text">Categories</span>
                     </a>
                 </li>
-                {{-- items --}}
-                {{--                 <li>
-                    <a href="{{ route('items.index') }}" class="nav-link" target="content-frame" data-page="items">
-                        <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                            </path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                        <span class="nav-text">Items</span>
-                    </a>
-                </li> --}}
                 {{-- activities --}}
                 <a href="{{ route('activities.index') }}" class="nav-link" target="content-frame"
                     data-page="activities">
@@ -522,7 +324,6 @@
                             <circle cx="12" cy="12" r="9"></circle>
                             <path d="M12 7v5l3 2"></path>
                         </svg>
-
                         <span class="nav-text">Attendees</span>
                     </a>
                 </li>
@@ -567,24 +368,19 @@
         @endauth
     </a>
     
-    <!-- القائمة المنسدلة -->
+    <!-- dropdown menu --> 
     <div class="user-dropdown-menu" id="userDropdownMenu">
         <a href="{{ route('profile.edit') }}" class="dropdown-item">
             <i class="fas fa-user-circle"></i>
             <span>Profile</span>
         </a>
-        {{-- <a href="{{ route('settings') }}" class="dropdown-item">
-            <i class="fas fa-cog"></i>
-            <span>الإعدادات</span>
-        </a> --}}
         <div class="dropdown-divider"></div>
         <a href="{{ route('logout') }}" 
-           class="dropdown-item"
-           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            class="dropdown-item"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out-alt"></i>
             <span>LogOut </span>
         </a>
-        <!-- نموذج تسجيل الخروج المخفي -->
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
@@ -641,33 +437,33 @@
             });
         });
 
-          document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
         const menuBtn = document.getElementById('userMenuBtn');
         const dropdownMenu = document.getElementById('userDropdownMenu');
         
         if (menuBtn && dropdownMenu) {
-            // فتح/إغلاق القائمة
+            // close/open menu
             menuBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 dropdownMenu.classList.toggle('show');
             });
             
-            // إغلاق القائمة عند النقر خارجها
+            // Close the menu when you click outside of it
             document.addEventListener('click', function(e) {
                 if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
                     dropdownMenu.classList.remove('show');
                 }
             });
             
-            // إغلاق القائمة عند النقر على عنصر داخلي
+          // Close the menu when clicking on an internal item
             dropdownMenu.addEventListener('click', function(e) {
                 if (e.target.tagName === 'A') {
                     dropdownMenu.classList.remove('show');
                 }
             });
             
-            // إغلاق القائمة بمفتاح ESC
+            // close menu by Esc
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     dropdownMenu.classList.remove('show');

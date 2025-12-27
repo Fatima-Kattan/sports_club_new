@@ -77,12 +77,9 @@
                                             $imagePath = null;
 
                                             if ($user && $user->image) {
-                                                // تحقق من جميع الاحتمالات
                                                 $possiblePaths = [
                                                     'images/users/' . $user->image,
-                                                    'images/' . $user->image,
-                                                    'storage/images/users/' . $user->image,
-                                                    $user->image, // إذا كان المسار كامل
+                                                    $user->image, 
                                                 ];
 
                                                 foreach ($possiblePaths as $path) {

@@ -41,9 +41,9 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="stat-info">
-                        <!-- إجمالي الحجوزات -->
+                        <!-- All bookings -->
                         <h3 id="totalBookings">{{ $totalBookings ?? 0 }}</h3>
-                        <p>All registered</p>
+                        <p>Total Bookings</p>
                     </div>
                 </div>
             </div>
@@ -68,12 +68,12 @@
                 
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" id="searchInput" class="search-input"
-                    placeholder="Search bookings by activity name..." autocomplete="off">
+                    placeholder="Search by activity name..." autocomplete="off">
             </div>
 
             <div class="btn-group">
                 <a href="{{ route('attendees.create') }}" class="btn btn-primary">
-                    <i class="fas fa-plus-circle"></i> New Attendance Record
+                    <i class="fas fa-plus-circle"></i> Add Attendance Record
                 </a>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 <h2><i class="fas fa-list-alt"></i> Attendance Statistics by Activity</h2>
             </div>
 
-            <!-- الجدول -->
+            <!-- table -->
             <table class="attendance-table" id="activitiesTable">
                 <thead>
                     <tr>
@@ -94,7 +94,7 @@
                 <tbody id="tableBody">
                     @foreach ($activities as $activity)
                         @php
-                            // حساب الغياب بشكل صحيح لكل نشاط
+                            // Calculate absence correctly for each activity
                             $total_bookings = $activity->bookings_count ?? 0;
                             $present_count = $activity->present_count ?? 0;
                             $absent_count = $total_bookings - $present_count;
@@ -133,7 +133,7 @@
                 </tbody>
             </table>
 
-            <!-- رسالة عندما لا توجد نتائج -->
+            <!-- Message when no results are found -->
             <div id="noResults" class="no-results" style="display: none;">
                 <i class="fas fa-search"></i>
                 <h3>No activities found</h3>
@@ -158,7 +158,7 @@
         // Refresh page every 30 seconds
         setInterval(updateStatistics, 30000);
 
-        // البحث في اسم النشاط
+        // Search in activity name
         document.getElementById('searchInput').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase().trim();
             const rows = document.querySelectorAll('#tableBody tr');
@@ -174,7 +174,6 @@
                 }
             });
 
-            // إظهار أو إخفاء رسالة "لا توجد نتائج"
             const noResults = document.getElementById('noResults');
             const table = document.getElementById('activitiesTable');
 
@@ -187,7 +186,7 @@
             }
         });
 
-        // مسح البحث بالضغط على زر Escape
+        // Clear search by pressing Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 document.getElementById('searchInput').value = '';

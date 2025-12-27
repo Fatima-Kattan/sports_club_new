@@ -676,9 +676,7 @@ activitySelect.addEventListener('change', function() {
     activityNameDisplay.textContent = activityName;
     coachFilterInfo.classList.add('show');
     coachFilterInfo.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Searching for matching coaches...`;
-
-    // AJAX request to get matching coaches
-    // جرب المسارات المختلفة
+    // Try different paths
     const urls = [
         `{{ route('bookings.getCoaches') }}?activity_id=${activityId}`,
         `/bookings/get-coaches?activity_id=${activityId}`,
@@ -687,7 +685,7 @@ activitySelect.addEventListener('change', function() {
 
     function tryFetch(urlIndex) {
         if (urlIndex >= urls.length) {
-            // جميع المحاولات فشلت، استخدم الكوتشات المحلية
+            // All attempts failed, use local coaches
             handleFallbackCoaches(activityName);
             return;
         }
@@ -703,7 +701,7 @@ activitySelect.addEventListener('change', function() {
                 console.log('Coaches data received:', data);
                 coachLoading.style.display = 'none';
                 
-                // معالجة البيانات
+                // Process data
                 let coaches = [];
                 
                 if (Array.isArray(data)) {
@@ -740,26 +738,26 @@ activitySelect.addEventListener('change', function() {
             })
             .catch(error => {
                 console.error(`Error with URL ${urls[urlIndex]}:`, error);
-                // جرب المسار التالي
+                // Try next path
                 tryFetch(urlIndex + 1);
             });
     }
 
-    // بدأ المحاولة الأولى
+    // Start first attempt
     tryFetch(0);
 });
 
-// دالة لاستخدام الكوتشات المحلية كبديل
+// Function to use local coaches as alternative
 function handleFallbackCoaches(activityName) {
     console.log('Using fallback coaches');
     coachLoading.style.display = 'none';
     
-    // فلترة الكوتشات محلياً بناءً على النشاط
+    // Filter coaches locally based on activity
     const activityLower = activityName.toLowerCase();
     const filteredCoaches = allCoaches.filter(coach => {
         const position = coach.position ? coach.position.toLowerCase() : '';
         
-        // تحقق من وجود كلمات النشاط في الـ position
+        // Check if activity words exist in position
         const activityWords = activityLower.split(' ');
         for (const word of activityWords) {
             if (word.length > 3 && position.includes(word)) {
@@ -767,7 +765,7 @@ function handleFallbackCoaches(activityName) {
             }
         }
         
-        // تحقق من المرادفات
+        // Check for synonyms
         if (activityLower.includes('swim') && (position.includes('swim') || position.includes('aqua') || position.includes('water'))) {
             return true;
         }
@@ -786,7 +784,7 @@ function handleFallbackCoaches(activityName) {
     
     const coachesToShow = filteredCoaches.length > 0 ? filteredCoaches : allCoaches;
     
-    // تعبئة القائمة
+    // Fill the list
     coachesToShow.forEach(coach => {
         const option = document.createElement('option');
         option.value = coach.id;
@@ -797,7 +795,7 @@ function handleFallbackCoaches(activityName) {
         coachSelect.appendChild(option);
     });
     
-    // تحديث معلومات الفلترة
+    // Update filter info
     if (filteredCoaches.length > 0) {
         coachFilterInfo.innerHTML = `
             <i class="fas fa-check-circle"></i>
