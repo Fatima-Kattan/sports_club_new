@@ -553,7 +553,6 @@
             </div>
         </div>
 
-        <!-- Tabs for Different Views -->
         <div class="tabs-container">
             <div class="tabs-header">
                 <button class="tab-btn active" onclick="switchTab('all-participants')">
@@ -576,9 +575,7 @@
                     <div class="attendance-grid">
                         @php
                             $today = now()->format('Y-m-d');
-                            $todayAttendances = \App\Models\Attendee::whereHas('booking', function ($query) use (
-                                $activity,
-                            ) {
+                            $todayAttendances = Attendee::whereHas('booking', function ($query) use ($activity) {
                                 $query->where('activity_id', $activity->id);
                             })
                                 ->whereDate('created_at', $today)
@@ -850,7 +847,7 @@
 
         async function updateStatus(attendeeId, newStatus, buttonElement) {
             try {
-                // إضافة loading indicator
+                // Add loading indicator
                 const swalInstance = Swal.fire({
                     title: 'Updating Status...',
                     allowOutsideClick: false,
@@ -876,36 +873,36 @@
                 await swalInstance.close();
 
                 if (data.success) {
-                    // استخدم الوقت من الخادم بدلاً من الوقت المحلي
+                    // Use server time instead of local time
                     const serverTime = data.updated_time || new Date().toLocaleTimeString('en-US', {
                         hour: '2-digit',
                         minute: '2-digit',
                         hour12: true
                     });
 
-                    // تحديث كل العناصر ذات الصلة
-                    // 1. تحديث الوقت في قسم All Participants
+                    // Update all related elements
+                    // 1. Update time in All Participants section
                     const timeElement = document.getElementById(`time-${attendeeId}`);
                     if (timeElement) {
                         timeElement.textContent = serverTime;
                     }
 
-                    // 2. تحديث الوقت في قسم By Date
+                    // 2. Update time in By Date section
                     const dateTimeElement = document.getElementById(`date-time-${attendeeId}`);
                     if (dateTimeElement) {
                         dateTimeElement.textContent = serverTime;
                     }
 
-                    // 3. تحديث النص على الزر
+                    // 3. Update button text
                     if (buttonElement) {
                         const buttonText = newStatus ? 'Absent' : 'Present';
                         buttonElement.innerHTML = `<i class="fas fa-sync"></i> Change to ${buttonText}`;
-                        // تحديث event handler للزر
+                        // Update button event handler
                         buttonElement.setAttribute('onclick',
-                        `updateStatus(${attendeeId}, ${newStatus ? 0 : 1}, this)`);
+                            `updateStatus(${attendeeId}, ${newStatus ? 0 : 1}, this)`);
                     }
 
-                    // 4. تحديث الـ badges
+                    // 4. Update badges
                     const badge = document.getElementById(`badge-att-${attendeeId}`);
                     const dateBadge = document.getElementById(`date-badge-${attendeeId}`);
 
@@ -921,7 +918,7 @@
                         dateBadge.style.color = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
                     }
 
-                    // 5. تحديث الكاردات
+                    // 5. Update cards
                     const card = document.getElementById(`card-att-${attendeeId}`);
                     const dateCard = document.getElementById(`date-card-${attendeeId}`);
 
@@ -937,7 +934,7 @@
                         dateCard.style.borderLeftColor = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
                     }
 
-                    // 6. إظهار رسالة النجاح
+                    // 6. Show success message
                     Swal.fire({
                         icon: 'success',
                         title: 'Updated!',
@@ -948,12 +945,6 @@
                         color: 'var(--text-primary)',
                         iconColor: '#00ff88'
                     });
-
-                    // 7. لا تقم بعمل reload - كل شيء تم تحديثه ديناميكياً
-                    // إزالة هذا السطر
-                    // setTimeout(() => {
-                    //     window.location.reload();
-                    // }, 2000);
 
                 } else {
                     Swal.fire({

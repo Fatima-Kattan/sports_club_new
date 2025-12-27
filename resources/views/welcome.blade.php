@@ -271,7 +271,6 @@
         <div class="sports-categories">
             <button class="category-btn active" data-category="all">All Sports</button>
             @php
-                // تعريف التصنيفات
                 $categories = [
                     'strength' => 'Strength',
                     'aquatic' => 'Aquatic', 
@@ -291,23 +290,18 @@
             @foreach($activities as $activity)
                 @if($activity->is_active)
                     @php
-                        // تحديد الفئة بناءً على اسم النشاط
-                        $category = 'strength'; // قيمة افتراضية
+                        $category = 'strength';
                         
-                        // تحويل الاسم لحروف صغيرة للبحث
                         $activityName = strtolower(trim($activity->name));
                         
-                        // كلمات مفتاحية لكل فئة
                         $teamKeywords = ['basketball', 'soccer', 'football', 'volleyball', 'hockey', 'baseball', 'team'];
                         $combatKeywords = ['boxing', 'mma', 'judo', 'karate', 'wrestling', 'muay thai', 'combat', 'fighting'];
                         $aquaticKeywords = ['swim', 'dive', 'water', 'pool', 'aquatic'];
                         $cardioKeywords = ['cycle', 'run', 'yoga', 'pilates', 'aerobic', 'cardio', 'fitness'];
                         $strengthKeywords = ['weight', 'strength', 'power', 'muscle', 'bodybuilding', 'lift'];
                         
-                        // التحقق من الفئة
                         $detectedCategory = false;
                         
-                        // الفحص مع break عند الاكتشاف
                         foreach ($teamKeywords as $keyword) {
                             if (strpos($activityName, $keyword) !== false) {
                                 $category = 'team';
@@ -356,7 +350,6 @@
                             }
                         }
                         
-                        // تحديد الأيقونة بناءً على الفئة
                         $categoryIcons = [
                             'strength' => '🏋️‍♂️',
                             'aquatic'  => '🏊‍♂️',
@@ -367,7 +360,6 @@
                         
                         $icon = $categoryIcons[$category] ?? '🏋️‍♂️';
                         
-                        // مدة النشاط
                         $duration = '60-90 min';
                         if ($activity->facility) {
                             $facilityName = strtolower($activity->facility->name);
@@ -387,10 +379,10 @@
                         <div class="sport-image">
                             @if($activity->image && file_exists(public_path('images/activities/' . $activity->image)))
                                 <img src="{{ asset('images/activities/' . $activity->image) }}" 
-                                     alt="{{ $activity->name }}" loading="lazy">
+                                    alt="{{ $activity->name }}" loading="lazy">
                             @else
                                 <img src="https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                     alt="{{ $activity->name }}" loading="lazy">
+                                    alt="{{ $activity->name }}" loading="lazy">
                             @endif
                             <div class="sport-overlay">
                                 <span class="sport-icon">{{ $icon }}</span>
@@ -402,9 +394,6 @@
                                 {{ $activity->description ?: 'No description available.' }}
                             </p>
                             <div class="sport-features">
-                               {{--  @if($activity->facility && strtolower($activity->facility->name) !== 'gym')
-                                    <span class="feature">{{ $activity->facility->name }}</span>
-                                @endif --}}
                                 
                                 @if($activity->free_time)
                                     <span class="feature">Free Time</span>
@@ -458,10 +447,6 @@
     <div class="carousel-container">
         <button class="nav-btn prev">&#10094;</button>
         <div class="carousel-track">
-             
-            {{-- <div style="background-color: white  ">  {{ $coach->full_name }}</div> --}}
-            
-            
             @foreach($coaches as $coach)
             <div class="coach-card">
                 <div class="avatar">
@@ -473,16 +458,6 @@
                 </div>
             </div>            
             @endforeach
-
-            {{-- <div class="coach-card">
-                <div class="avatar">
-                    <img  src="{{ asset('images/employees/' . $coach->image) }}" alt="{{ $coach->full_name }}">
-                </div>
-                <div class="coach-details">
-                    <h3 class="coach-name">{{ $coach->full_name }}</h3>
-                    <p  class="coach-specialty">{{ $coach->specialization }}</p>
-                </div>
-            </div> --}}
         
         </div>
         <button class="nav-btn next">&#10095;</button>

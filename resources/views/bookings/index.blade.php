@@ -108,30 +108,33 @@
                                         </div>
                                     </div>
                                 </td>
-                               <td>
-    @if($booking->employee && $booking->employee->salary)
-        @php
-            $commission = $booking->employee->salary * 0.10;
-        @endphp
-        
-        <div class="payment-cell" style="
+                                <td>
+                                    @if ($booking->employee && $booking->employee->salary)
+                                        @php
+                                            $commission = $booking->employee->salary * 0.1;
+                                        @endphp
+
+                                        <div class="payment-cell"
+                                            style="
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
         ">
-            <!-- حالة الدفع مع السعر -->
-            <div style="
+                                            <!-- Payment status with price -->
+                                            <div
+                                                style="
                 display: flex;
                 align-items: center;
                 gap: 12px;
                 width: 100%;
                 justify-content: center;
             ">
-                @if ($booking->paid)
-                    <span class="status-badge status-paid" style="margin: 0;">
-                        <i class="fas fa-check-circle"></i> PAID
-                        <div style="
+                                                @if ($booking->paid)
+                                                    <span class="status-badge status-paid" style="margin: 0;">
+                                                        <i class="fas fa-check-circle"></i> PAID
+                                                        <div
+                                                            style="
                     font-weight: 800;
                     font-size: 18px;
                     color: {{ $booking->paid ? '#00ff88' : '#ef4444' }};
@@ -139,41 +142,29 @@
                         border:none;
                     {{ $booking->paid ? 'rgba(0, 255, 136, 0.2)' : 'rgba(239, 68, 68, 0.2)' }};
                 ">
-                    {{ number_format($commission, 2) }}$ 
-                </div>
-                    </span>
-                @else
-                    <span class="status-badge status-unpaid" style="margin: 0;">
-                        <i class="fas fa-times-circle"></i> UNPAID
-                    </span>
-                @endif
-                
-                {{-- <div style="
-                    font-weight: 800;
-                    font-size: 18px;
-                    color: {{ $booking->paid ? '#00ff88' : '#ef4444' }};
-                    padding: 8px 16px;
-                    background: {{ $booking->paid ? 'rgba(0, 255, 136, 0.1)' : 'rgba(239, 68, 68, 0.1)' }};
-                    border-radius: 10px;
-                    border: 1px solid {{ $booking->paid ? 'rgba(0, 255, 136, 0.2)' : 'rgba(239, 68, 68, 0.2)' }};
-                ">
-                    {{ number_format($commission, 2)$ }} 
-                </div> --}}
-            </div>
-        </div>
-    @else
-        <!-- إذا لم يكن هناك راتب -->
-        @if ($booking->paid)
-            <span class="status-badge status-paid">
-                <i class="fas fa-check-circle"></i> PAID
-            </span>
-        @else
-            <span class="status-badge status-unpaid">
-                <i class="fas fa-times-circle"></i> UNPAID
-            </span>
-        @endif
-    @endif
-</td>
+                                                            {{ number_format($commission, 2) }}$
+                                                        </div>
+                                                    </span>
+                                                @else
+                                                    <span class="status-badge status-unpaid" style="margin: 0;">
+                                                        <i class="fas fa-times-circle"></i> UNPAID
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @else
+                                        <!-- If there is no salary -->
+                                        @if ($booking->paid)
+                                            <span class="status-badge status-paid">
+                                                <i class="fas fa-check-circle"></i> PAID
+                                            </span>
+                                        @else
+                                            <span class="status-badge status-unpaid">
+                                                <i class="fas fa-times-circle"></i> UNPAID
+                                            </span>
+                                        @endif
+                                    @endif
+                                </td>
                                 <td class="date-cell">
                                     <div class="date-day">{{ $booking->created_at->format('d') }}</div>
                                     <div class="date-month">{{ $booking->created_at->format('M Y') }}</div>
@@ -282,8 +273,7 @@
         </div>
     </footer>
 
-    <script  src="{{ asset('js/booking.js')}}" >
-    </script>
+    <script src="{{ asset('js/booking.js') }}"></script>
 </body>
 
 </html>

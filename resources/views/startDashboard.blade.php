@@ -240,7 +240,6 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            // استخدم ID محدد بدل querySelector العام
             const activitiesCard = document.getElementById('activities-card');
 
             if (activitiesCard) {
@@ -249,7 +248,6 @@
                 if (activitiesCount) {
                     const formattedNumber = new Intl.NumberFormat('en-US').format(activitiesCount);
 
-                    // استخدم ID محدد للعنصر الداخلي أيضاً
                     const activeTasksElement = document.getElementById('active-tasks');
                     if (activeTasksElement) {
                         activeTasksElement.textContent = formattedNumber;
@@ -257,8 +255,6 @@
                 }
             }
         });
-
-        /////
     </script>
 </body>
 
