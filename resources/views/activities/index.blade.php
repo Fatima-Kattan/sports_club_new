@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<body>
+    
+<body style=" background:  linear-gradient(135deg, #0f172a, #1e293b);">
     <div class="container">
         <!-- ترويسة الصفحة -->
         <div class="page-header">
@@ -80,7 +81,7 @@
         </div>
         <!-- شريط التحكم -->
         <div class="table-controls">
-            
+
 
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
@@ -190,6 +191,14 @@
                                             {{ $activity->free_time ? 'Free Time' : 'Scheduled' }}
                                         </span>
                                     </div>
+                                    @if ($activity->items->count() > 0)
+                                    <div class="detail-item">
+                                        <span class="detail-label">Items Count</span>
+                                        <span class="detail-value">
+                                            {{ $activity->items->count() }}
+                                        </span>
+                                    </div>
+                                    @endif
                                 </div>
 
                                 <div class="card-actions">
@@ -197,6 +206,10 @@
                                         class="card-btn card-btn-view">
                                         <i class="fas fa-eye"></i>
                                         View
+                                    </a>
+                                    <a href="{{ route('items.index',['activity' => $activity->id]) }}"class="card-btn card-btn-add">
+                                        <i class="fas fa-plus"></i>
+                                        Items
                                     </a>
                                     @if (Auth::check() && Auth::user()->is_admin)
                                         <a href="{{ route('activities.edit', $activity) }}"

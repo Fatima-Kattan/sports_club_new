@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $coaches = DB::table('employees')
         ->where('role', 'coach')
-        ->whereNull('deleted_at') 
+        ->whereNull('deleted_at')
         ->get();
 
     return view('welcome', compact('coaches'));
@@ -69,8 +69,17 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-// ==================== Item Routes ==================== //
+// ==================== Item_Activity Routes ==================== //
+Route::get('/activities/{activity}/items', [ItemController::class, 'index'])
+    ->name('items.index');
+Route::post('/activities/{activity}/items', [ActivityController::class, 'attachItems'])
+    ->name('activities.attachItems');
+Route::delete('/activities/{activity}/items/{item}', [ActivityController::class, 'detachItem'])
+    ->name('activities.items.detach');
 
+Route::post('/activities/{activity}/items/{item}/update', [ActivityController::class, 'updateItemQuantity'])
+    ->name('activities.items.update');
+// ==================== Item Routes ==================== //
 Route::prefix('categories/{category}')->group(function () {
     Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
     Route::post('/items', [ItemController::class, 'store'])->name('items.store');

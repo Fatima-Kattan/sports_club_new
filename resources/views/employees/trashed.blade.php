@@ -205,7 +205,7 @@
     </style>
 </head>
 
-<body>
+<body style="background:  linear-gradient(135deg, #0f172a, #1e293b);" >
     <div class="container">
         <h1 class="deleted-employee">Deleted Employees </h1>
 

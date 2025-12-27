@@ -576,7 +576,7 @@
     </style>
 </head>
 
-<body>
+<body style="background:  linear-gradient(135deg, #0f172a, #1e293b);" >
 
     <div class="create-employee-container" >
         <div class="form-container">
@@ -803,7 +803,7 @@
                         </div>
                     </div>
 
-                    <div class="form-grid">
+                    {{-- <div class="form-grid">
                         <div class="form-group">
                             <div class="toggle-container">
                                 <div class="toggle-card">
@@ -864,7 +864,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="form-section">
