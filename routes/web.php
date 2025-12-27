@@ -126,36 +126,6 @@ Route::get('/attendees/{attendee}/edit', [AttendeeController::class, 'edit'])->n
 Route::put('/attendees/{attendee}', [AttendeeController::class, 'update'])->name('attendees.update');
 Route::delete('/attendees/{attendee}', [AttendeeController::class, 'destroy'])->name('attendees.destroy');
 
-// // روت إضافي لتحديث الحالة عبر AJAX
-// Route::post('/attendees/{attendee}/update-status', [AttendeeController::class, 'updateStatus'])
-//     ->name('attendees.update-status');
-
-//     // Route باستخدام GET
-// Route::get('/attendees/get-activity-users/{activityId}', [AttendeeController::class, 'getActivityUsers'])
-//     ->name('attendees.get-activity-users');
-
-// // أو Route باستخدام POST
-// Route::post('/attendees/get-activity-users', [AttendeeController::class, 'getActivityUsersPost'])
-//     ->name('attendees.get-activity-users-post');
-//   // تحقق من وجود هذا الراوت في web.php
-// Route::post('/attendees/get-activity-users', [AttendeeController::class, 'getActivityUsers'])->name('attendees.get-activity-users');
-
-// // Route لحفظ الحضور (موجود مسبقًا)
-// Route::post('/attendees', [AttendeeController::class, 'store'])
-//     ->name('attendees.store');
-// // روت للبحث عن المستخدمين
-// Route::post('/attendees/search-users', [AttendeeController::class, 'searchUsers'])
-//     ->name('attendees.search-users');
-
-//     // Route باستخدام POST
-// Route::post('/attendees/get-activity-users', [AttendeeController::class, 'getActivityUsers'])
-//     ->name('attendees.get-activity-users');
-// // روت للإحصائيات
-// Route::get('/attendees/statistics', [AttendeeController::class, 'statistics'])
-//     ->name('attendees.statistics');
-// Route::post('/attendees/search-users', [AttendeeController::class, 'searchUsers'])->name('attendees.search-users');
-
-
 Route::resource('attendees', AttendeeController::class)->except(['show', 'edit', 'update', 'destroy']);
 // أو يمكنك تحديد الروابط بشكل منفصل:
 Route::get('/attendees/create', [AttendeeController::class, 'create'])->name('attendees.create');

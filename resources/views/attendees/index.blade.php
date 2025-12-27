@@ -72,7 +72,7 @@
 
         .stats-summary {
             display: flex;
-            gap: 40px;
+            gap: 110px;
             justify-content: center;
         }
 
@@ -134,7 +134,7 @@
         }
 
         .search-input {
-            width: 100%;
+            width: 90%;
             padding: 16px 25px 16px 55px;
             background: #121a2e;
             border: 2px solid rgba(5, 193, 247, 0.2);
@@ -189,7 +189,7 @@
 
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-            color: white;
+            color: #0f172a;
             border: 1px solid rgba(5, 193, 247, 0.3);
         }
 
@@ -213,7 +213,7 @@
         .table-container {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 30px;
+            padding: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border-color);
         }
@@ -242,6 +242,8 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #1e293b;
+            border: 1px solid #60bdd852 !important;
         }
 
         /* رأس الجدول الجديد */
@@ -284,7 +286,7 @@
 
         /* خلايا الجدول الجديدة */
         .attendance-table td {
-            padding: 25px 20px;
+            padding: 20px 15px;
             text-align: center;
             color: var(--text-primary);
             border-bottom: 1px solid rgba(5, 193, 247, 0.08);

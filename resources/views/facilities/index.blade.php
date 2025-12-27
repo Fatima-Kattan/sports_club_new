@@ -22,8 +22,8 @@
 
         <div class="toolbar">
             <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="search for facility"
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="search facility by name and capacity..."
                     value="{{ request('search') }}">
             </div>
 
