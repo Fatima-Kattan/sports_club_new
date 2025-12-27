@@ -31,103 +31,35 @@ class EmployeeController extends Controller
     public function create()
     {
         $this->authorize('manageEmployees', Employee::class);
-        // جلب المستخدم الحالي
         $user = Auth::user();
-        // البحث عن الموظف باستخدام الإيميل
         $employee = Employee::where('email', $user->email)->first();
         if ($employee) {
-            // إذا وجدنا موظف → نمرره مع المستخدم
             $this->authorize('manageEmployees', $employee);
         } else {
-            // إذا ما وجدنا موظف → نمرر فقط المستخدم (كشخص مسجل دخول)
             $this->authorize('manageEmployees', Employee::class);
         }
 
         $managers = Employee::whereIn('position', ['manager', 'hr'])->get();
-        // إذا قاعدة البيانات فاضية
         if ($managers->isEmpty()) {
-            $managers = collect(); // collection فارغة
+            $managers = collect();  
         }
-        return view('employees.create', compact('managers'));  // ✅ صح!
+        return view('employees.create', compact('managers')); 
 
     }
 
-    // public function store(Request $request)
-    // {
-    //     $this->authorize('manageEmployees', Employee::class);
-
-
-    //     // جلب المستخدم الحالي
-    //     $user = Auth::user();
-
-    //     // البحث عن الموظف باستخدام الإيميل
-    //     $employee = Employee::where('email', $user->email)->first();
-
-    //     if ($employee) {
-    //         // إذا وجدنا موظف → نمرره مع المستخدم
-    //         $this->authorize('manageEmployees', $employee);
-    //     } else {
-    //         // إذا ما وجدنا موظف → نمرر فقط المستخدم (كشخص مسجل دخول)
-    //         $this->authorize('manageEmployees', Employee::class);
-    //     }
-
-    //     $validated = $request->validate([
-    //         'full_name' => 'required|string|max:255',
-    //         'mgr_id' => 'nullable|exists:employees,id',
-    //         'salary' => 'required|numeric|min:0',
-    //         'email' => 'required|email|unique:employees',
-    //         'position' => 'required|string|max:255',
-    //         'phone_number' => 'required|string|max:20|unique:employees',
-    //         'specialization' => 'nullable|string|max:255',
-    //         'working_hours_start' => 'required|date_format:H:i',
-    //         'working_hours_end' => 'required|date_format:H:i|after:working_hours_start',
-    //         'years_of_experience' => 'required|integer|min:0',
-    //         'role' => 'required|in:coach,employee',
-    //         'hire_date' => 'required|date',
-    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-    //     ]);
-    //     $imageName = null;
-    //     if ($request->hasFile('image')) {
-    //         $file = $request->file('image');
-    //         // اسم الصورة: الاسم الأصلي + الوقت + الامتداد
-    //         $imageName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)
-    //             . '-' . time() . '.' . $file->getClientOriginalExtension();
-
-    //         // نقل الصورة إلى مجلد public/images/posts
-    //         $file->move(public_path('/images/posts'), $imageName);
-    //     }
-
-
-    //     // if ($request->hasFile('image')) {
-    //     //     $imagePath = $request->file('image')->store('employees', 'public');
-    //     //     $validated['image'] = $imagePath;
-    //     // }
-
-    //     $employee = Employee::create($validated);
-
-    //     return redirect()->route('employees.index')
-    //         ->with('success', 'Employee added successfully!');
-    // }
-
     public function store(Request $request)
     {
-        // التحقق من الصلاحيات
         $this->authorize('manageEmployees', Employee::class);
-        // جلب المستخدم الحالي
         $user = Auth::user();
 
-        // البحث عن الموظف باستخدام الإيميل
         $employee = Employee::where('email', $user->email)->first();
 
         if ($employee) {
-            // إذا وجدنا موظف → نمرره مع المستخدم
             $this->authorize('manageEmployees', $employee);
         } else {
-            // إذا ما وجدنا موظف → نمرر فقط المستخدم (كشخص مسجل دخول)
             $this->authorize('manageEmployees', Employee::class);
         }
 
-        // التحقق من البيانات
         $validated = $request->validate([
             // حقول الموظف
             'full_name'            => 'required|string|max:255',
@@ -151,26 +83,21 @@ class EmployeeController extends Controller
             'gender'               => 'nullable|in:male,female',
         ]);
 
-        // رفع الصورة وتخزين اسمها
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $imageName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)
-                . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            
 
-            // رفع الصورة لمجلد الموظفين
             $file->move(public_path('/images/employees'), $imageName);
 
-            // نسخ نفس الملف لمجلد المستخدمين
             File::copy(
                 public_path('/images/employees/' . $imageName),
                 public_path('/images/users/' . $imageName)
             );
 
-            // إضافة اسم الصورة للبيانات
-            $validated['image'] = $imageName;
+            $validated['image'] =  'images/users/' . $imageName;
         }
 
-        // إنشاء الموظف
         DB::transaction(function () use ($validated) {
             // إنشاء الموظف
             $employeeData = collect($validated)->only([
@@ -208,8 +135,6 @@ class EmployeeController extends Controller
             // تعبئة الحقول الخاصة
             $userData['email_verified_at'] = now();
             $userData['remember_token'] = Str::random(60);
-
-
             User::create($userData);
         });
 
@@ -272,23 +197,23 @@ class EmployeeController extends Controller
             'gender'               => 'nullable|in:male,female',
         ]);
         if ($request->hasFile('image')) {
-            if ($employee->image && File::exists(public_path('/images/employees/' . $employee->image))) {
-                File::delete(public_path('/images/employees/' . $employee->image));
+            if ($employee->image && File::exists(public_path( $employee->image))) {
+                File::delete(public_path( $employee->image));
             }
-            if ($employee->image && File::exists(public_path('/images/users/' . $employee->image))) {
-                File::delete(public_path('/images/users/' . $employee->image));
+            if ($employee->image && File::exists(public_path( $employee->image))) {
+                File::delete(public_path( $employee->image));
             }
         
             $file = $request->file('image');
-            $imageName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)
-                . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            
             $file->move(public_path('/images/employees'), $imageName);
             File::copy(
                 public_path('/images/employees/' . $imageName),
                 public_path('/images/users/' . $imageName)
             );
 
-            $validated['image'] = $imageName;
+            $validated['image'] =  'images/users/' . $imageName;
         } else {
             $validated['image'] = $employee->image;
         }
@@ -342,11 +267,10 @@ class EmployeeController extends Controller
         DB::transaction(function () use ($employee) {
             $user = User::where('email', $employee->email)->first();
             if ($user) {
-                if ($user->image && File::exists(public_path('/images/users/' . $user->image))) {
-                    File::delete(public_path('/images/users/' . $user->image));
+                if ($user->image && File::exists(public_path($user->image))) {
+                    File::delete(public_path($user->image));
                 }
-                $user->delete(); 
-            
+                $user->delete();
             }
             $employee->delete(); 
         });
@@ -385,8 +309,8 @@ class EmployeeController extends Controller
         $employee = Employee::onlyTrashed()->findOrFail($id);
         $this->authorize('manageEmployees', $employee);
 
-        if ($employee->image && File::exists(public_path('images/employees/' . $employee->image))) {
-            File::delete(public_path('images/employees/' . $employee->image));
+        if ($employee->image && File::exists(public_path($employee->image))) {
+            File::delete(public_path($employee->image));
         }
 
         $employee->forceDelete();

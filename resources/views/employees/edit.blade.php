@@ -651,7 +651,7 @@
                 <div class="current-image-container">
                     <div class="current-image-title">Current Profile Image</div>
 
-                    <img src="{{ asset('images/employees/' . $employee->image) }}" alt="{{ $employee->full_name }}"
+                    <img src="{{ asset($employee->image) }}" alt="{{ $employee->full_name }}"
                         class="current-image">
                     <div class="image-note">Upload a new image below to replace this one</div>
                 </div>
