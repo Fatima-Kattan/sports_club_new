@@ -17,7 +17,6 @@
     
 <body style="background:  linear-gradient(135deg, #0f172a, #1e293b);">
     <div class="form-container">
-        <!-- ترويسة الصفحة -->
         <div class="form-header">
             <h1 class="form-title">
                 <i class="fas fa-edit"></i>
@@ -28,7 +27,6 @@
             </p>
         </div>
 
-        <!-- معاينة النشاط الحالي -->
         <div class="current-activity-preview">
             <div class="preview-card">
                 <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
@@ -58,13 +56,11 @@
             </div>
         </div>
 
-        <!-- نموذج التعديل -->
         <form action="{{ route('activities.update', $activity) }}" method="POST" enctype="multipart/form-data"
             id="activityForm" class="form-card">
             @csrf
             @method('PUT')
 
-            <!-- شريط التقدم -->
             <div class="form-progress">
                 <div class="progress-step active">
                     <div class="step-number">1</div>
@@ -80,7 +76,6 @@
                 </div>
             </div>
 
-            <!-- رسائل الخطأ -->
             @if ($errors->any())
                 <div class="alert alert-error">
                     <i class="fas fa-exclamation-triangle"></i>
@@ -95,9 +90,7 @@
                 </div>
             @endif
 
-            <!-- شبكة الحقول -->
             <div class="form-grid">
-                <!-- الاسم -->
                 <div class="form-group">
                     <label for="name" class="form-label">
                         Activity Name <span class="required">*</span>
@@ -107,7 +100,6 @@
                         required autofocus>
                 </div>
 
-                <!-- المنشأة -->
                 <div class="form-group">
                     <label for="facility_id" class="form-label">
                         Facility <span class="required">*</span>
@@ -124,7 +116,6 @@
                 </div>
             </div>
 
-            <!-- الوصف -->
             <div class="form-group full-width">
                 <label for="description" class="form-label">
                     Description
@@ -137,9 +128,7 @@
                 </div>
             </div>
 
-            <!-- الصف الثاني -->
             <div class="form-grid">
-                <!-- المستوى -->
                 <div class="form-group">
                     <label for="level" class="form-label">Difficulty Level</label>
                     <select id="level" name="level" class="form-select" required>
@@ -154,11 +143,9 @@
                     </select>
                 </div>
 
-                <!-- صورة النشاط -->
                 <div class="form-group">
                     <label class="form-label">Activity Image</label>
 
-                    <!-- الصورة الحالية -->
                     <div class="current-image-section">
                         @if ($activity->image)
                             <div class="current-image-info">
@@ -171,7 +158,6 @@
                         @endif
                     </div>
 
-                    <!-- رفع صورة جديدة -->
                     <div class="file-upload">
                         <input type="file" id="image" name="image" accept="image/*">
                         <div class="file-upload-icon">
@@ -185,7 +171,6 @@
                         </div>
                     </div>
 
-                    <!-- معاينة الصورة الجديدة -->
                     <div id="imagePreview" class="image-preview">
                         <div class="preview-container">
                             <img id="previewImage" class="preview-image" alt="New Image Preview">
@@ -200,9 +185,7 @@
                 </div>
             </div>
 
-            <!-- خيارات مفاتيح الراديو -->
             <div class="form-row">
-                <!-- وقت الفراغ -->
                 <div class="form-group">
                     <label class="form-label">
                         Free Time Activity <span class="required">*</span>
@@ -223,7 +206,6 @@
                     </div>
                 </div>
 
-                <!-- الحالة -->
                 <div class="form-group">
                     <label class="form-label">
                         Activity Status <span class="required">*</span>
@@ -247,7 +229,6 @@
 
 
 
-            <!-- أزرار النموذج -->
             <div class="form-actions">
                 <div class="left-actions">
                     <a href="{{ route('activities.show', $activity) }}" class="form-btn btn-view">
@@ -272,7 +253,6 @@
             </div>
         </form>
 
-        <!-- تحميل -->
         <div class="form-loading" id="loadingSpinner">
             <div class="loading-spinner"></div>
         </div>
@@ -282,7 +262,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Edit page loaded');
 
-            // عداد الأحرف
             const descriptionTextarea = document.getElementById('description');
             const charCount = document.getElementById('charCount');
 
@@ -297,20 +276,17 @@
                 });
             }
 
-            // معاينة الصورة الجديدة
             const imageInput = document.getElementById('image');
             const previewDiv = document.getElementById('imagePreview');
             const previewImg = document.getElementById('previewImage');
 
             if (imageInput && previewDiv && previewImg) {
-                // إخفاء معاينة الصورة الجديدة افتراضيًا
                 previewDiv.style.display = 'none';
 
                 imageInput.addEventListener('change', function(e) {
                     const file = e.target.files[0];
 
                     if (file) {
-                        // التحقق من نوع الملف
                         const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
                         if (!validTypes.includes(file.type)) {
                             alert('Please select a valid image file (JPG, PNG, or WebP).');
@@ -318,7 +294,6 @@
                             return;
                         }
 
-                        // التحقق من حجم الملف (2MB)
                         const maxSize = 2 * 1024 * 1024;
                         if (file.size > maxSize) {
                             alert('Image size should not exceed 2MB.');
@@ -338,7 +313,6 @@
                 });
             }
 
-            // زر إزالة معاينة الصورة
             const removeImageBtn = document.querySelector('.remove-image');
             if (removeImageBtn) {
                 removeImageBtn.addEventListener('click', function() {
@@ -348,7 +322,6 @@
                 });
             }
 
-            // تحذير قبل مغادرة الصفحة مع تغييرات غير محفوظة
             const form = document.getElementById('activityForm');
             let formChanged = false;
 
@@ -372,12 +345,10 @@
                     });
                 });
 
-                // إعادة تعيين عند حفظ
                 form.addEventListener('submit', function() {
                     formChanged = false;
                 });
 
-                // زر المسح
                 const resetBtn = form.querySelector('button[type="reset"]');
                 if (resetBtn) {
                     resetBtn.addEventListener('click', function(e) {
@@ -387,7 +358,6 @@
                                 return false;
                             }
 
-                            // إخفاء معاينة الصورة الجديدة
                             if (previewDiv) previewDiv.style.display = 'none';
                             if (previewImg) previewImg.src = '';
                             if (imageInput) imageInput.value = '';
@@ -397,7 +367,6 @@
                     });
                 }
 
-                // تحذير عند مغادرة الصفحة
                 window.addEventListener('beforeunload', function(e) {
                     if (formChanged) {
                         e.preventDefault();

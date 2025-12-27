@@ -16,14 +16,10 @@
 </head>
 
 <body style="background:  linear-gradient(135deg, #0f172a, #1e293b);" >
-    <!-- حاوية داكنة -->
     <div class="dark-container">
-        <!-- الشريط العلوي -->
         <div class="dark-header">
-            <!-- خلفية متحركة -->
             <div class="header-bg-animation"></div>
 
-            <!-- زر العودة مع تأثير -->
             <a href="{{ route('activities.index') }}" class="dark-back glow-on-hover">
                 <div class="back-icon-wrapper">
                     <i class="fas fa-arrow-left"></i>
@@ -33,7 +29,6 @@
                 <div class="back-underline"></div>
             </a>
 
-            <!-- العنوان مع تأثيرات -->
             <div class="dark-title">
                 <div class="title-wrapper">
                     <h1 class="title-text">
@@ -48,7 +43,6 @@
                 </div>
             </div>
 
-            <!-- الأزرار مع تأثيرات خاصة -->
             <div class="dark-actions">
                 @if (Auth::check() && Auth::user()->is_admin)
                     <div class="dark-actions">
@@ -63,7 +57,6 @@
             </div>
         </div>
 
-        <!-- بطاقة الصورة -->
         <div class="dark-image-card">
             @if ($activity->image)
                 <img src="{{ asset('images/activities/' . $activity->image) }}" alt="{{ $activity->name }}"
@@ -77,7 +70,6 @@
                 </div>
             @endif
 
-            <!-- شارات الحالة -->
             <div class="dark-badges">
                 <div class="dark-badge {{ $activity->is_active ? 'dark-badge-success' : 'dark-badge-danger' }}">
                     <span class="dark-dot"></span>
@@ -94,9 +86,7 @@
             </div>
         </div>
 
-        <!-- بطاقات المعلومات -->
         <div class="dark-cards-grid">
-            <!-- بطاقة المعلومات الأساسية -->
             <div class="dark-card">
                 <div class="dark-card-header">
                     <div class="dark-card-icon">
@@ -133,7 +123,6 @@
                 </div>
             </div>
 
-            <!-- بطاقة التواريخ -->
             <div class="dark-card">
                 <div class="dark-card-header">
                     <div class="dark-card-icon">
@@ -161,7 +150,6 @@
             </div>
         </div>
 
-        <!-- بطاقة الوصف -->
         <div class="dark-card full-width">
             <div class="dark-card-header">
                 <div class="dark-card-icon">
@@ -183,7 +171,6 @@
             </div>
         </div>
 
-        <!-- بطاقة العناصر -->
         @if ($items->count() > 0)
             <div class="dark-card full-width">
                 <div class="dark-card-header">
@@ -196,9 +183,7 @@
                     <div class="mini-items-grid">
                         @foreach ($items as $item)
                             <div class="mini-item-card" data-item-id="{{ $item->id }}">
-                                <!-- رأس البطاقة مع الصورة والأزرار -->
                                 <div class="mini-item-header">
-                                    <!-- الصورة -->
                                     <div class="mini-item-img">
                                         @if ($item->image)
                                             <img src="{{ asset('images/items/' . $item->image) }}"
@@ -210,7 +195,6 @@
                                         @endif
                                     </div>
 
-                                    <!-- الأزرار الصغيرة -->
                                     <div class="mini-item-actions">
                                         <button class="mini-btn minus-btn" onclick="decreaseQuantity(this)">
                                             <i class="fas fa-minus"></i>
@@ -227,7 +211,6 @@
                                             </button>
                                         </form>
 
-                                        <!-- زر الحذف مع الفورم -->
                                         <form
                                             action="{{ route('activities.items.detach', [$activity->id, $item->id]) }}"
                                             method="POST" class="delete-form"
@@ -241,11 +224,9 @@
                                     </div>
                                 </div>
 
-                                <!-- معلومات العنصر -->
                                 <div class="mini-item-body">
                                     <h5 class="mini-item-name">{{ $item->name }}</h5>
 
-                                    <!-- الكمية -->
                                     <div class="mini-quantity">
                                         <span class="mini-qty-number">{{ $item->pivot->quantity }}</span>
                                         <span class="mini-qty-label">units</span>
@@ -255,7 +236,6 @@
                         @endforeach
                     </div>
 
-                    <!-- زر إضافة المزيد من العناصر -->
                     <div class="card-actions">
                         <a href="{{ route('items.index', ['activity' => $activity->id]) }}"
                             class="card-btn card-btn-add">

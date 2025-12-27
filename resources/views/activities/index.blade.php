@@ -16,7 +16,6 @@
     
 <body style=" background:  linear-gradient(135deg, #0f172a, #1e293b);">
     <div class="container">
-        <!-- ترويسة الصفحة -->
         <div class="page-header">
             <h1 class="page-title">
                 <i class="fas fa-running"></i>
@@ -27,7 +26,6 @@
             </p>
         </div>
 
-        <!-- إحصائيات -->
         @php
             $totalActivities = $activities->total();
             $activeActivities = App\Models\Activity::where('is_active', true)->count();
@@ -79,7 +77,6 @@
                 </div>
             </div>
         </div>
-        <!-- شريط التحكم -->
         <div class="table-controls">
 
 
@@ -99,7 +96,6 @@
             </div>
         </div>
 
-        <!-- رسائل التنبيه -->
         @if (session('success'))
             <div class="alert alert-success">
                 <i class="fas fa-check-circle"></i>
@@ -114,9 +110,7 @@
             </div>
         @endif
 
-        <!-- حاوية الأنشطة الرئيسية -->
         <div id="activitiesMainContainer">
-            <!-- شبكة الأنشطة -->
             @if ($activities->count() > 0)
                 <div class="activities-grid" id="activitiesContainer">
                     @foreach ($activities as $index => $activity)
@@ -230,10 +224,8 @@
                     @endforeach
                 </div>
 
-                <!-- التصفح -->
                 @if ($activities->hasPages())
                     <div class="pagination" id="paginationContainer">
-                        {{-- Previous Page --}}
                         @if ($activities->onFirstPage())
                             <span class="page-btn disabled">
                                 <i class="fas fa-chevron-left"></i>
@@ -244,7 +236,6 @@
                             </a>
                         @endif
 
-                        {{-- Page Numbers --}}
                         @php
                             $current = $activities->currentPage();
                             $last = $activities->lastPage();
@@ -273,7 +264,6 @@
                             <a href="{{ $activities->url($last) }}" class="page-btn">{{ $last }}</a>
                         @endif
 
-                        {{-- Next Page --}}
                         @if ($activities->hasMorePages())
                             <a href="{{ $activities->nextPageUrl() }}" class="page-btn">
                                 <i class="fas fa-chevron-right"></i>
@@ -286,7 +276,6 @@
                     </div>
                 @endif
             @else
-                <!-- حالة عدم وجود بيانات (الرسالة الأصلية) -->
                 <div class="empty-state">
                     <div class="empty-icon">
                         <i class="fas fa-dumbbell"></i>
@@ -323,12 +312,10 @@
                 </div>
             @endif
 
-            <!-- رسالة البحث الفوري (ستظهر عند عدم العثور على نتائج) -->
             <div id="liveSearchMessage" style="display: none;"></div>
         </div>
     </div>
 
-    <!-- نافذة تأكيد الحذف -->
     <div class="modal-overlay" id="deleteModal">
         <div class="modal-content">
             <div class="modal-icon">

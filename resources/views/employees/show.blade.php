@@ -10,41 +10,34 @@
     <title>Fitness Club - {{ $employee->full_name }}</title>
     <style>
         .deleted-employee {
-            /* النص */
             font-size: 2.75rem;
             font-weight: 800;
             color: #dc2626;
             text-align: center;
 
-            /* التخطيط */
             margin: 3rem 0;
             padding: 2rem;
             position: relative;
 
-            /* التأثيرات */
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-family: 'Segoe UI', system-ui, sans-serif;
 
-            /* خلفية */
             background: linear-gradient(135deg,
                     rgba(220, 38, 38, 0.1) 0%,
                     rgba(185, 28, 28, 0.05) 100%);
             border-radius: 16px;
             border: 2px solid rgba(220, 38, 38, 0.3);
 
-            /* تأثير النص المحذوف */
             text-decoration: line-through;
             text-decoration-color: #ef4444;
             text-decoration-thickness: 3px;
 
-            /* ظل للنص */
             text-shadow:
                 0 2px 4px rgba(0, 0, 0, 0.1),
                 0 4px 8px rgba(220, 38, 38, 0.15);
         }
 
-        /* خلفية خطوط متقطعة */
         .deleted-employee::before {
             content: '';
             position: absolute;
@@ -61,7 +54,6 @@
             pointer-events: none;
         }
 
-        /* خط ساطع تحته */
         .deleted-employee::after {
             content: '';
             position: absolute;
@@ -78,7 +70,6 @@
             box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
         }
 
-        /* علامة مائية خلفية */
         .deleted-employee {
             position: relative;
             overflow: hidden;
@@ -99,7 +90,6 @@
             pointer-events: none;
         }
 
-        /* تأثير اهتزاز خفيف */
         @keyframes shakeDeleted {
 
             0%,
@@ -120,7 +110,6 @@
             animation: shakeDeleted 0.5s ease-in-out 0.3s;
         }
 
-        /* تأثير وميض للخط */
         @keyframes blinkLine {
 
             0%,
@@ -147,7 +136,6 @@
                             Deleted Employee </h1>
                         @endif
                         <h1>
-        <!-- الهيدر مع صورة الموظف -->
         <div class="employee-header">
             <div class="header-content">
                 @if ($employee->image)
@@ -196,9 +184,7 @@
             </div>
         </div>
 
-        <!-- المحتوى الرئيسي -->
         <div class="employee-content">
-            <!-- القسم الأول: المعلومات الأساسية -->
             <div class="info-section">
                 <h3 class="section-title">
                     <svg class="info-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -255,7 +241,6 @@
                 </div>
             </div>
 
-            <!-- القسم الثاني: معلومات الراتب -->
             <div class="info-section">
                 <h3 class="section-title">
                     <svg class="info-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -291,7 +276,6 @@
                 </div>
             </div>
 
-            <!-- القسم الثالث: ساعات العمل -->
             <div class="info-section">
                 <h3 class="section-title">
                     <svg class="info-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -323,7 +307,6 @@
                 </div>
             </div>
 
-            <!-- القسم الرابع: المدير -->
             @if ($employee->manager)
                 <div class="info-section">
                     <h3 class="section-title">
@@ -358,7 +341,6 @@
                 </div>
             @endif
 
-            <!-- القسم الخامس: معلومات التواصل -->
             <div class="info-section">
                 <h3 class="section-title">
                     <svg class="info-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -397,9 +379,7 @@
     </div>
 
     <script>
-        // إضافة تفاعلات بسيطة
         document.addEventListener('DOMContentLoaded', function() {
-            // تأثير عند تحميل الصفحة
             const sections = document.querySelectorAll('.info-section');
             sections.forEach((section, index) => {
                 section.style.animationDelay = `${index * 0.1}s`;

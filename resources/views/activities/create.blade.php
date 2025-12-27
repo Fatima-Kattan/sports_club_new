@@ -15,7 +15,6 @@
 </head>
 <body style="background:  linear-gradient(135deg, #0f172a, #1e293b);">
     <div class="form-container">
-        <!-- ترويسة الصفحة -->
         <div class="form-header">
             <h1 class="form-title">
                 <i class="fas fa-plus-circle"></i>
@@ -26,11 +25,9 @@
             </p>
         </div>
 
-        <!-- نموذج الإنشاء -->
         <form action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data" id="activityForm" class="form-card">
             @csrf
             
-            <!-- شريط التقدم (اختياري للصفحات متعددة الخطوات) -->
             <div class="form-progress">
                 <div class="progress-step active">
                     <div class="step-number">1</div>
@@ -46,9 +43,7 @@
                 </div>
             </div>  
 
-            <!-- شبكة الحقول -->
             <div class="form-grid">
-                <!-- الاسم -->
                 <div class="form-group">
                     <label for="name" class="form-label">
                         Activity Name <span class="required">*</span>
@@ -76,7 +71,6 @@
                     @enderror
                 </div>
 
-                <!-- المنشأة -->
                 <div class="form-group">
                     <label for="facility_id" class="form-label">
                         Facility <span class="required">*</span>
@@ -98,7 +92,6 @@
                 </div>
             </div>
 
-            <!-- الوصف -->
             <div class="form-group full-width">
                 <label for="description" class="form-label">
                     Description
@@ -127,9 +120,7 @@
                 @enderror
             </div>
 
-            <!-- الصف الثاني -->
             <div class="form-grid">
-                <!-- المستوى -->
                 <div class="form-group">
                     <label for="level" class="form-label">Difficulty Level</label>
                     <select id="level" name="level" class="form-select">
@@ -146,7 +137,6 @@
                     @enderror
                 </div>
 
-                <!-- صورة النشاط -->
                 <div class="form-group">
                     <label class="form-label">Activity Image</label>
                     <div class="file-upload">
@@ -185,9 +175,7 @@
                 </div>
             </div>
 
-            <!-- خيارات مفاتيح الراديو -->
             <div class="form-row">
-                <!-- وقت الفراغ -->
                 <div class="form-group">
                     <label class="form-label">
                         Free Time Activity <span class="required">*</span>
@@ -218,7 +206,6 @@
                     @enderror
                 </div>
 
-                <!-- الحالة -->
                 <div class="form-group">
                     <label class="form-label">
                         Activity Status <span class="required">*</span>
@@ -244,7 +231,6 @@
                 </div>
             </div>
 
-            <!-- أزرار النموذج -->
             <div class="form-actions">
                 <div>
                     <a href="{{ route('activities.index') }}" class="form-btn form-btn-back">
@@ -265,7 +251,6 @@
             </div>
         </form>
 
-        <!-- تحميل -->
         <div class="form-loading" id="loadingSpinner">
             <div class="loading-spinner"></div>
         </div>

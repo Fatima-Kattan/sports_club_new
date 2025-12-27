@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const tableRows = document.querySelectorAll('.data-table tbody tr');
     const filterButton = document.querySelector('.filter-button');
 
-    // ✅ إنشاء قائمة الفلترة
     if (filterButton && !document.querySelector('.filter-dropdown')) {
         createFilterDropdown();
     }
@@ -127,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
             e.stopPropagation();
         });
 
-        // ✅ فلترة حسب الدور
         function applyRoleFilter(roleType) {
 
             tableRows.forEach(row => {
