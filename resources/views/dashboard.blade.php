@@ -156,6 +156,15 @@
         background: #f8d7da;
         color: #c82333;
     }
+    .club-name-main {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #05C1F7, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
     .user-dropdown-menu::after {
         content: '';
         position: absolute;
