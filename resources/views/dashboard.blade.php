@@ -179,7 +179,7 @@
                     </a>
                 </li>
                 {{-- attendees --}}
-                {{--                 <li>
+                                <li>
                     <a href="{{ route('attendees.index') }}" class="nav-link" target="content-frame"
                         data-page="attendees">
                         <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -190,7 +190,7 @@
 
                         <span class="nav-text">Attendees</span>
                     </a>
-                </li> --}}
+                </li>
                 {{-- Facilities --}}
                 <li>
                     <a href="{{ route('facilities.index') }}" class="nav-link" target="content-frame"

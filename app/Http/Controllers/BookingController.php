@@ -107,7 +107,7 @@ class BookingController extends Controller
         ]);
 
         return redirect()->route('bookings.index')
-            ->with('success', 'تم تحديث الحجز بنجاح');
+            ->with('success', 'Booking successfully updated');
     }
 
     /**
@@ -118,7 +118,7 @@ class BookingController extends Controller
         $this->authorize('manageBooking', \App\Models\Booking::class);
         $booking->delete();
         return redirect()->route('bookings.index')
-            ->with('success', 'تم حذف الحجز بنجاح');
+            ->with('success', 'The booking has been successfully deleted');
     }
 
     /**
