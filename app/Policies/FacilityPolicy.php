@@ -13,9 +13,15 @@ class FacilityPolicy
      * Determine whether the user can view any models.
      */
     public function manegeFacility(User $user)
-{
-   /*  $isEmployeeManager = $employee && ($employee->position === 'Facility Manager' || $employee->position === 'Operations Manager'); */
-    
-    return $user->is_admin /* || $isEmployeeManager */;
-}
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        $hasAllowedPosition = Employee::where('email', $user->email)
+            ->whereIn('position', ['Operations Manager','Facility Manager' ])
+            ->exists();
+
+        return $hasAllowedPosition;
+    }
 }
