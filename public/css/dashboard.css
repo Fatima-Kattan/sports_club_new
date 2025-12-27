@@ -184,8 +184,15 @@ body{
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.menu-toggle svg:hover{
+    color: #05C1F7;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 1px #05C1F7;
 }
 
 .search-icon {

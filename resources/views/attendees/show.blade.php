@@ -59,7 +59,7 @@
             gap: 20px;
         }
 
-        .h1{
+        .h1 {
             background: var(--accent-gradient) !important;
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
@@ -620,8 +620,9 @@
 
                         @foreach ($allParticipants as $participant)
                             <div class="attendance-card {{ $participant['status'] ? 'present' : ($participant['status'] === 0 ? 'absent' : 'not-registered') }}"
-                                 id="card-{{ $participant['type'] === 'attendance' ? 'att-' . $participant['attendee_id'] : 'book-' . $participant['booking_id'] }}">
-                                <div class="status-badge" id="badge-{{ $participant['type'] === 'attendance' ? 'att-' . $participant['attendee_id'] : 'book-' . $participant['booking_id'] }}">
+                                id="card-{{ $participant['type'] === 'attendance' ? 'att-' . $participant['attendee_id'] : 'book-' . $participant['booking_id'] }}">
+                                <div class="status-badge"
+                                    id="badge-{{ $participant['type'] === 'attendance' ? 'att-' . $participant['attendee_id'] : 'book-' . $participant['booking_id'] }}">
                                     @if ($participant['type'] === 'attendance')
                                         {{ $participant['status'] ? 'Present' : 'Absent' }}
                                     @else
@@ -646,7 +647,8 @@
                                     @if ($participant['type'] === 'attendance')
                                         <div class="detail-row">
                                             <span class="detail-label">Date:</span>
-                                            <span class="detail-value">{{ \Carbon\Carbon::parse($participant['date'])->format('M d, Y') }}</span>
+                                            <span
+                                                class="detail-value">{{ \Carbon\Carbon::parse($participant['date'])->format('M d, Y') }}</span>
                                         </div>
                                         <div class="detail-row">
                                             <span class="detail-label">Last Updated:</span>
@@ -705,7 +707,7 @@
 
                                     @foreach ($uniqueAttendances as $attendance)
                                         <div class="attendance-card {{ $attendance->status ? 'present' : 'absent' }}"
-                                             id="date-card-{{ $attendance->id }}">
+                                            id="date-card-{{ $attendance->id }}">
                                             <div class="status-badge" id="date-badge-{{ $attendance->id }}">
                                                 {{ $attendance->status ? 'Present' : 'Absent' }}
                                             </div>
@@ -723,7 +725,8 @@
                                             <div class="attendance-details">
                                                 <div class="detail-row">
                                                     <span class="detail-label">Registered at:</span>
-                                                    <span class="detail-value">{{ $attendance->created_at->format('h:i A') }}</span>
+                                                    <span
+                                                        class="detail-value">{{ $attendance->created_at->format('h:i A') }}</span>
                                                 </div>
                                                 <div class="detail-row">
                                                     <span class="detail-label">Last updated:</span>
@@ -845,134 +848,135 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-      async function updateStatus(attendeeId, newStatus, buttonElement) {
-    try {
-        // إضافة loading indicator
-        const swalInstance = Swal.fire({
-            title: 'Updating Status...',
-            allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
+        async function updateStatus(attendeeId, newStatus, buttonElement) {
+            try {
+                // إضافة loading indicator
+                const swalInstance = Swal.fire({
+                    title: 'Updating Status...',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                const response = await fetch(`/attendees/${attendeeId}/update-status`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        status: newStatus
+                    })
+                });
+
+                const data = await response.json();
+
+                await swalInstance.close();
+
+                if (data.success) {
+                    // استخدم الوقت من الخادم بدلاً من الوقت المحلي
+                    const serverTime = data.updated_time || new Date().toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    });
+
+                    // تحديث كل العناصر ذات الصلة
+                    // 1. تحديث الوقت في قسم All Participants
+                    const timeElement = document.getElementById(`time-${attendeeId}`);
+                    if (timeElement) {
+                        timeElement.textContent = serverTime;
+                    }
+
+                    // 2. تحديث الوقت في قسم By Date
+                    const dateTimeElement = document.getElementById(`date-time-${attendeeId}`);
+                    if (dateTimeElement) {
+                        dateTimeElement.textContent = serverTime;
+                    }
+
+                    // 3. تحديث النص على الزر
+                    if (buttonElement) {
+                        const buttonText = newStatus ? 'Absent' : 'Present';
+                        buttonElement.innerHTML = `<i class="fas fa-sync"></i> Change to ${buttonText}`;
+                        // تحديث event handler للزر
+                        buttonElement.setAttribute('onclick',
+                        `updateStatus(${attendeeId}, ${newStatus ? 0 : 1}, this)`);
+                    }
+
+                    // 4. تحديث الـ badges
+                    const badge = document.getElementById(`badge-att-${attendeeId}`);
+                    const dateBadge = document.getElementById(`date-badge-${attendeeId}`);
+
+                    if (badge) {
+                        badge.textContent = newStatus ? 'Present' : 'Absent';
+                        badge.style.background = newStatus ? 'rgba(0, 255, 136, 0.2)' : 'rgba(255, 71, 87, 0.2)';
+                        badge.style.color = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
+                    }
+
+                    if (dateBadge) {
+                        dateBadge.textContent = newStatus ? 'Present' : 'Absent';
+                        dateBadge.style.background = newStatus ? 'rgba(0, 255, 136, 0.2)' : 'rgba(255, 71, 87, 0.2)';
+                        dateBadge.style.color = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
+                    }
+
+                    // 5. تحديث الكاردات
+                    const card = document.getElementById(`card-att-${attendeeId}`);
+                    const dateCard = document.getElementById(`date-card-${attendeeId}`);
+
+                    if (card) {
+                        card.classList.remove('present', 'absent');
+                        card.classList.add(newStatus ? 'present' : 'absent');
+                        card.style.borderLeftColor = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
+                    }
+
+                    if (dateCard) {
+                        dateCard.classList.remove('present', 'absent');
+                        dateCard.classList.add(newStatus ? 'present' : 'absent');
+                        dateCard.style.borderLeftColor = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
+                    }
+
+                    // 6. إظهار رسالة النجاح
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated!',
+                        text: data.message,
+                        timer: 2000,
+                        showConfirmButton: false,
+                        background: 'var(--card-bg)',
+                        color: 'var(--text-primary)',
+                        iconColor: '#00ff88'
+                    });
+
+                    // 7. لا تقم بعمل reload - كل شيء تم تحديثه ديناميكياً
+                    // إزالة هذا السطر
+                    // setTimeout(() => {
+                    //     window.location.reload();
+                    // }, 2000);
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: data.message || 'Failed to update attendance status',
+                        background: 'var(--card-bg)',
+                        color: 'var(--text-primary)',
+                        iconColor: '#ff4757'
+                    });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Failed to update attendance status. Please try again.',
+                    background: 'var(--card-bg)',
+                    color: 'var(--text-primary)',
+                    iconColor: '#ff4757'
+                });
             }
-        });
-
-        const response = await fetch(`/attendees/${attendeeId}/update-status`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                status: newStatus
-            })
-        });
-
-        const data = await response.json();
-
-        await swalInstance.close();
-
-        if (data.success) {
-            // استخدم الوقت من الخادم بدلاً من الوقت المحلي
-            const serverTime = data.updated_time || new Date().toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
-
-            // تحديث كل العناصر ذات الصلة
-            // 1. تحديث الوقت في قسم All Participants
-            const timeElement = document.getElementById(`time-${attendeeId}`);
-            if (timeElement) {
-                timeElement.textContent = serverTime;
-            }
-
-            // 2. تحديث الوقت في قسم By Date
-            const dateTimeElement = document.getElementById(`date-time-${attendeeId}`);
-            if (dateTimeElement) {
-                dateTimeElement.textContent = serverTime;
-            }
-
-            // 3. تحديث النص على الزر
-            if (buttonElement) {
-                const buttonText = newStatus ? 'Absent' : 'Present';
-                buttonElement.innerHTML = `<i class="fas fa-sync"></i> Change to ${buttonText}`;
-                // تحديث event handler للزر
-                buttonElement.setAttribute('onclick', `updateStatus(${attendeeId}, ${newStatus ? 0 : 1}, this)`);
-            }
-
-            // 4. تحديث الـ badges
-            const badge = document.getElementById(`badge-att-${attendeeId}`);
-            const dateBadge = document.getElementById(`date-badge-${attendeeId}`);
-            
-            if (badge) {
-                badge.textContent = newStatus ? 'Present' : 'Absent';
-                badge.style.background = newStatus ? 'rgba(0, 255, 136, 0.2)' : 'rgba(255, 71, 87, 0.2)';
-                badge.style.color = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
-            }
-            
-            if (dateBadge) {
-                dateBadge.textContent = newStatus ? 'Present' : 'Absent';
-                dateBadge.style.background = newStatus ? 'rgba(0, 255, 136, 0.2)' : 'rgba(255, 71, 87, 0.2)';
-                dateBadge.style.color = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
-            }
-
-            // 5. تحديث الكاردات
-            const card = document.getElementById(`card-att-${attendeeId}`);
-            const dateCard = document.getElementById(`date-card-${attendeeId}`);
-            
-            if (card) {
-                card.classList.remove('present', 'absent');
-                card.classList.add(newStatus ? 'present' : 'absent');
-                card.style.borderLeftColor = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
-            }
-            
-            if (dateCard) {
-                dateCard.classList.remove('present', 'absent');
-                dateCard.classList.add(newStatus ? 'present' : 'absent');
-                dateCard.style.borderLeftColor = newStatus ? 'var(--success-color)' : 'var(--danger-color)';
-            }
-
-            // 6. إظهار رسالة النجاح
-            Swal.fire({
-                icon: 'success',
-                title: 'Updated!',
-                text: data.message,
-                timer: 2000,
-                showConfirmButton: false,
-                background: 'var(--card-bg)',
-                color: 'var(--text-primary)',
-                iconColor: '#00ff88'
-            });
-
-            // 7. لا تقم بعمل reload - كل شيء تم تحديثه ديناميكياً
-            // إزالة هذا السطر
-            // setTimeout(() => {
-            //     window.location.reload();
-            // }, 2000);
-
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: data.message || 'Failed to update attendance status',
-                background: 'var(--card-bg)',
-                color: 'var(--text-primary)',
-                iconColor: '#ff4757'
-            });
         }
-    } catch (error) {
-        console.error('Error:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Failed to update attendance status. Please try again.',
-            background: 'var(--card-bg)',
-            color: 'var(--text-primary)',
-            iconColor: '#ff4757'
-        });
-    }
-}
 
         async function registerAttendance(bookingId, status = 1) {
             try {
@@ -1042,4 +1046,5 @@
         }
     </script>
 </body>
+
 </html>
