@@ -98,4 +98,14 @@ class Employee extends Model
         return $this->hire_date->diffInYears(now());
     }
 
+    public function activities()
+    {
+        return $this->belongsToMany(
+            Activity::class,
+            'bookings',
+            'employee_id',
+            'activity_id'
+        )->distinct();
+    }
+
 }

@@ -16,14 +16,9 @@ class CategoryController extends Controller
     // ==================== Index ====================
     public function index(Request $request)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
+        
+        $this->authorize('manageCategories', \App\Models\Category::class);
+        
 
         $search = $request->input('search');
         $categories = Category::withCount('items')
@@ -42,14 +37,7 @@ class CategoryController extends Controller
     // ==================== Create ====================
     public function create()
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
+        $this->authorize('manageCategories', \App\Models\Category::class);
 
         return view('categories.create');
     }
@@ -57,15 +45,7 @@ class CategoryController extends Controller
     // ==================== Store ====================
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
-
+        $this->authorize('manageCategories', \App\Models\Category::class);
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories',
             'description' => 'required|string|max:500'
@@ -80,14 +60,7 @@ class CategoryController extends Controller
     // ==================== Show ====================
     public function show(Category $category, Request $request)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
+        $this->authorize('manageCategories', \App\Models\Category::class);
 
         $search = $request->input('search', '');
 
@@ -115,14 +88,7 @@ class CategoryController extends Controller
     // ==================== Edit ====================
     public function edit(Category $category)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
+        $this->authorize('manageCategories', \App\Models\Category::class);
 
         return view('categories.edit', compact('category'));
     }
@@ -130,14 +96,7 @@ class CategoryController extends Controller
     // ==================== Update ====================
     public function update(Request $request, Category $category)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
+        $this->authorize('manageCategories', \App\Models\Category::class);
 
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
@@ -153,14 +112,7 @@ class CategoryController extends Controller
     // ==================== Destroy ====================
     public function destroy(Category $category)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageCategories', $employee);
-        } else {
-            $this->authorize('manageCategories', Category::class);
-        }
+        $this->authorize('manageCategories', \App\Models\Category::class);
 
         if ($category->items()->count() > 0) {
             return redirect()->back()

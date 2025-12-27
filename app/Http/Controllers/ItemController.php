@@ -27,29 +27,14 @@ class ItemController extends Controller
     // ==================== Create ====================
     public function create(Category $category)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageItem', $employee);
-        } else {
-            $this->authorize('manageItem', Item::class);
-        }
-
+        $this->authorize('manageItem', \App\Models\Item::class);
         return view('items.create', compact('category'));
     }
 
     // ==================== Store ====================
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageItem', $employee);
-        } else {
-            $this->authorize('manageItem', Item::class);
-        }
+        $this->authorize('manageItem', \App\Models\Item::class);
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -93,14 +78,7 @@ class ItemController extends Controller
     // ==================== Edit ====================
     public function edit(Category $category, Item $item)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageItem', $employee);
-        } else {
-            $this->authorize('manageItem', Item::class);
-        }
+        $this->authorize('manageItem', \App\Models\Item::class);
         if ($item->category_id !== $category->id) {
             abort(404, 'Item does not belong to this category');
         }
@@ -115,15 +93,7 @@ class ItemController extends Controller
     public function update(Request $request, Category $category, Item $item)
     {
 
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageItem', $employee);
-        } else {
-            $this->authorize('manageItem', Item::class);
-        }
-
+        $this->authorize('manageItem', \App\Models\Item::class);
 
         if ($item->category_id !== $category->id) {
             abort(404, 'Item does not belong to this category');
@@ -178,14 +148,7 @@ class ItemController extends Controller
     // ==================== Destroy ====================
     public function destroy(Category $category, Item $item)
     {
-        $user = Auth::user();
-        $employee = Employee::where('email', $user->email)->first();
-
-        if ($employee) {
-            $this->authorize('manageItem', $employee);
-        } else {
-            $this->authorize('manageItem', Item::class);
-        }
+        $this->authorize('manageItem', \App\Models\Item::class);
 
         if ($item->image && file_exists(public_path('images/items/' . $item->image))) {
             unlink(public_path('images/items/' . $item->image));

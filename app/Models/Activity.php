@@ -40,20 +40,17 @@ class Activity extends Model
         return $this->belongsTo(Facility::class, 'facility_id');
     }
 
-    public function attendees()
+
+    public function coaches()
     {
         return $this->hasManyThrough(
-            Attendee::class,
+            Employee::class,
             Booking::class,
             'activity_id', // Foreign key on bookings table
-            'booking_id', // Foreign key on attendees table
+            'id', // Foreign key on employees table
             'id', // Local key on activities table
-            'id' // Local key on bookings table
-        );
+            'employee_id' // Local key on bookings table
+        )->distinct();
     }
-    
-    public function users()
-{
-    return $this->belongsToMany(User::class, 'activity_user');
-}
+
 }

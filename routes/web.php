@@ -19,7 +19,12 @@ Route::get('/', function () {
         ->whereNull('deleted_at')
         ->get();
 
-    return view('welcome', compact('coaches'));
+    $activities = \App\Models\Activity::where('is_active', true)
+        ->with('facility')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return view('welcome', compact('coaches', 'activities'));
 })->name('welcome');
 
 
@@ -103,6 +108,8 @@ Route::middleware(['auth'])->group(function () {
 
 //==================== Activities Routes =================== //
 
+Route::get('/activities/{id}/details', [ActivityController::class, 'showDetails'])
+    ->name('activities.details');
 Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
 Route::get('/activities/create', [ActivityController::class, 'create'])->name('activities.create');
 Route::post('/activities', [ActivityController::class, 'store'])->name('activities.store');
