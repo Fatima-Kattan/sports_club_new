@@ -78,7 +78,6 @@ class EmployeeController extends Controller
 
             // حقول المستخدم
             'password'             => 'required|string|min:8|confirmed',
-            'is_admin'             => 'nullable|boolean',
             'birth_date'           => 'nullable|date',
             'gender'               => 'nullable|in:male,female',
         ]);
@@ -130,7 +129,7 @@ class EmployeeController extends Controller
             ])->toArray();
 
             $userData['password'] = Hash::make($validated['password']);
-            $userData['is_admin'] = $validated['is_admin'] ?? 0;
+            $userData['is_admin'] =  false;
 
             // تعبئة الحقول الخاصة
             $userData['email_verified_at'] = now();
@@ -192,7 +191,6 @@ class EmployeeController extends Controller
             'image'                => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
             // حقول المستخدم
             'password'             => 'nullable|string|min:8|confirmed',
-            'is_admin'             => 'nullable|boolean',
             'birth_date'           => 'nullable|date',
             'gender'               => 'nullable|in:male,female',
         ]);
@@ -250,7 +248,7 @@ class EmployeeController extends Controller
                     $userData['password'] = Hash::make($validated['password']);
                 }
 
-                $userData['is_admin'] = $validated['is_admin'] ?? $user->is_admin;
+                $userData['is_admin'] = false;
 
                 $user->update($userData);
             }

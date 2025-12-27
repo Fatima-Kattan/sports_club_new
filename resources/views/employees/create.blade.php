@@ -803,7 +803,7 @@
                         </div>
                     </div>
 
-                    <div class="form-grid">
+                    {{-- <div class="form-grid">
                         <div class="form-group">
                             <div class="toggle-container">
                                 <div class="toggle-card">
@@ -864,7 +864,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="form-section">
