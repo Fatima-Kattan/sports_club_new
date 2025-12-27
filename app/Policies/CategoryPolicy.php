@@ -9,10 +9,17 @@ use Illuminate\Auth\Access\Response;
 
 class CategoryPolicy
 {
-    public function  manageCategories(User $user ,?Employee $employee=null)
+    public function manageCategories(User $user)
     {
-        return $user->is_admin 
-                ||($employee && ($employee->position === 'storage_manager' ||  $employee->mgr_id === null));
+        if ($user->is_admin) {
+            return true;
+        }
+
+        $hasAllowedPosition = Employee::where('email', $user->email)
+            ->whereIn('position', ['storage_manager', 'manager'])
+            ->exists();
+
+        return $hasAllowedPosition;
     }
     
 }

@@ -10,9 +10,16 @@ class ItemPolicy
 {
     use HandlesAuthorization;
 
-    public function  manageItem(User $user ,?Employee $employee=null)
+    public function manageItem(User $user)
     {
-        return $user->is_admin 
-                ||($employee && ($employee->position === 'storage_manager' ||  $employee->mgr_id === null));
+        if ($user->is_admin) {
+            return true;
+        }
+
+        $hasAllowedPosition = Employee::where('email', $user->email)
+            ->whereIn('position', ['storage_manager', 'manager'])
+            ->exists();
+
+        return $hasAllowedPosition;
     }
 }

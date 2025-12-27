@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Booking;
 use App\Models\Employee;
 use App\Models\Facility;
 use Illuminate\Http\Request;
@@ -13,10 +14,116 @@ use Illuminate\Support\Facades\Auth;
 class ActivityController extends Controller
 {
     use AuthorizesRequests;
+    public function home()
+    {
+        $activities = Activity::where('is_active', true)
+            ->with('facility')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('home', compact('activities'));
+    }
+    public function showDetails($id)
+    {
+        // جلب النشاط
+        $activity = Activity::with(['facility'])
+            ->where('id', $id)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        // جلب فقط المدربين المرتبطين بهذا النشاط
+        $coaches = Employee::where('role', 'coach')
+            ->whereNull('deleted_at')
+            ->whereHas('bookings', function ($query) use ($id) {
+                $query->where('activity_id', $id);
+            })
+            ->get();
+
+        if ($coaches->isEmpty()) {
+            $coaches = Employee::where('role', 'coach')
+                ->whereNull('deleted_at')
+                ->get();
+        }
+
+        $coachesData = $coaches->map(function ($coach) use ($id) {
+            $studentCount = Booking::where('employee_id', $coach->id)
+                ->where('paid', true)
+                ->count();
+
+            $basePrice = $coach->salary ?? 100;
+            $finalPrice = $basePrice * 1.10;
+
+            // **هنا التعديل المهم:**
+            $imageUrl = null;
+            if ($coach->image) {
+                // 1. إذا كان مسار كامل يبدأ بـ images/
+                if (str_starts_with($coach->image, 'images/')) {
+                    // تحقق أولاً في المسار المذكور
+                    if (file_exists(public_path($coach->image))) {
+                        $imageUrl = asset($coach->image);
+                    }
+                    // إذا ما موجود، ابحث في مجلد employees فقط
+                    else {
+                        $filename = basename($coach->image);
+                        if (file_exists(public_path('images/employees/' . $filename))) {
+                            $imageUrl = asset('images/employees/' . $filename);
+                        }
+                        // إذا ما موجود، استخدم صورة افتراضية
+                        else {
+                            $imageUrl = 'https://ui-avatars.com/api/?name=' .
+                                urlencode($coach->full_name) .
+                                '&background=05C1F7&color=fff&size=128';
+                        }
+                    }
+                }
+                // 2. إذا كان اسم ملف فقط
+                else {
+                    // ابحث في مجلد employees
+                    if (file_exists(public_path('images/employees/' . $coach->image))) {
+                        $imageUrl = asset('images/employees/' . $coach->image);
+                    }
+                    // إذا ما موجود، ابحث في مجلد users
+                    elseif (file_exists(public_path('images/users/' . $coach->image))) {
+                        $imageUrl = asset('images/users/' . $coach->image);
+                    }
+                    // إذا ما موجود، استخدم صورة افتراضية
+                    else {
+                        $imageUrl = 'https://ui-avatars.com/api/?name=' .
+                            urlencode($coach->full_name) .
+                            '&background=05C1F7&color=fff&size=128';
+                    }
+                }
+            } else {
+                // إذا ما في صورة، استخدم صورة افتراضية
+                $imageUrl = 'https://ui-avatars.com/api/?name=' .
+                    urlencode($coach->full_name) .
+                    '&background=05C1F7&color=fff&size=128';
+            }
+
+            return [
+                'id' => $coach->id,
+                'name' => $coach->full_name,
+                'specialization' => $coach->specialization ?? 'Professional Coach',
+                'experience' => ($coach->years_of_experience ?? 0) . ' years',
+                'image' => $imageUrl, // URL كامل جاهز
+                'formatted_price' => '$' . number_format($finalPrice, 2),
+                'student_count' => $studentCount,
+            ];
+        })->toArray();
+
+        // **للتصحيح: عرض البيانات**
+        // dd($coachesData);
+
+        return view('activities.details', [
+            'activity' => $activity,
+            'coaches' => $coachesData
+        ]);
+    }
+
     public function index(Request $request)
     {
         $search = $request->input('search');
-        
+
         $activities = Activity::with('facility')
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
