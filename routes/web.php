@@ -26,6 +26,7 @@ Route::get('/', function () {
 
     return view('welcome', compact('coaches', 'activities'));
 })->name('welcome');
+Route::get('/employees/role/coaches', [EmployeeController::class, 'coaches'])->name('employees.coaches');
 
 
 Route::get('/start', function () {
@@ -45,9 +46,6 @@ Route::middleware(['auth', 'onlyIframe'])->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
-
-
-
     // ==================== Employee Routes ==================== //
 
     Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
@@ -61,7 +59,6 @@ Route::middleware(['auth', 'onlyIframe'])->group(function () {
         Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
     });
 
-    Route::get('/employees/role/coaches', [EmployeeController::class, 'coaches'])->name('employees.coaches');
     Route::get('/employees/search/results', [EmployeeController::class, 'search'])->name('employees.search');
     Route::get('/employees/trashed/all', [EmployeeController::class, 'trashed'])->name('employees.trashed');
     Route::post('/employees/{id}/restore', [EmployeeController::class, 'restore'])->name('employees.restore');

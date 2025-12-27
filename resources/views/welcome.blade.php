@@ -162,7 +162,7 @@
                 <div class="home-text">
                     <h1>Welcome to Power & <br> Fitness Club</h1>
                     <p>Achieve your best self in a professional environment designed for strength, endurance, and transformation. Join us and take your fitness journey to the next level.</p>
-                    <a href="#sports" class="btn">Discover More</a>
+                    <a href="#sports" class="cta-button" style="color: #ededecfb">Discover More</a>
                 </div>
             </div>
         </section>
