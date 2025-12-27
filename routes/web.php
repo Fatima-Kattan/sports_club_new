@@ -116,4 +116,66 @@ Route::middleware(['web'])->group(function () {
     Route::get('/bookings/get-coaches', [BookingController::class, 'getCoachesByActivity'])
         ->name('bookings.getCoaches');
 });
+
+//==================== Attendees Routes =================== //
+Route::get('/attendees', [AttendeeController::class, 'index'])->name('attendees.index');
+Route::get('/attendees/create', [AttendeeController::class, 'create'])->name('attendees.create');
+Route::post('/attendees', [AttendeeController::class, 'store'])->name('attendees.store');
+Route::get('/attendees/{attendee}', [AttendeeController::class, 'show'])->name('attendees.show');
+Route::get('/attendees/{attendee}/edit', [AttendeeController::class, 'edit'])->name('attendees.edit');
+Route::put('/attendees/{attendee}', [AttendeeController::class, 'update'])->name('attendees.update');
+Route::delete('/attendees/{attendee}', [AttendeeController::class, 'destroy'])->name('attendees.destroy');
+
+// // روت إضافي لتحديث الحالة عبر AJAX
+// Route::post('/attendees/{attendee}/update-status', [AttendeeController::class, 'updateStatus'])
+//     ->name('attendees.update-status');
+
+//     // Route باستخدام GET
+// Route::get('/attendees/get-activity-users/{activityId}', [AttendeeController::class, 'getActivityUsers'])
+//     ->name('attendees.get-activity-users');
+
+// // أو Route باستخدام POST
+// Route::post('/attendees/get-activity-users', [AttendeeController::class, 'getActivityUsersPost'])
+//     ->name('attendees.get-activity-users-post');
+//   // تحقق من وجود هذا الراوت في web.php
+// Route::post('/attendees/get-activity-users', [AttendeeController::class, 'getActivityUsers'])->name('attendees.get-activity-users');
+
+// // Route لحفظ الحضور (موجود مسبقًا)
+// Route::post('/attendees', [AttendeeController::class, 'store'])
+//     ->name('attendees.store');
+// // روت للبحث عن المستخدمين
+// Route::post('/attendees/search-users', [AttendeeController::class, 'searchUsers'])
+//     ->name('attendees.search-users');
+
+//     // Route باستخدام POST
+// Route::post('/attendees/get-activity-users', [AttendeeController::class, 'getActivityUsers'])
+//     ->name('attendees.get-activity-users');
+// // روت للإحصائيات
+// Route::get('/attendees/statistics', [AttendeeController::class, 'statistics'])
+//     ->name('attendees.statistics');
+// Route::post('/attendees/search-users', [AttendeeController::class, 'searchUsers'])->name('attendees.search-users');
+
+
+Route::resource('attendees', AttendeeController::class)->except(['show', 'edit', 'update', 'destroy']);
+// أو يمكنك تحديد الروابط بشكل منفصل:
+Route::get('/attendees/create', [AttendeeController::class, 'create'])->name('attendees.create');
+Route::post('/attendees', [AttendeeController::class, 'store'])->name('attendees.store');
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])->name('attendees.get-bookings');
+// في routes/web.php
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])->name('attendees.get-bookings');
+
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])
+    ->name('attendees.get-bookings')
+    ->where('activity', '[0-9]+'); // لتأكد أن activity هو رقم
+// أضف هذا الراوت
+Route::get('/attendees/get-bookings/{activity}', [AttendeeController::class, 'getBookingsByActivity'])
+    ->name('attendees.get-bookings');
+Route::post('/attendees/{attendee}/update-status', [AttendeeController::class, 'updateStatus'])->name('attendees.update-status');
+// Route لإنشاء الحضور
+Route::get('/attendees/create', [AttendeeController::class, 'create'])->name('attendees.create');
+Route::post('/attendees', [AttendeeController::class, 'store'])->name('attendees.store');
+Route::get('/attendees/get-activity-users/{activity}', [App\Http\Controllers\AttendeeController::class, 'getActivityUsers']);
+
+Route::post('/attendees/register-attendance', [AttendeeController::class, 'registerAttendance'])->name('attendees.register');
+
 require __DIR__ . '/auth.php';
