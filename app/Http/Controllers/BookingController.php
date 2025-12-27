@@ -20,8 +20,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $this->authorize('manageBooking', \App\Models\Booking::class);
-        /*  $query = Booking::query(); */
+        $this->authorize('manageBooking', Booking::class);
         $bookings = Booking::with(['user', 'activity', 'employee'])->paginate(10);
         $totalBookings = Booking::count();
 
@@ -61,7 +60,7 @@ class BookingController extends Controller
         ]);
 
         return redirect()->route('bookings.index')
-            ->with('success', 'تم إنشاء الحجز بنجاح');
+            ->with('success', 'The booking was created successfully');
     }
 
     /**
@@ -122,7 +121,7 @@ class BookingController extends Controller
     }
 
     /**
-     * دالة جديدة لجلب الكوتشات بناءً على النشاط
+     * New function to fetch coaches based on activity
      */
     public function getCoachesByActivity(Request $request)
     {
@@ -131,25 +130,25 @@ class BookingController extends Controller
             'activity_id' => 'required|exists:activities,id'
         ]);
 
-        // الحصول على النشاط المحدد
+        // Get the selected activity
         $activity = Activity::findOrFail($request->activity_id);
 
-        // جلب جميع الموظفين أولاً
+        // Bring all employees in first  
         $allEmployees = Employee::all();
 
-        // تصفية الموظفين بناءً على تطابق الـ Position مع النشاط
+        // Filtering employees based on position matching with activity
         $matchedCoaches = $allEmployees->filter(function ($employee) use ($activity) {
             $position = strtolower($employee->position);
             $activityName = strtolower($activity->name);
 
-            // تحويل النصوص إلى كلمات
+            // Converting text to words
             $positionWords = preg_split('/\s+/', $position);
             $activityWords = preg_split('/\s+/', $activityName);
 
-            // البحث عن أي تطابق بين الكلمات
+            // Search for any word matches
             foreach ($activityWords as $activityWord) {
                 foreach ($positionWords as $positionWord) {
-                    // إذا كانت الكلمة طويلة بما يكفي وتتطابق جزئياً
+                    // If the word is long enough and partially matches
                     if (
                         strlen($activityWord) > 3 &&
                         (str_contains($positionWord, $activityWord) ||
@@ -163,7 +162,7 @@ class BookingController extends Controller
             return false;
         });
 
-        // إذا لم يتم العثور على تطابقات، ارجع جميع الكوتشات
+        // If no matches are found, return all coaches
         if ($matchedCoaches->isEmpty()) {
             $matchedCoaches = $allEmployees;
         }

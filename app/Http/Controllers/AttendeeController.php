@@ -12,14 +12,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AttendeeController extends Controller
 {
-        use AuthorizesRequests;
-    /**
-     * عرض إحصائيات الحضور حسب النشاطات
-     */
+    use AuthorizesRequests;
     public function index()
     {
-        $this->authorize('manageAttendee', \App\Models\Attendee::class);
-        // جلب إحصائيات الحضور حسب النشاط
+        $this->authorize('manageAttendee', Attendee::class);
+        // Get attendance statistics by activity
         $activities = Activity::withCount([
             'bookings',
             'bookings as present_count' => function ($query) {
@@ -34,15 +31,9 @@ class AttendeeController extends Controller
             }
         ])->get();
         $totalBookings = Booking::count();
-        // إحصائيات عامة - عدد الأشخاص فقط (بدون عمليات التعديل)
+        // General statistics - number of people only (without modifications)
         $totalPresent = Attendee::where('status', true)->distinct('booking_id')->count();
         $totalAbsent = $totalBookings -  $totalPresent;
-
-        // إجمالي عدد الحضور (من جدول attendees فقط) - الأشخاص المختلفين
-       /*  $totalAttendees = $totalPresent + $totalAbsent; */
-
-        // إجمالي عدد الحجوزات الكلي (من جدول bookings)
-
 
         return view('attendees.index', compact(
             'activities',
@@ -54,8 +45,8 @@ class AttendeeController extends Controller
 
     public function create()
     {
-        $this->authorize('manageAttendee', \App\Models\Attendee::class);
-        // جلب جميع الأنشطة لعرضها في dropdown
+        $this->authorize('manageAttendee',Attendee::class);
+        // Get all activities to display in dropdown
         $activities = Activity::with(['bookings.user'])->get();
 
         return view('attendees.create', compact('activities'));
@@ -66,7 +57,7 @@ class AttendeeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('manageAttendee', \App\Models\Attendee::class);
+        $this->authorize('manageAttendee', Attendee::class);
         $validated = $request->validate([
             'booking_id' => 'required|exists:bookings,id',
             'status' => 'required|boolean',
@@ -78,13 +69,10 @@ class AttendeeController extends Controller
             ->with('success', 'Attendee created successfully.');
     }
 
-    /**
-     * AJAX function to get bookings for a specific activity
-     */
-    // في AttendeeController.php
+    // In AttendeeController.php
     public function getBookingsByActivity(Request $request, $activityId = null)
     {
-        // إذا لم يتم إرسال activityId، يمكن إرجاع مصفوفة فارغة
+        // If activityId is not sent, you can return an empty array
         if (!$activityId) {
             return response()->json([]);
         }
@@ -102,44 +90,39 @@ class AttendeeController extends Controller
 
         return response()->json($bookings);
     }
-    // في AttendeeController (أو أي اسم للكونترولر الخاص بك)
+
     public function getActivityUsers($activityId)
     {
-        
-        try {
-            // 1. تحقق من وجود النشاط
-            $activity = Activity::findOrFail($activityId);
 
-            // 2. جلب المستخدمين المسجلين عبر جدول الحجوزات
-            // هذا يفترض أن لديك نموذج Booking وعلاقات معرّفة
+        try {
+            // 1. Check if the activity exists
+            $activity = Activity::findOrFail($activityId);
             $users = User::whereHas('bookings', function ($query) use ($activityId) {
                 $query->where('activity_id', $activityId);
-            })->get(['id', 'name', 'email', 'phone']); // حدد الأعمدة اللازمة فقط
+            })->get(['id', 'name', 'email']); // Select only necessary columns
 
-            // 3. إرجاع البيانات بتنسيق JSON
+            // 3. Return data in JSON format
             return response()->json([
                 'success' => true,
                 'users' => $users
             ]);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            // في حال لم يتم إيجاد النشاط
+            // In case the activity is not found
             return response()->json([
                 'success' => false,
-                'message' => 'النشاط المطلوب غير موجود.'
+                'message' => 'The requested activity does not exist.'
             ], 404);
         } catch (\Exception $e) {
-            // لأي خطأ آخر
+            // For any other error
             return response()->json([
                 'success' => false,
-                'message' => 'حدث خطأ في تحميل البيانات: ' . $e->getMessage()
+                'message' => 'An error occurred while loading data: ' . $e->getMessage()
             ], 500);
         }
     }
     /**
-     * عرض تفاصيل حضور نشاط معين
+     * Display attendance details for a specific activity
      */
-    // في الكونترولر (مثل AttendanceController)
-    // في AttendeeController أو الكونترولر الخاص بك
     public function registerAttendance(Request $request)
     {
         $request->validate([
@@ -148,14 +131,14 @@ class AttendeeController extends Controller
             'activity_id' => 'required|exists:activities,id'
         ]);
 
-        // التحقق من عدم وجود تسجيل مسبق لنفس الحجز في نفس اليوم
+        // Check for no previous registration for the same booking on the same day
         $today = now()->format('Y-m-d');
         $existing = Attendee::where('booking_id', $request->booking_id)
             ->whereDate('created_at', $today)
             ->first();
 
         if ($existing) {
-            // إذا كان موجوداً، نحدث الحالة فقط
+            // If exists, update status only
             $existing->update(['status' => $request->status]);
 
             return response()->json([
@@ -165,7 +148,7 @@ class AttendeeController extends Controller
             ]);
         }
 
-        // إنشاء سجل حضور جديد
+        // Create new attendance record
         $attendance = Attendee::create([
             'booking_id' => $request->booking_id,
             'status' => $request->status
@@ -212,7 +195,7 @@ class AttendeeController extends Controller
         $this->authorize('manageAttendee', \App\Models\Attendee::class);
         $activity = Activity::with(['bookings.user'])->findOrFail($activityId);
 
-        // الحصول على سجلات الحضور لليوم فقط
+        // Get attendance records for today only
         $today = now()->format('Y-m-d');
         $attendances = Attendee::whereHas('booking', function ($query) use ($activityId) {
             $query->where('activity_id', $activityId);
@@ -249,9 +232,6 @@ class AttendeeController extends Controller
         ));
     }
 
-    /**
-     * جلب الإحصائيات عبر AJAX
-     */
     public function statistics()
     {
         $totalPresent = Attendee::where('status', true)->count();

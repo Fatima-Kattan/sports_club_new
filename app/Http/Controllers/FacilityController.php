@@ -33,22 +33,6 @@ class FacilityController extends Controller
         return view('facilities.index', compact('facilities', 'totalFacilities'));
     }
 
-    public function search(Request $request)
-    {
-        $query = Facility::query();
-
-        if ($request->has('search') && $request->search != '') {
-            $search = $request->search;
-            $query->where('room_name', 'like', "%{$search}%")
-                ->orWhere('floor', 'like', "%{$search}%")
-                ->orWhere('room_capacity', 'like', "%{$search}%");
-        }
-
-        $facilities = $query->paginate(10);
-
-        return view('facilities.partials.table', compact('facilities'))->render();
-    }
-
 
     public function create()
     {

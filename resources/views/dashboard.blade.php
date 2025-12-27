@@ -298,7 +298,7 @@
         border-left: 3px solid transparent;
     }
 
-    .dropdown-item:hover {
+    .dropdown-item:focus {
         background: #2839508d;
         color: white;
         border-left-color: #05C1F7;
