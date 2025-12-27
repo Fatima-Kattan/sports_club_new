@@ -140,7 +140,7 @@
     </style>
 </head>
 
-<body>
+<body style="background:  linear-gradient(135deg, #0f172a, #1e293b);" >
     <div class="employee-detail-container">
         @if ($employee->trashed())
                     <h1 class=" deleted-employee">

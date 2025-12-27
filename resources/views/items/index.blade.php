@@ -31,7 +31,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
+            background:  linear-gradient(135deg, #0f172a, #1e293b);
             color: var(--color-light);
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
@@ -1060,7 +1060,7 @@
     </style>
 </head>
 
-<body>
+<body style="background:  linear-gradient(135deg, #0f172a, #1e293b);" >
     <div class="dashboard-container">
 
         <!-- العنوان -->

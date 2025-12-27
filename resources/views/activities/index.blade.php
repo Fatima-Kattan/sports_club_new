@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<body>
+    
+<body style=" background:  linear-gradient(135deg, #0f172a, #1e293b);">
     <div class="container">
         <!-- ترويسة الصفحة -->
         <div class="page-header">

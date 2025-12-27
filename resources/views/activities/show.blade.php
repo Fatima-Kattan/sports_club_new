@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body style="background:  linear-gradient(135deg, #0f172a, #1e293b);" >
     <!-- حاوية داكنة -->
     <div class="dark-container">
         <!-- الشريط العلوي -->
