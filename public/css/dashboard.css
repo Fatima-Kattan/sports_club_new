@@ -67,36 +67,6 @@ body{
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
-/* @media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding: 1rem;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .sidebar-menu {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .sidebar-menu li {
-        margin-bottom: 0;
-        padding: 0.5rem;
-        font-size: 14px;
-    }
-
-    .content {
-        margin-left: 0;
-        width: 100%;
-        padding: 1.5rem;
-    }
-} */
-
 /* iframe */
 .main-content {
     /*     margin-left: 15%;*/
@@ -115,28 +85,6 @@ body{
     justify-content: center;
     color: #f8fafc;
 }
-
-/* .box_iframe_start {
-    min-height: 100vh;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #f8fafc;
-}
- */
-/* .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border: 2px solid #05C1F7;
-    border-radius: 8px;
-    background: #0e1931;
-    box-shadow: 5px 5px 0px #05c3f750;
-    height: 40vh;
-    width: 50vw;
-} */
 
 /* /////////////////////////////////////// */
 /* Sidebar Container */
@@ -206,7 +154,6 @@ body{
 
 .search-input {
     width: 100%;
-    /* padding: 10px 12px 10px 38px; */
     padding: 0%;
     background-color: #1f2937 !important;
     border: 1px solid #05c3f77f !important;
@@ -229,7 +176,6 @@ body{
     background: #2a2d3e !important;
     border: 1px solid #05C1F7 !important;
     outline: none !important;
-    /* border: none !important; */
 }
 
 /* Navigation Label */
@@ -245,7 +191,6 @@ body{
 /* Sidebar Menu */
 .sidebar-menu {
     list-style: none;
-    /*  padding: 0 12px; */
     margin: 0;
     flex: 1;
     overflow-y: auto;
@@ -441,19 +386,16 @@ body{
 }
 
 /* kkkk */
-/* الوضع المصغر للسايدبار */
 .sidebar.collapsed {
     width: 70px !important;
     /*     height: auto; */
     padding: 1% 5px !important;
 }
 
-/* البحث نخفيه */
 .sidebar.collapsed .merge_search .search-container {
     display: none !important;
 }
 
-/* بس نخفي النصوص والأشياء التانية */
 .sidebar.collapsed .nav-label {
     display: none !important;
 }
@@ -494,20 +436,15 @@ body{
     left: calc(100% + 10px) !important;
 }
 
-/* تعديل الـmenu-toggle لما السايدبار يتقلص */
 .sidebar.collapsed .menu-toggle {
     transform: rotate(180deg);
-    /* أو أي اتجاه بدك */
     margin: 0 auto;
-    /* لتوسيطه */
 }
 
-/* إضافة animation للـmenu-toggle */
 .menu-toggle {
     transition: transform 0.3s ease;
 }
 
-/* تعديل الـuser profile */
 .sidebar.collapsed .user-profile {
     flex-direction: column !important;
     align-items: center !important;
@@ -526,7 +463,6 @@ body{
     display: block !important;
 }
 
-/* تعديل المحتوى الرئيسي */
 .sidebar:not(.collapsed)~.main-content {
     margin-left: 230px;
     transition: margin-left 0.3s ease;
@@ -536,8 +472,6 @@ body{
     margin-left: 70px;
     transition: margin-left 0.3s ease;
 }
-
-/* animation للسايدبار */
 .sidebar {
     transition: width 0.3s ease, padding 0.3s ease;
 }
@@ -550,7 +484,6 @@ body{
     transition: transform 0.3s ease;
 }
 
-/* إخفاء وإظهار الأيقونات حسب الحالة */
 .sidebar:not(.collapsed) .collapsed-icon {
     display: none !important;
 }
@@ -578,10 +511,6 @@ body{
         height: 200vh !important;
     }
 
-    /*     .main-content {
-        margin-left: 70px;
-    } */
-
     .welcome-section {
         max-width: 100%;
         box-sizing: border-box;
@@ -589,18 +518,10 @@ body{
         overflow-x: hidden;
     }
 
-    /*  .user-menu-btn {
-        opacity: 0px;
-    } */
-
     .sidebar {
         /* width: 70px !important; */
         padding: 1% 5px !important;
     }
-
-    /*     .nav-text {
-        display: none !important;
-    } */
 
     .merge_search {
         flex-direction: column !important;
@@ -608,8 +529,6 @@ body{
     }
 
     .search-container {
-        /* order: 2 !important;
-        width: 100% !important; */
         display: none;
     }
 
@@ -705,18 +624,6 @@ body{
     }
 }
 
-/* For very small screens */
-/* @media (max-width: 480px) {
-    .sidebar {
-        width: 60px !important;
-    }
-
-    .nav-link {
-        padding: 10px !important;
-    }
-} */
-
-
 .box_iframe-new {
     width: 95vw !important;
 }
@@ -731,9 +638,3 @@ body{
     width: 95vw !important;
     transition: width 0.3s ease;
 }
-
-/* أو بدلاً من ذلك إذا كنت تريد تطبيقه بشكل عام */
-/* .box_iframe-new .farm_style {
-    width: 100vw !important;
-    transition: width 0.3s ease;
-} */

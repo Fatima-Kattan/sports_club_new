@@ -1,4 +1,4 @@
-         :root {
+        :root {
             --cyan: #05C1F7;
             --emerald: #00ff88;
             --gradient-primary: linear-gradient(135deg, var(--cyan), var(--emerald));

@@ -108,7 +108,6 @@
             font-size: 0.9rem;
         }
 
-        /* تنسيقات جديدة لشريط البحث والأزرار */
         .table-controls {
             display: flex;
             justify-content: space-between;
@@ -225,7 +224,6 @@
             color: var(--accent-start);
         }
 
-        /* التنسيق الجديد للجدول */
         .attendance-table {
             width: 100%;
             border-collapse: separate;
@@ -237,7 +235,6 @@
             border: 1px solid #60bdd852 !important;
         }
 
-        /* رأس الجدول الجديد */
         .attendance-table thead {
             background: var(--table-header) !important;
         }
@@ -275,7 +272,6 @@
             z-index: 1;
         }
 
-        /* خلايا الجدول الجديدة */
         .attendance-table td {
             padding: 20px 15px;
             text-align: center;
@@ -284,14 +280,12 @@
             transition: all 0.3s ease;
         }
 
-        /* صفوف الجدول الجديدة */
         .attendance-table tbody tr {
             transition: all 0.3s ease;
             cursor: pointer;
             background: rgba(255, 255, 255, 0.01);
         }
 
-        /* تناوب ألوان الصفوف */
         .attendance-table tbody tr:nth-child(even) {
             background: rgba(5, 193, 247, 0.02);
         }
@@ -302,12 +296,10 @@
             box-shadow: 5px 0 15px rgba(5, 193, 247, 0.1);
         }
 
-        /* إطار زاوية الجدول */
         .attendance-table {
             border: 1px solid rgba(5, 193, 247, 0.1);
         }
 
-        /* إطار رأس الجدول */
         .attendance-table thead th:first-child {
             border-top-left-radius: 15px;
         }
@@ -316,7 +308,6 @@
             border-top-right-radius: 15px;
         }
 
-        /* إطار آخر صف */
         .attendance-table tbody tr:last-child td:first-child {
             border-bottom-left-radius: 15px;
         }
@@ -445,7 +436,6 @@
             color: var(--danger-color);
         }
 
-        /* رسالة عندما لا توجد نتائج */
         .no-results {
             text-align: center;
             padding: 50px 20px;
@@ -505,7 +495,3 @@
                 padding: 15px 10px;
             }
         }
-
-
-        /* show */
-        
