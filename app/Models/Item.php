@@ -31,6 +31,8 @@ class Item extends Model
     public function activities()
     {
         return $this->belongsToMany(Activity::class, 'activity_item', 'item_id', 'activity_id')
-            ->withTimestamps();
+                    ->withPivot('quantity')
+                    ->withTimestamps();
     }
+
 }

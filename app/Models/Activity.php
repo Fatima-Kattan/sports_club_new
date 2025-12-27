@@ -28,15 +28,15 @@ class Activity extends Model
     {
         return $this->hasMany(Booking::class);
     }
-
-    public function activityItems()
+    public function items()
     {
-        return $this->hasMany(Activity_Item::class);
+        return $this->belongsToMany(Item::class, 'activity_item', 'activity_id', 'item_id')
+                    ->withPivot('quantity')
+                    ->withTimestamps();
     }
-
 
     public function facility()
     {
-        return $this->belongsTo(Facility::class, 'facility_id'); 
+        return $this->belongsTo(Facility::class, 'facility_id');
     }
 }

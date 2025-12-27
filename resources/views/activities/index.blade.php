@@ -80,7 +80,7 @@
         </div>
         <!-- شريط التحكم -->
         <div class="table-controls">
-            
+
 
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
@@ -190,6 +190,14 @@
                                             {{ $activity->free_time ? 'Free Time' : 'Scheduled' }}
                                         </span>
                                     </div>
+                                    @if ($activity->items->count() > 0)
+                                    <div class="detail-item">
+                                        <span class="detail-label">Items Count</span>
+                                        <span class="detail-value">
+                                            {{ $activity->items->count() }}
+                                        </span>
+                                    </div>
+                                    @endif
                                 </div>
 
                                 <div class="card-actions">
@@ -197,6 +205,10 @@
                                         class="card-btn card-btn-view">
                                         <i class="fas fa-eye"></i>
                                         View
+                                    </a>
+                                    <a href="{{ route('items.index',['activity' => $activity->id]) }}"class="card-btn card-btn-add">
+                                        <i class="fas fa-plus"></i>
+                                        Items
                                     </a>
                                     @if (Auth::check() && Auth::user()->is_admin)
                                         <a href="{{ route('activities.edit', $activity) }}"
