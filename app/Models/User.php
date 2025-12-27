@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\AttendeeController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -54,4 +55,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Booking::class, 'user_id');
     }
+    public function attendances()
+{
+    return $this->hasMany(Attendee::class); // تأكد من اسم النموذج الصحيح
+}
+
+public function activities()
+{
+    return $this->belongsToMany(Activity::class, 'activity_user');
+}
 }
