@@ -7,9 +7,11 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDVDMUY3IiBoZWlnaHQ9IjY0cHgiIHdpZHRoPSI2NHB4IiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAzMjYuODUgMzI2Ljg1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48ZyBpZD0iU1ZHUmVwb19iZ0NhcnJpZXIiIHN0cm9rZS13aWR0aD0iMCI+PC9nPjxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9nPjxnIGlkPSJTVkdSZXBvX2ljb25DYXJyaWVyIj4gPHBhdGggZD0iTTI2NC42OTMsMzI2Ljg0NWgtMzguMDc5Yy00LjQxOCwwLTgtMy41ODItOC04di0zMC40NjRIMTA4LjIzMXYzMC40NjRjMCw0LjQxOC0zLjU4Miw4LTgsOEg2Mi4xNTJjLTQuNDE4LDAtOC0zLjU4Mi04LTh2LTYuOTM5SDI0LjA3NGMtNC40MTgsMC04LTMuNTgyLTgtOHYtNzkuODc1YzAtNC40MTgsMy41ODItOCw4LThoMzAuMDc3di02LjkzOGMwLTQuNDE4LDMuNTgyLTgsOC04aDM4LjA3OWM0LjQxOCwwLDgsMy41ODIsOCw4djMwLjQ2NGgxMTAuMzg0di0zMC40NjRjMC00LjQxOCwzLjU4Mi04LDgtOGgzOC4wNzljNC40MTgsMCw4LDMuNTgyLDgsOHY2LjkzOGgzMC4wNzdjNC40MTgsMCw4LDMuNTgyLDgsOHY3OS44NzVjMCw0LjQxOC0zLjU4Miw4LTgsOGgtMzAuMDc3djYuOTM5QzI3Mi42OTMsMzIzLjI2MywyNjkuMTEyLDMyNi44NDUsMjY0LjY5MywzMjYuODQ1eiBNMjM0LjYxNSwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzaC0yMi4wNzlWMzEwLjg0NXogTTcwLjE1MiwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzSDcwLjE1MlYzMTAuODQ1eiBNMjcyLjY5MywyOTUuOTA1aDIyLjA3N1YyMzIuMDNoLTIyLjA3N1YyOTUuOTA1eiBNMzIuMDc0LDI5NS45MDVoMjIuMDc3VjIzMi4wM0gzMi4wNzRWMjk1LjkwNXogTTEwOC4yMzEsMjcyLjM4MWgxMTAuMzg0di0xNi44MjVIMTA4LjIzMVYyNzIuMzgxeiBNMTQ1LjQ0MywyMjMuMzc2Yy0xLjMzMSwwLTIuNjgwLjMzMi0zLjkyMiwxLjAzMmMtMy44NDksMi4xNy01LjIwOSw3LjA1LTMuMDQsMTAuODk4YzE0LjI3MywyNS4zMTIsMzMuNTQzLDQ2LjcxMiw1Ni4yMTQsNjMuMTgxYy05Ljg5NCwxMy43MDMtMjEuMTk3LDI2LjE3My0zMy42ODEsMzcuMjI3Yy0zMS4wMTksMzMuNDAzLTczLjM1NSw1NS44OTYtMTIwLjM5NSw2MS41OTljMS4wNDIsNC4yMDksMi4zMDMsOC4zNjgsMy43ODQsMTIuNDY4YzEuNTAxLDQuMTU1LTAuNjUsOC43NDEtNC44MDYsMTAuMjQyYy00LjE1OCwxLjUwMi04Ljc0MS0wLjY1MS0xMC4yNDItNC44MDdjLTUuNTcxLTE1LjQyNC04LjM5Ni0zMS41OTktOC4zOTYtNDguMDc3QzIwLjk1OSw2My45MDgsODQuODY4LDAsMTYzLjQyMywwYzc4LjU1NCwwLDE0Mi40NjIsNjMuOTA4LDE0Mi40NjIsMTQyLjQ2M2MwLDE0LjE3OS0yLjEwNCwyOC4yMDEtNi4yNTUsNDEuNjhjLTEuMzAxLDQuMjIzLTUuNzgsNi41ODktMTAsNS4yOTFjLTQuMjIzLTEuMy02LjU5MS01Ljc3Ny01LjI5MS0xMGMzLjY4LTExLjk1MSw1LjU0Ni0yNC4zOSw1LjU0Ni0zNi45NzFjMC00Ljg2OS0wLjI3Ni05LjY3My0wLjgxNC0xNC40Yy0yNS44NzEsMi45OTctNTAuNDAzLDExLjUyMS03Mi4xNzIsMjQuNjYyYzQuNzEzLDcuNTA0LDkuMDE3LDE1LjI1MywxMi44NzMsMjMuMjAyYzEuOTI4LDMuOTc1LDAuMjY5LDguNzYxLTMuNzA2LDEwLjY4OWMtMy45NzUsMS45MjUtOC43NjIsMC4yNjktMTAuNjg5LTMuNzA3Yy0zLjU3My03LjM2Ni03LjUwMS0xNC40ODYtMTEuNzYxLTIxLjM0MWMtMjAuNjI5LDE1LjA5MS0zOC4xNzUsMzQuNjQyLTUxLjE5Niw1Ny43MzZDMTUwLjk0OCwyMjEuOTExLDE0OC4yMzYsMjIzLjM3NiwxNDUuNDQzLDIyMy4zNzZ6IE02Ni42MDEsNjEuMTkzYy0xOC40OTIsMjEuOTk0LTI5LjY0Miw1MC4zNTQtMjkuNjQyLDgxLjI3YzAsNC44MzQsMC4yNzQsOS42MzksMC44MTksMTQuMzk5YzQzLjI1Ny01LjAxOSw4Mi4yMzMtMjUuNDg0LDExMC44NzMtNTYuMDEyQzEyNC41NTUsODIuMzkxLDk2Ljc2LDY4LjgxNCw2Ni42MDEsNjEuMTkzeiBNMTcxLjMyOSw5OC45OThjMTMuNjI1LDEyLjA0OCwyNS45MzYsMjUuNjY0LDM2LjYxMSw0MC40NDJjMjMuNTk4LTE0LjM3OCw1MC4yMTgtMjMuNzU4LDc4LjMwNy0yNy4xNTVjLTkuOTg3LTQwLjYzNS0zOS42NjctNzMuNjE1LTc4LjI5OS04OC4xOTRDMjAxLjEyNSw1MS45MzcsMTg4LjQzMyw3Ny4zMzMsMTcxLjMyOSw5OC45OTh6IE03OS4zMjEsNDguMDk2YzI4LjY4Miw4LjQ1OCw1NS45MTQsMjIuMzU3LDc5LjY4MSw0MC43MDljMTUuNzcxLTIwLjA2NSwyNy40MzUtNDMuNjA2LDMzLjYyLTY5LjQwMkMxODMuMjQ4LDE3LjE3OSwxNzMuNDY4LDE2LDE2My40MjMsMTZDMTMxLjE2MiwxNiwxMDEuNjg2LDI4LjE0LDc5LjMyMSw0OC4wOTZ6Ij48L3BhdGg+IDwvZz48L3N2Zz4">
     <link rel="stylesheet" href="{{ asset('css/coaches.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDVDMUY3IiBoZWlnaHQ9IjY0cHgiIHdpZHRoPSI2NHB4IiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAzMjYuODUgMzI2Ljg1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48ZyBpZD0iU1ZGUmVwb19iZ0NhcnJpZXIiIHN0cm9rZS13aWR0aD0iMCI+PC9nPjxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9nPjxnIGlkPSJTVkdSZXBvX2ljb25DYXJyaWVyIj4gPHBhdGggZD0iTTI2NC42OTMsMzI2Ljg0NWgtMzguMDc5Yy00LjQxOCwwLTgtMy41ODItOC04di0zMC40NjRIMTA4LjIzMXYzMC40NjRjMCw0LjQxOC0zLjU4Miw4LTgsOEg2Mi4xNTJjLTQuNDE4LDAtOC0zLjU4Mi04LTh2LTYuOTM5SDI0LjA3NGMtNC40MTgsMC04LTMuNTgyLTgtOHYtNzkuODc1YzAtNC40MTgsMy41ODItOCw4LThoMzAuMDc3di02LjkzOGMwLTQuNDE4LDMuNTgyLTgsOC04aDM4LjA3OWM0LjQxOCwwLDgsMy41ODIsOCw4djMwLjQ2NGgxMTAuMzg0di0zMC40NjRjMC00LjQxOCwzLjU4Mi04LDgtOGgzOC4wNzljNC40MTgsMCw4LDMuNTgyLDgsOHY2LjkzOGgzMC4wNzdjNC40MTgsMCw4LDMuNTgyLDgsOHY3OS44NzVjMCw0LjQxOC0zLjU4Miw4LTgsOGgtMzAuMDc3djYuOTM5QzI3Mi42OTMsMzIzLjI2MywyNjkuMTEyLDMyNi44NDUsMjY0LjY5MywzMjYuODQ1eiBNMjM0LjYxNSwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzaC0yMi4wNzlWMzEwLjg0NXogTTcwLjE1MiwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzSDcwLjE1MlYzMTAuODQ1eiBNMjcyLjY5MywyOTUuOTA1aDIyLjA3N1YyMzIuMDNoLTIyLjA3N1YyOTUuOTA1eiBNMzIuMDc0LDI5NS45MDVoMjIuMDc3VjIzMi4wM0gzMi4wNzRWMjk1LjkwNXogTTEwOC4yMzEsMjcyLjM4MWgxMTAuMzg0di0xNi44MjVIMTA4LjIzMVYyNzIuMzgxeiBNMTQ1LjQ0MywyMjMuMzc2Yy0xLjMzMSwwLTIuNjgtMC4zMzItMy45MjItMS4wMzJjLTMuODQ5LTIuMTctNS4yMDktNy4wNS0zLjA0LTEwLjg5OGMxNC4yNzMtMjUuMzEyLDMzLjU0My00Ni43MTIsNTYuMjE0LTYzLjE4MWMtOS44OTQtMTMuNzAzLTIxLjE5Ny0yNi4xNzMtMzMuNjgxLTM3LjIyN2MtMzEuMDE5LDMzLjQwMy03My4zNTUsNTUuODk2LTEyMC4zOTUsNjEuNTk5YzEuMDQyLDQuMjA5LDIuMzAzLDguMzY4LDMuNzg0LDEyLjQ2OGMxLjUwMSw0LjE1NS0wLjY1LDguNzQxLTQuODA2LDEwLjI0MmMtNC4xNTgsMS41MDItOC43NDEtMC42NTEtMTAuMjQyLTQuODA3Yy01LjU3MS0xNS40MjQtOC4zOTYtMzEuNTk5LTguMzk2LTQ4LjA3N0MyMC45NTksNjMuOTA4LDg0Ljg2OCwwLDE2My40MjMsMGM3OC41NTQsMCwxNDIuNDYyLDYzLjkwOCwxNDIuNDYyLDE0Mi40NjNjMCwxNC4xNzktMi4xMDQsMjguMjAxLTYuMjU1LDQxLjY4Yy0xLjMwMSw0LjIyMy01Ljc4LDYuNTg5LTEwLDUuMjkxYy00LjIyMy0xLjMtNi41OTEtNS43NzctNS4yOTEtMTBjMy42OC0xMS45NTEsNS41NDYtMjQuMzksNS41NDYtMzYuOTcxYzAtNC44NjktMC4yNzYtOS42NzMtMC44MTQtMTQuNGMtMjUuODcxLDIuOTk3LTUwLjQwMywxMS41MjEtNzIuMTcyLDI0LjY2MmM0LjcxMyw3LjUwNCw5LjAxNywxNS4yNTMsMTIuODczLDIzLjIwMmMxLjkyOCwzLjk3NSwwLjI2OSw4Ljc2MS0zLjcwNiwxMC42ODljLTMuOTc1LDEuOTI1LTguNzYyLDAuMjY5LTEwLjY4OS0zLjcwN2MtMy41NzMtNy4zNjYtNy41MDEtMTQuNDg2LTExLjc2MS0yMS4zNDFjLTIwLjYyOSwxNS4wOTEtMzguMTc1LDM0LjY0Mi01MS4xOTYsNTcuNzM2QzE1MC45NDgsMjIxLjkxMSwxNDguMjM2LDIyMy4zNzYsMTQ1LjQ0MywyMjMuMzc2eiBNNjYuNjAxLDYxLjE5M2MtMTguNDkyLDIxLjk5NC0yOS42NDIsNTAuMzU0LTI5LjY0Miw4MS4yN2MwLDQuODM0LDAuMjc0LDkuNjM5LDAuODE5LDE0LjM5OWM0My4yNTctNS4wMTksODIuMjMzLTI1LjQ4NCwxMTAuODczLTU2LjAxMkMxMjQuNTU1LDgyLjM5MSw5Ni43Niw2OC44MTQsNjYuNjAxLDYxLjE5M3ogTTE3MS4zMjksOTguOTk4YzEzLjYyNSwxMi4wNDgsMjUuOTM2LDI1LjY2NCwzNi42MTEsNDAuNDQyYzIzLjU5OC0xNC4zNzgsNTAuMjE4LTIzLjc1OCw3OC4zMDctMjcuMTU1Yy05Ljk4Ny00MC42MzUtMzkuNjY3LTczLjYxNS03OC4yOTktODguMTk0QzIwMS4xMjUsNTEuOTM3LDE4OC40MzMsNzcuMzMzLDE3MS4zMjksOTguOTk4eiBNNzkuMzIxLDQ4LjA5NmMyOC42ODIsOC40NTgsNTUuOTE0LDIyLjM1Nyw3OS42ODEsNDAuNzA5YzE1Ljc3MS0yMC4wNjUsMjcuNDM1LTQzLjYwNiwzMy42Mi02OS40MDJDMTgzLjI0OCwxNy4xNzksMTczLjQ2OCwxNiwxNjMuNDIzLDE2QzEzMS4xNjIsMTYsMTAxLjY4NiwyOC4xNCw3OS4zMjEsNDguMDk2eiI+PC9wYXRoPiA8L2c+PC9zdmc+">
+
 </head>
 <body>
-    <!-- Header -->
     <header class="site-header">
         <div class="container">
             <div class="header-content">
@@ -31,15 +33,12 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Page Header -->
             <div class="page-header">
                 <h2 class="page-title">Our Professional Coaches</h2>
                 <p class="page-subtitle">Meet our training team, experts in various sports fields to help you achieve your goals</p>
                 
-                <!-- Statistics -->
                 <div class="stats-container">
                     <div class="stat-card">
                         <div class="stat-number">{{ $coaches->count() }}</div>
@@ -66,11 +65,9 @@
                 </div>
             </div>
 
-            <!-- Coaches Grid -->
             <div class="coaches-grid" id="coachesGrid">
                 @forelse($coaches as $coach)
                     <div class="coach-card" data-specialization="{{ $coach->specialization ?? 'Not Specified' }}">
-                        <!-- Coach Image & Basic Info -->
                         <div class="coach-image-section">
                             @if($coach->image && file_exists(public_path($coach->image)))
                                 <img src="{{ asset($coach->image) }}" alt="{{ $coach->full_name }}" class="coach-image">
@@ -80,16 +77,13 @@
                                 </div>
                             @endif
                             
-                            <!-- Name & Position -->
                             <div class="coach-overlay">
                                 <h3 class="coach-name">{{ $coach->full_name }}</h3>
                                 <div class="position-badge">{{ $coach->position }}</div>
                             </div>
                         </div>
                         
-                        <!-- Coach Details -->
                         <div class="coach-details">
-                            <!-- Specialization -->
                             <div class="detail-section">
                                 <div class="detail-title">
                                     <i class="fas fa-dumbbell detail-icon"></i>
@@ -98,7 +92,6 @@
                                 <span class="specialization-badge">{{ $coach->specialization ?? 'Not Specified' }}</span>
                             </div>
                             
-                            <!-- Experience -->
                             <div class="detail-section">
                                 <div class="detail-title">
                                     <i class="fas fa-award detail-icon"></i>
@@ -107,7 +100,6 @@
                                 <div class="experience-container">
                                     <span class="experience-badge">{{ $coach->years_of_experience }} years</span>
                                     
-                                    <!-- Experience Bar -->
                                     <div class="experience-bar-container">
                                         @php
                                             $experiencePercentage = min($coach->years_of_experience * 10, 100);
@@ -117,7 +109,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Working Hours -->
                             <div class="detail-section">
                                 <div class="detail-title">
                                     <i class="far fa-clock detail-icon"></i>
@@ -130,7 +121,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Contact Info -->
                             <div class="detail-section">
                                 <div class="detail-title">
                                     <i class="fas fa-address-card detail-icon"></i>
@@ -148,7 +138,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Action Buttons -->
                             <div class="action-section">
                                 <a href="{{ route('employees.show', $coach->id) }}" class="view-profile-btn">
                                     <i class="fas fa-eye"></i>
@@ -165,7 +154,6 @@
                         </div>
                     </div>
                 @empty
-                    <!-- No Coaches Message -->
                     <div class="no-coaches-message">
                         <div class="no-coaches-icon">
                             <i class="fas fa-users"></i>
@@ -180,7 +168,6 @@
                 @endforelse
             </div>
             
-            <!-- Filter Section -->
             @if($coaches->count() > 0)
             <div class="filter-section">
                 <h3 class="filter-title">Filter Coaches by Specialization</h3>
@@ -205,7 +192,6 @@
         </div>
     </main>
 
-    <!-- JavaScript -->
     <script src="{{ asset('js/coaches.js') }}"></script>
 </body>
 </html>

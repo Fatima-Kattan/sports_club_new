@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Create New Employee - Fitness Club</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDVDMUY3IiBoZWlnaHQ9IjY0cHgiIHdpZHRoPSI2NHB4IiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAzMjYuODUgMzI2Ljg1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48ZyBpZD0iU1ZHUmVwb19iZ0NhcnJpZXIiIHN0cm9rZS13aWR0aD0iMCI+PC9nPjxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9nPjxnIGlkPSJTVkdSZXBvX2ljb25DYXJyaWVyIj4gPHBhdGggZD0iTTI2NC42OTMsMzI2Ljg0NWgtMzguMDc5Yy00LjQxOCwwLTgtMy41ODItOC04di0zMC40NjRIMTA4LjIzMXYzMC40NjRjMCw0LjQxOC0zLjU4Miw4LTgsOEg2Mi4xNTJjLTQuNDE4LDAtOC0zLjU4Mi04LTh2LTYuOTM5SDI0LjA3NGMtNC40MTgsMC04LTMuNTgyLTgtOHYtNzkuODc1YzAtNC40MTgsMy41ODItOCw4LThoMzAuMDc3di02LjkzOGMwLTQuNDE4LDMuNTgyLTgsOC04aDM4LjA3OWM0LjQxOCwwLDgsMy41ODIsOCw4djMwLjQ2NGgxMTAuMzg0di0zMC40NjRjMC00LjQxOCwzLjU4Mi04LDgtOGgzOC4wNzljNC40MTgsMCw4LDMuNTgyLDgsOHY2LjkzOGgzMC4wNzdjNC40MTgsMCw4LDMuNTgyLDgsOHY3OS44NzVjMCw0LjQxOC0zLjU4Miw4LTgsOGgtMzAuMDc3djYuOTM5QzI3Mi42OTMsMzIzLjI2MywyNjkuMTEyLDMyNi44NDUsMjY0LjY5MywzMjYuODQ1eiBNMjM0LjYxNSwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzaC0yMi4wNzlWMzEwLjg0NXogTTcwLjE1MiwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzSDcwLjE1MlYzMTAuODQ1eiBNMjcyLjY5MywyOTUuOTA1aDIyLjA3N1YyMzIuMDNoLTIyLjA3N1YyOTUuOTA1eiBNMzIuMDc0LDI5NS45MDVoMjIuMDc3VjIzMi4wM0gzMi4wNzRWMjk1LjkwNXogTTEwOC4yMzEsMjcyLjM4MWgxMTAuMzg0di0xNi44MjVIMTA4LjIzMVYyNzIuMzgxeiBNMTQ1LjQ0MywyMjMuMzc2Yy0xLjMzMSwwLTIuNjgtMC4zMzItMy45MjItMS4wMzJjLTMuODQ5LTIuMTctNS4yMDktNy4wNS0zLjA0LTEwLjg5OGMxNC4yNzMtMjUuMzEyLDMzLjU0My00Ni43MTIsNTYuMjE0LTYzLjE4MWMtOS44OTQtMTMuNzAzLTIxLjE5Ny0yNi4xNzMtMzMuNjgxLTM3LjIyN2MtMzEuMDE5LDMzLjQwMy03My4zNTUsNTUuODk2LTEyMC4zOTUsNjEuNTk5YzEuMDQyLDQuMjA5LDIuMzAzLDguMzY4LDMuNzg0LDEyLjQ2OGMxLjUwMSw0LjE1NS0wLjY1LDguNzQxLTQuODA2LDEwLjI0MmMtNC4xNTgsMS41MDItOC43NDEtMC42NTEtMTAuMjQyLTQuODA3Yy01LjU3MS0xNS40MjQtOC4zOTYtMzEuNTk5LTguMzk2LTQ4LjA3N0MyMC45NTksNjMuOTA4LDg0Ljg2OCwwLDE2My40MjMsMGM3OC41NTQsMCwxNDIuNDYyLDYzLjkwOCwxNDIuNDYyLDE0Mi40NjNjMCwxNC4xNzktMi4xMDQsMjguMjAxLTYuMjU1LDQxLjY4Yy0xLjMwMSw0LjIyMy01Ljc4LDYuNTg5LTEwLDUuMjkxYy00LjIyMy0xLjMtNi41OTEtNS43NzctNS4yOTEtMTBjMy42OC0xMS45NTEsNS41NDYtMjQuMzksNS41NDYtMzYuOTcxYzAtNC44NjktMC4yNzYtOS42NzMtMC44MTQtMTQuNGMtMjUuODcxLDIuOTk3LTUwLjQwMywxMS41MjEtNzIuMTcyLDI0LjY2MmM0LjcxMyw3LjUwNCw5LjAxNywxNS4yNTMsMTIuODczLDIzLjIwMmMxLjkyOCwzLjk3NSwwLjI2OSw4Ljc2MS0zLjcwNiwxMC42ODljLTMuOTc1LDEuOTI1LTguNzYyLDAuMjY5LTEwLjY4OS0zLjcwN2MtMy41NzMtNy4zNjYtNy41MDEtMTQuNDg2LTExLjc2MS0yMS4zNDFjLTIwLjYyOSwxNS4wOTEtMzguMTc1LDM0LjY0Mi01MS4xOTYsNTcuNzM2QzE1MC45NDgsMjIxLjkxMSwxNDguMjM2LDIyMy4zNzYsMTQ1LjQ0MywyMjMuMzc2eiBNNjYuNjAxLDYxLjE5M2MtMTguNDkyLDIxLjk5NC0yOS42NDIsNTAuMzU0LTI5LjY0Miw4MS4yN2MwLDQuODM0LDAuMjc0LDkuNjM5LDAuODE5LDE0LjM5OWM0My4yNTctNS4wMTksODIuMjMzLTI1LjQ4NCwxMTAuODczLTU2LjAxMkMxMjQuNTU1LDgyLjM5MSw5Ni43Niw2OC44MTQsNjYuNjAxLDYxLjE5M3ogTTE3MS4zMjksOTguOTk4YzEzLjYyNSwxMi4wNDgsMjUuOTM2LDI1LjY2NCwzNi42MTEsNDAuNDQyYzIzLjU5OC0xNC4zNzgsNTAuMjE4LTIzLjc1OCw3OC4zMDctMjcuMTU1Yy05Ljk4Ny00MC42MzUtMzkuNjY3LTczLjYxNS03OC4yOTktODguMTk0QzIwMS4xMjUsNTEuOTM3LDE4OC40MzMsNzcuMzMzLDE3MS4zMjksOTguOTk4eiBNNzkuMzIxLDQ4LjA5NmMyOC42ODIsOC40NTgsNTUuOTE0LDIyLjM1Nyw3OS42ODEsNDAuNzA5YzE1Ljc3MS0yMC4wNjUsMjcuNDM1LTQzLjYwNiwzMy42Mi02OS40MDJDMTgzLjI0OCwxNy4xNzksMTczLjQ2OCwxNiwxNjMuNDIzLDE2QzEzMS4xNjIsMTYsMTAxLjY4NiwyOC4xNCw3OS4zMjEsNDguMDk2eiI+PC9wYXRoPiA8L2c+PC9zdmc+">
+        href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDVDMUY3IiBoZWlnaHQ9IjY0cHgiIHdpZHRoPSI2NHB4IiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAzMjYuODUgMzI2Ljg1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48ZyBpZD0iU1ZHUmVwb19iZ0NhcnJpZXIiIHN0cm9rZS13aWR0aD0iMCI+PC9nPjxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9nPjxnIGlkPSJTVkdSZXBvX2ljb25DYXJyaWVyIj4gPHBhdGggZD0iTTI2NC42OTMsMzI2Ljg0NWgtMzguMDc5Yy00LjQxOCwwLTgtMy41ODItOC04di0zMC40NjRIMTA4LjIzMXYzMC40NjRjMCw0LjQxOC0zLjU4Miw4LTgsOEg2Mi4xNTJjLTQuNDE4LDAtOC0zLjU4Mi04LTh2LTYuOTM5SDI0LjA3NGMtNC40MTgsMC04LTMuNTgyLTgtOHYtNzkuODc1YzAtNC40MTgsMy41ODItOCw4LThoMzAuMDc3di02LjkzOGMwLTQuNDE4LDMuNTgyLTgsOC04aDM4LjA3OWM0LjQxOCwwLDgsMy41ODIsOCw4djMwLjQ2NGgxMTAuMzg0di0zMC40NjRjMC00LjQxOCwzLjU4Mi04LDgtOGgzOC4wNzljNC40MTgsMCw4LDMuNTgyLDgsOHY2LjkzOGgzMC4wNzdjNC40MTgsMCw4LDMuNTgyLDgsOHY3OS44NzVjMCw0LjQxOC0zLjU4Miw4LTgsOGgtMzAuMDc3djYuOTM5QzI3Mi42OTMsMzIzLjI2MywyNjkuMTEyLDMyNi44NDUsMjY0LjY5MywzMjYuODQ1eiBNMjM0LjYxNSwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzaC0yMi4wNzlWMzEwLjg0NXogTTcwLjE1MiwzMTAuODQ1aDIyLjA3OXYtOTMuNzUzSDcwLjE1MlYzMTAuODQ1eiBNMjcyLjY5MywyOTUuOTA1aDIyLjA3N1YyMzIuMDNoLTIyLjA3N1YyOTUuOTA1eiBNMzIuMDc0LDI5NS45MDVoMjIuMDc3VjIzMi4wM0gzMi4wNzRWMjk1LjkwNXogTTEwOC4yMzEsMjcyLjM4MWgxMTAuMzg0di0xNi44MjVIMTA4LjIzMVYyNzIuMzgxeiBNMTQ1LjQ0MywyMjMuMzc2Yy0xLjMzMSwwLTIuNjgtMC4zMzItMy45MjItMS4wMzJjLTMuODQ5LTIuMTctNS4yMDktNy4wNS0zLjA0LTEwLjg5OGMxNC4yNzMtMjUuMzEyLDMzLjU0My00Ni43MTIsNTYuMjE0LTYzLjE4MWMtOS44OTQtMTMuNzAzLTIxLjE5Ny0yNi4xNzMtMzMuNjgxLTM3LjIyN2MtMzEuMDE5LDMzLjQwMy03My4zNTUsNTUuODk2LTEyMC4zOTUsNjEuNTk5YzEuMDQyLDQuMjA5LDIuMzAzLDguMzY4LDMuNzg0LDEyLjQ2OGMxLjUwMSw0LjE1NS0wLjY1LDguNzQxLTQuODA2LDEwLjI0MmMtNC4xNTgsMS41MDItOC43NDEtMC42NTEtMTAuMjQyLTQuODA3Yy01LjU3MS0xNS40MjQtOC4zOTYtMzEuNTk5LTguMzk2LTQ4LjA3N0MyMC45NTksNjMuOTA4LDg0Ljg2OCwwLDE2My40MjMsMGM3OC41NTQsMCwxNDIuNDYyLDYzLjkwOCwxNDIuNDYyLDE0Mi40NjNjMCwxNC4xNzktMi4xMDQsMjguMjAxLTYuMjU1LDQxLjY4Yy0xLjMwMSw0LjIyMy01Ljc4LDYuNTg5LTEwLDUuMjkxYy00LjIyMy0xLjMtNi41OTEtNS43NzctNS4yOTEtMTBjMy42OC0xMS45NTEsNS41NDYtMjQuMzksNS41NDYtMzYuOTcxYzAtNC44NjktMC4yNzYtOS42NzMtMC44MTQtMTQuNGMtMjUuODcxLDIuOTk3LTUwLjQwMywxMS41MjEtNzIuMTcyLDI0LjY2MmM0LjcxMyw3LjUwNCw5LjAxNywxNS4yNTMsMTIuODczLDIzLjIwMmMxLjkyOCwzLjk3NSwwLjI2OSw4Ljc2MS0zLjcwNiwxMC42ODljLTMuOTc1LDEuOTI1LTguNzYyLDAuMjY5LTEwLjY4OS0zLjcwN2MtMy41NzMtNy4zNjYtNy41MDEtMTQuNDg2LTExLjc2MS0yMS4zNDFjLTIwLjYyOSwxNS4wOTEtMzguMTc1LDM0LjY0Mi01MS4xOTYsNTcuNzM2QzE1MC45NDgsMjIxLjkxMSwxNDguMjM2LDIyMy4zNzYsMTQ1LjQ0MywyMjMuMzc2eiBNNjYuNjAxLDYxLjE5M2MtMTguNDkyLDIxLjk5NC0yOS42NDIsNTAuMzU0LTI5LjY0Miw4MS4yN2MwLDQuODM0LDAuMjc0LDkuNjM5LDAuODE5LDE0LjM5OWM0My4yNTctNS4wMTksODIuMjMzLTI1LjQ4NCwxMTAuODczLTU2LjAxMkMxMjQuNTU1LDgyLjM5MSw5Ni43Niw2OC44MTQsNjYuNjAxLDYxLjE5M3ogTTE3MS4zMjksOTguOTk4YzEzLjYyNSwxMi4wNDgsMjUuOTM2LDI1LjY2NCwzNi42MTEsNDAuNDQyYzIzLjU5OC0xNC4zNzgsNTAuMjE4LTIzLjc1OCw3OC4zMDctMjcuMTU1Yy05Ljk4Ny00MC42MzUtMzkuNjY3LTczLjYxNS03OC4yOTktODguMTk0QzIwMS4xMjUsNTEuOTM3LDE4OC40MzMsNzcuMzMzLDE3MS4zMjksOTguOTk4eiBNNzkuMzIxLDQ4LjA5NmMyOC42ODIsOC40NTgsNTUuOTE0LDIyLjM1Nyw3OS42ODEsNDAuNzA5YzE1Ljc3MS0yMC4wNjUsMjcuNDM1LTQzLjYwNiwzMy42Mi02OS40MDJDMTgzLjI0OCwxNy4xNzksMTczLjQ2OCwxNiwxNjMuNDIzLDE2QzEzMS4xNjIsMTYsMTAxLjY4NiwyOC4xNCw3OS4zMjEsNDguMDk2eiI+PC9wYXRoPiA8L2c+PC9zdmc+">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* تنسيقات إضافية للصفحة */
         :root {
             --color-primary: #05C1F7;
             --color-secondary: #00ff88;
@@ -34,10 +32,9 @@
         }
 
         .create-employee-container {
-            
+
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             color: #EDEDEC;
-            /* padding: 10px 20px 50px; */
             position: relative;
             overflow-x: hidden;
         }
@@ -108,16 +105,16 @@
         }
 
         .form-control option {
-    background-color: #2d3748; /* خلفية داكنة */
-    color: #e2e8f0; /* نص فاتح */
-    padding: 12px;
-    font-size: 15px;
-}
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 12px;
+            font-size: 15px;
+        }
 
-/* hover على option */
-.form-control option:hover {
-    background-color: #4a5568 !important;
-} 
+        .form-control option:hover {
+            background-color: #4a5568 !important;
+        }
+
         .form-control:focus {
             outline: none;
             border-color: var(--color-primary);
@@ -258,285 +255,283 @@
             margin-bottom: 25px;
         }
 
-.section-title {
-    background: linear-gradient(160deg, #05C1F7, #00ff88);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    display: inline-block; 
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-}
-/* تنسيقات Toggle المتميزة */
-.toggle-container {
-    margin: 10px 0;
-}
+        .section-title {
+            background: linear-gradient(160deg, #05C1F7, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+        }
 
-.toggle-card {
-    background: rgba(26, 26, 26, 0.8);
-    border: 1px solid rgba(5, 193, 247, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+        .toggle-container {
+            margin: 10px 0;
+        }
 
-.toggle-card:hover {
-    border-color: rgba(5, 193, 247, 0.4);
-    box-shadow: 0 5px 15px rgba(5, 193, 247, 0.1);
-}
+        .toggle-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(5, 193, 247, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
 
-.toggle-wrapper {
-    padding: 20px;
-}
+        .toggle-card:hover {
+            border-color: rgba(5, 193, 247, 0.4);
+            box-shadow: 0 5px 15px rgba(5, 193, 247, 0.1);
+        }
 
-.toggle-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        .toggle-wrapper {
+            padding: 20px;
+        }
 
-.admin-toggle {
-    display: none;
-}
+        .toggle-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-.toggle-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-}
+        .admin-toggle {
+            display: none;
+        }
 
-.toggle-title {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    flex: 1;
-}
+        .toggle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
 
-.toggle-title h4 {
-    color: #EDEDEC;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0 0 4px 0;
-}
+        .toggle-title {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            flex: 1;
+        }
 
-.toggle-title p {
-    color: #A1A09A;
-    font-size: 0.9rem;
-    margin: 0;
-    line-height: 1.4;
-}
+        .toggle-title h4 {
+            color: #EDEDEC;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
 
-.toggle-icon {
-    color: #05C1F7;
-    font-size: 1.3rem;
-    margin-top: 2px;
-}
+        .toggle-title p {
+            color: #A1A09A;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.4;
+        }
 
-.toggle-switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    padding: 5px 0;
-}
+        .toggle-icon {
+            color: #05C1F7;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
 
-.toggle-slider {
-    width: 50px;
-    height: 26px;
-    background: rgba(161, 160, 154, 0.2);
-    border-radius: 13px;
-    position: relative;
-    transition: all 0.3s ease;
-}
+        .toggle-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding: 5px 0;
+        }
 
-.toggle-slider::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #A1A09A;
-    border-radius: 50%;
-    top: 3px;
-    left: 3px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+        .toggle-slider {
+            width: 50px;
+            height: 26px;
+            background: rgba(161, 160, 154, 0.2);
+            border-radius: 13px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-.admin-toggle:checked + .toggle-content .toggle-slider {
-    background: linear-gradient(135deg, #05C1F7, rgba(0, 255, 136, 0.8));
-}
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #A1A09A;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
 
-.admin-toggle:checked + .toggle-content .toggle-slider::before {
-    transform: translateX(24px);
-    background: #EDEDEC;
-}
+        .admin-toggle:checked+.toggle-content .toggle-slider {
+            background: linear-gradient(135deg, #05C1F7, rgba(0, 255, 136, 0.8));
+        }
 
-.toggle-status {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-align: center;
-    min-width: 30px;
-}
+        .admin-toggle:checked+.toggle-content .toggle-slider::before {
+            transform: translateX(24px);
+            background: #EDEDEC;
+        }
 
-.status-off {
-    color: #ff4444;
-}
+        .toggle-status {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 30px;
+        }
 
-.status-on {
-    color: #00ff88;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-}
+        .status-off {
+            color: #ff4444;
+        }
 
-.status-off {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.3s ease;
-}
+        .status-on {
+            color: #00ff88;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
 
-.admin-toggle:checked + .toggle-content .status-on {
-    opacity: 1;
-    transform: translateY(0);
-}
+        .status-off {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
 
-.admin-toggle:checked + .toggle-content .status-off {
-    opacity: 0;
-    transform: translateY(10px);
-}
+        .admin-toggle:checked+.toggle-content .status-on {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.toggle-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
+        .admin-toggle:checked+.toggle-content .status-off {
+            opacity: 0;
+            transform: translateY(10px);
+        }
 
-.permission-level {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+        .toggle-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.level-badge {
-    background: rgba(138, 43, 226, 0.1);
-    color: #8a2be2;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: inline-block;
-    border: 1px solid rgba(138, 43, 226, 0.3);
-    width: fit-content;
-}
+        .permission-level {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-.level-indicator {
-    display: flex;
-    gap: 6px;
-}
+        .level-badge {
+            background: rgba(138, 43, 226, 0.1);
+            color: #8a2be2;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            width: fit-content;
+        }
 
-.level-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
+        .level-indicator {
+            display: flex;
+            gap: 6px;
+        }
 
-.level-dot.active {
-    background: #05C1F7;
-}
+        .level-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
 
-.admin-toggle:checked + .toggle-content .level-dot.active {
-    background: #00ff88;
-}
+        .level-dot.active {
+            background: #05C1F7;
+        }
 
-.permission-summary {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+        .admin-toggle:checked+.toggle-content .level-dot.active {
+            background: #00ff88;
+        }
 
-.permission-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #A1A09A;
-    font-size: 0.9rem;
-}
+        .permission-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-.permission-item i {
-    color: #05C1F7;
-    font-size: 0.8rem;
-}
+        .permission-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #A1A09A;
+            font-size: 0.9rem;
+        }
 
-.admin-toggle:checked + .toggle-content .permission-item i {
-    color: #00ff88;
-}
+        .permission-item i {
+            color: #05C1F7;
+            font-size: 0.8rem;
+        }
 
-.toggle-error {
-    background: rgba(255, 68, 68, 0.1);
-    border-top: 1px solid rgba(255, 68, 68, 0.2);
-    padding: 12px 20px;
-    color: #ff4444;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        .admin-toggle:checked+.toggle-content .permission-item i {
+            color: #00ff88;
+        }
 
-.toggle-error i {
-    font-size: 1rem;
-}
+        .toggle-error {
+            background: rgba(255, 68, 68, 0.1);
+            border-top: 1px solid rgba(255, 68, 68, 0.2);
+            padding: 12px 20px;
+            color: #ff4444;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-/* تأثيرات تفاعلية */
-.admin-toggle:checked + .toggle-content .toggle-card {
-    border-color: rgba(0, 255, 136, 0.3);
-    box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.1);
-}
+        .toggle-error i {
+            font-size: 1rem;
+        }
 
-.admin-toggle:checked + .toggle-content .toggle-icon {
-    color: #00ff88;
-}
+        .admin-toggle:checked+.toggle-content .toggle-card {
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.1);
+        }
 
-.admin-toggle:checked + .toggle-content .level-badge {
-    background: rgba(0, 255, 136, 0.1);
-    color: #00ff88;
-    border-color: rgba(0, 255, 136, 0.3);
-}
+        .admin-toggle:checked+.toggle-content .toggle-icon {
+            color: #00ff88;
+        }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .toggle-header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .toggle-switch {
-        align-self: flex-start;
-    }
-    
-    .toggle-details {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .permission-level,
-    .permission-summary {
-        width: 100%;
-    }
-}
-        /* Responsive */
+        .admin-toggle:checked+.toggle-content .level-badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .toggle-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .toggle-switch {
+                align-self: flex-start;
+            }
+
+            .toggle-details {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .permission-level,
+            .permission-summary {
+                width: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             .form-container {
                 padding: 25px;
@@ -576,16 +571,17 @@
     </style>
 </head>
 
-<body style="background:  linear-gradient(135deg, #0f172a, #1e293b);" >
+<body>
 
-    <div class="create-employee-container" >
+    <div class="create-employee-container">
         <div class="form-container">
             <div class="form-header">
                 <h1 class="form-title">Add New Employee</h1>
                 <p class="form-subtitle">Fill in the details below to add a new team member</p>
             </div>
 
-            <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data" id="employeeForm">
+            <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data"
+                id="employeeForm">
                 @csrf
 
                 <div class="form-section">
@@ -646,10 +642,10 @@
                             <label for="mgr_id" class="form-label">
                                 Manager <span class="required-star">*</span>
                             </label>
-                            <select id="mgr_id" name="mgr_id" class="form-control" >
+                            <select id="mgr_id" name="mgr_id" class="form-control">
                                 <option value="">Select Manager</option>
                                 @foreach ($managers as $manager)
-                                    <option  value="{{ $manager->id }}"
+                                    <option value="{{ $manager->id }}"
                                         {{ old('mgr_id') == $manager->id ? 'selected' : '' }}>
                                         {{ $manager->full_name }} ({{ $manager->position }})
                                     </option>
@@ -752,7 +748,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="form-section">
                     <h3 class="section-title">User Account Details</h3>
                     <div class="form-grid">
@@ -771,7 +767,7 @@
                             <label for="password_confirmation" class="form-label">
                                 Confirm Password
                             </label>
-                            <input type="password" id="password_confirmation" name="password_confirmation" 
+                            <input type="password" id="password_confirmation" name="password_confirmation"
                                 class="form-control" placeholder="Confirm password" autocomplete="new-password">
                         </div>
                     </div>
@@ -795,7 +791,8 @@
                             <select id="gender" name="gender" class="form-control">
                                 <option value="">Select Gender</option>
                                 <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-                                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female
+                                </option>
                             </select>
                             @error('gender')
                                 <span class="error-message">{{ $message }}</span>
@@ -808,9 +805,9 @@
                             <div class="toggle-container">
                                 <div class="toggle-card">
                                     <div class="toggle-wrapper">
-                                        <input type="checkbox" id="is_admin" name="is_admin" value="1" 
+                                        <input type="checkbox" id="is_admin" name="is_admin" value="1"
                                             {{ old('is_admin') ? 'checked' : '' }} class="admin-toggle">
-                                        
+
                                         <div class="toggle-content">
                                             <div class="toggle-header">
                                                 <div class="toggle-title">
@@ -820,7 +817,7 @@
                                                         <p>Grant full system access and control</p>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <label for="is_admin" class="toggle-switch">
                                                     <span class="toggle-slider"></span>
                                                     <span class="toggle-status">
@@ -829,7 +826,7 @@
                                                     </span>
                                                 </label>
                                             </div>
-                                            
+
                                             <div class="toggle-details">
                                                 <div class="permission-level">
                                                     <span class="level-badge">Admin Level</span>
@@ -840,7 +837,7 @@
                                                         <span class="level-dot"></span>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="permission-summary">
                                                     <div class="permission-item">
                                                         <i class="fas fa-check-circle"></i>
@@ -854,7 +851,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     @error('is_admin')
                                         <div class="toggle-error">
                                             <i class="fas fa-exclamation-triangle"></i>
@@ -912,9 +909,7 @@
         </div>
     </div>
 
-    <!-- JavaScript إضافي -->
     <script>
-        // معاينة الصورة قبل الرفع
         document.addEventListener('DOMContentLoaded', function() {
             const imageInput = document.getElementById('image');
             const imagePreview = document.getElementById('imagePreview');
@@ -933,13 +928,11 @@
                 });
             }
 
-            // تحديث اسم الملف عند الاختيار
             document.getElementById('image').addEventListener('change', function(e) {
                 const fileName = e.target.files[0] ? e.target.files[0].name : 'Click to upload image';
                 document.getElementById('fileName').textContent = fileName;
             });
 
-            // التحقق من أن وقت النهاية بعد وقت البداية
             document.getElementById('employeeForm').addEventListener('submit', function(e) {
                 const start = document.getElementById('working_hours_start').value;
                 const end = document.getElementById('working_hours_end').value;
@@ -951,13 +944,11 @@
                 }
             });
 
-            // تعيين التاريخ الافتراضي ليوم اليوم
             const today = new Date().toISOString().split('T')[0];
             if (!document.getElementById('hire_date').value) {
                 document.getElementById('hire_date').value = today;
             }
 
-            // عرض رسائل الخطأ
             @if ($errors->any())
                 let errorMessage = "Please fix the following errors:\n";
                 @foreach ($errors->all() as $error)
@@ -972,4 +963,5 @@
         });
     </script>
 </body>
+
 </html>
